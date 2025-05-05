@@ -1,12 +1,12 @@
 import 'package:chopper/chopper.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/movie_model.dart';
-import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/providers/related_provider.dart';
-import 'package:fladder/providers/service_provider.dart';
-import 'package:fladder/providers/sync_provider.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/movie_model.dart';
+import 'package:hessflix/providers/api_provider.dart';
+import 'package:hessflix/providers/related_provider.dart';
+import 'package:hessflix/providers/service_provider.dart';
+import 'package:hessflix/providers/sync_provider.dart';
 
 part 'movies_details_provider.g.dart';
 

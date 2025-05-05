@@ -6,33 +6,33 @@ import 'package:collection/collection.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/episode_model.dart';
-import 'package:fladder/models/playback/direct_playback_model.dart';
-import 'package:fladder/models/playback/offline_playback_model.dart';
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/models/playback/transcode_playback_model.dart';
-import 'package:fladder/models/settings/video_player_settings.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/screens/collections/add_to_collection.dart';
-import 'package:fladder/screens/metadata/info_screen.dart';
-import 'package:fladder/screens/playlists/add_to_playlists.dart';
-import 'package:fladder/screens/video_player/components/video_player_quality_controls.dart';
-import 'package:fladder/screens/video_player/components/video_player_queue.dart';
-import 'package:fladder/screens/video_player/components/video_subtitle_controls.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/device_orientation_extension.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/map_bool_helper.dart';
-import 'package:fladder/util/refresh_state.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/widgets/shared/enum_selection.dart';
-import 'package:fladder/widgets/shared/fladder_slider.dart';
-import 'package:fladder/widgets/shared/modal_bottom_sheet.dart';
-import 'package:fladder/widgets/shared/spaced_list_tile.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/episode_model.dart';
+import 'package:hessflix/models/playback/direct_playback_model.dart';
+import 'package:hessflix/models/playback/offline_playback_model.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/models/playback/transcode_playback_model.dart';
+import 'package:hessflix/models/settings/video_player_settings.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/screens/collections/add_to_collection.dart';
+import 'package:hessflix/screens/metadata/info_screen.dart';
+import 'package:hessflix/screens/playlists/add_to_playlists.dart';
+import 'package:hessflix/screens/video_player/components/video_player_quality_controls.dart';
+import 'package:hessflix/screens/video_player/components/video_player_queue.dart';
+import 'package:hessflix/screens/video_player/components/video_subtitle_controls.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/device_orientation_extension.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/map_bool_helper.dart';
+import 'package:hessflix/util/refresh_state.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/widgets/shared/enum_selection.dart';
+import 'package:hessflix/widgets/shared/hessflix_slider.dart';
+import 'package:hessflix/widgets/shared/modal_bottom_sheet.dart';
+import 'package:hessflix/widgets/shared/spaced_list_tile.dart';
 
 final playbackRateProvider = StateProvider<double>((ref) => 1.0);
 
@@ -281,7 +281,7 @@ class _VideoOptionsMobileState extends ConsumerState<VideoOptions> {
       children: [
         navTitle(currentItem?.title, currentItem?.subTextShort(context)),
         if (currentItem != null) ...{
-          if (currentItem.type == FladderItemType.episode)
+          if (currentItem.type == HessflixItemType.episode)
             ListTile(
               onTap: () {
                 Navigator.of(context).pop();
@@ -298,7 +298,7 @@ class _VideoOptionsMobileState extends ConsumerState<VideoOptions> {
             },
             title: Text(context.localized.showDetails),
           ),
-          if (currentItem.type != FladderItemType.boxset)
+          if (currentItem.type != HessflixItemType.boxset)
             ListTile(
               onTap: () async {
                 await addItemToCollection(context, [currentItem]);
@@ -308,7 +308,7 @@ class _VideoOptionsMobileState extends ConsumerState<VideoOptions> {
               },
               title: Text(context.localized.addToCollection),
             ),
-          if (currentItem.type != FladderItemType.playlist)
+          if (currentItem.type != HessflixItemType.playlist)
             ListTile(
               onTap: () async {
                 await addItemToPlaylist(context, [currentItem]);
@@ -500,7 +500,7 @@ Future<void> showPlaybackSpeed(BuildContext context) {
                       Flexible(
                         child: SizedBox(
                           width: 250,
-                          child: FladderSlider(
+                          child: HessflixSlider(
                             min: 0.25,
                             max: 10,
                             value: lastSpeed,

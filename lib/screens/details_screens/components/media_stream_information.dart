@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/items/media_streams_model.dart';
-import 'package:fladder/screens/details_screens/components/label_title_item.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/models/items/media_streams_model.dart';
+import 'package:hessflix/screens/details_screens/components/label_title_item.dart';
+import 'package:hessflix/util/localization_helper.dart';
 
 class MediaStreamInformation extends ConsumerWidget {
   final MediaStreamsModel mediaStream;

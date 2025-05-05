@@ -4,11 +4,11 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reorderable_grid/reorderable_grid.dart';
 
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/providers/auth_provider.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/screens/shared/user_icon.dart';
-import 'package:fladder/util/list_padding.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/providers/auth_provider.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/screens/shared/user_icon.dart';
+import 'package:hessflix/util/list_padding.dart';
 
 class LoginUserGrid extends ConsumerWidget {
   final List<AccountModel> users;

@@ -4,17 +4,17 @@ import 'package:async/async.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/screens/shared/media/banner_play_button.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/util/item_base_model/item_base_model_extensions.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/themes_data.dart';
-import 'package:fladder/widgets/shared/fladder_slider.dart';
-import 'package:fladder/widgets/shared/item_actions.dart';
-import 'package:fladder/widgets/shared/modal_bottom_sheet.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/screens/shared/media/banner_play_button.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/util/item_base_model/item_base_model_extensions.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/themes_data.dart';
+import 'package:hessflix/widgets/shared/hessflix_slider.dart';
+import 'package:hessflix/widgets/shared/item_actions.dart';
+import 'package:hessflix/widgets/shared/modal_bottom_sheet.dart';
 
 class MediaBanner extends ConsumerStatefulWidget {
   final PageController? controller;
@@ -153,7 +153,7 @@ class _MediaBannerState extends ConsumerState<MediaBanner> {
                                   height: double.infinity,
                                   child: Padding(
                                     padding: const EdgeInsets.all(1),
-                                    child: FladderImage(
+                                    child: HessflixImage(
                                       fit: BoxFit.cover,
                                       image: currentItem.bannerImage,
                                     ),
@@ -270,7 +270,7 @@ class _MediaBannerState extends ConsumerState<MediaBanner> {
           if (widget.items.length > 1)
             FractionallySizedBox(
               widthFactor: 0.35,
-              child: FladderSlider(
+              child: HessflixSlider(
                 value: currentPage.toDouble(),
                 min: 0,
                 animation: const Duration(milliseconds: 250),

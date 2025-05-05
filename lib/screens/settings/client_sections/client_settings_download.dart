@@ -5,15 +5,15 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/screens/settings/settings_list_tile.dart';
-import 'package:fladder/screens/settings/widgets/settings_label_divider.dart';
-import 'package:fladder/screens/shared/default_alert_dialog.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/size_formatting.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/sync_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/screens/settings/settings_list_tile.dart';
+import 'package:hessflix/screens/settings/widgets/settings_label_divider.dart';
+import 'package:hessflix/screens/shared/default_alert_dialog.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/size_formatting.dart';
 
 List<Widget> buildClientSettingsDownload(BuildContext context, WidgetRef ref, Function setState) {
   final clientSettings = ref.watch(clientSettingsProvider);

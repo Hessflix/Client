@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/providers/service_provider.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/providers/service_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'discovery_provider.g.dart';

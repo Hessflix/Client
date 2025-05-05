@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/media_playback_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/floating_player_bar.dart';
+import 'package:hessflix/models/media_playback_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/floating_player_bar.dart';
 
 class NestedScaffold extends ConsumerWidget {
   final Widget body;

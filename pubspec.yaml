@@ -1,4 +1,4 @@
-name: fladder
+name: hessflix
 description: A simple cross-platform Jellyfin client.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -123,6 +123,8 @@ dependencies:
   archive: ^4.0.2
   dart_mappable: ^4.3.0
   reorderable_grid: ^1.0.10
+  webview_flutter: ^4.2.2
+  webview_cookie_manager: ^2.0.6
 
 dev_dependencies:
   flutter_test:

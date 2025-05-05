@@ -5,27 +5,27 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/library_search/library_search_options.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/dashboard_provider.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/settings/home_settings_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/providers/views_provider.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/screens/dashboard/home_banner_widget.dart';
-import 'package:fladder/screens/shared/media/poster_row.dart';
-import 'package:fladder/screens/shared/nested_scaffold.dart';
-import 'package:fladder/screens/shared/nested_sliver_appbar.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/sliver_list_padding.dart';
-import 'package:fladder/widgets/shared/pinch_poster_zoom.dart';
-import 'package:fladder/widgets/shared/poster_size_slider.dart';
-import 'package:fladder/widgets/shared/pull_to_refresh.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/library_search/library_search_options.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/dashboard_provider.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/settings/home_settings_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/providers/views_provider.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/screens/dashboard/home_banner_widget.dart';
+import 'package:hessflix/screens/shared/media/poster_row.dart';
+import 'package:hessflix/screens/shared/nested_scaffold.dart';
+import 'package:hessflix/screens/shared/nested_sliver_appbar.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/sliver_list_padding.dart';
+import 'package:hessflix/widgets/shared/pinch_poster_zoom.dart';
+import 'package:hessflix/widgets/shared/poster_size_slider.dart';
+import 'package:hessflix/widgets/shared/pull_to_refresh.dart';
 
 @RoutePage()
 class DashboardScreen extends ConsumerStatefulWidget {

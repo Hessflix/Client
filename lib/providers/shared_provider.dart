@@ -4,20 +4,20 @@ import 'dart:developer';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/models/settings/client_settings_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/models/settings/subtitle_settings_model.dart';
-import 'package:fladder/models/settings/video_player_settings.dart';
-import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/providers/service_provider.dart';
-import 'package:fladder/providers/settings/book_viewer_settings_provider.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/settings/home_settings_provider.dart';
-import 'package:fladder/providers/settings/photo_view_settings_provider.dart';
-import 'package:fladder/providers/settings/subtitle_settings_provider.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/models/settings/client_settings_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/models/settings/subtitle_settings_model.dart';
+import 'package:hessflix/models/settings/video_player_settings.dart';
+import 'package:hessflix/providers/api_provider.dart';
+import 'package:hessflix/providers/service_provider.dart';
+import 'package:hessflix/providers/settings/book_viewer_settings_provider.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/settings/home_settings_provider.dart';
+import 'package:hessflix/providers/settings/photo_view_settings_provider.dart';
+import 'package:hessflix/providers/settings/subtitle_settings_provider.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
 
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
   throw UnimplementedError();

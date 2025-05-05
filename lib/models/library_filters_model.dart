@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:xid/xid.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/library_search/library_search_model.dart';
-import 'package:fladder/models/library_search/library_search_options.dart';
-import 'package:fladder/util/map_bool_helper.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/library_search/library_search_model.dart';
+import 'package:hessflix/models/library_search/library_search_options.dart';
+import 'package:hessflix/util/map_bool_helper.dart';
 
 part 'library_filters_model.freezed.dart';
 part 'library_filters_model.g.dart';
@@ -29,7 +29,7 @@ class LibraryFiltersModel with _$LibraryFiltersModel {
     required Map<String, bool> tags,
     required Map<int, bool> years,
     required Map<String, bool> officialRatings,
-    required Map<FladderItemType, bool> types,
+    required Map<HessflixItemType, bool> types,
     required SortingOptions sortingOption,
     required SortingOrder sortOrder,
     required bool favourites,

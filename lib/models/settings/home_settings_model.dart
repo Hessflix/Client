@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/util/localization_helper.dart';
 
 part 'home_settings_model.freezed.dart';
 part 'home_settings_model.g.dart';

@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/models/item_editing_model.dart';
-import 'package:fladder/providers/edit_item_provider.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/screens/settings/settings_list_tile.dart';
-import 'package:fladder/screens/shared/file_picker.dart';
-import 'package:fladder/util/adaptive_layout.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/models/item_editing_model.dart';
+import 'package:hessflix/providers/edit_item_provider.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/screens/settings/settings_list_tile.dart';
+import 'package:hessflix/screens/shared/file_picker.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
 
 class EditImageContent extends ConsumerStatefulWidget {
   final ImageType type;
@@ -195,7 +195,7 @@ class _EditImageContentState extends ConsumerState<EditImageContent> {
               ImageType.backdrop => true,
               _ => false,
             },
-            extensions: FladderFile.imageTypes,
+            extensions: HessflixFile.imageTypes,
             urlPicked: (url) {
               final newFile = EditingImageModel(providerName: "Custom(URL)", url: url);
               ref.read(editItemProvider.notifier).addCustomImages(widget.type, [newFile]);

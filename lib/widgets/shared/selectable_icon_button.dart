@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/util/refresh_state.dart';
+import 'package:hessflix/screens/shared/animated_fade_size.dart';
+import 'package:hessflix/util/refresh_state.dart';
 
 class SelectableIconButton extends ConsumerStatefulWidget {
   final FutureOr<dynamic> Function() onPressed;

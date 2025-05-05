@@ -6,17 +6,17 @@ import 'package:collection/collection.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/enum_models.dart';
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart' as dto;
-import 'package:fladder/models/items/chapters_model.dart';
-import 'package:fladder/models/items/images_models.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/items/item_stream_model.dart';
-import 'package:fladder/models/items/media_streams_model.dart';
-import 'package:fladder/models/items/overview_model.dart';
-import 'package:fladder/models/items/series_model.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/string_extensions.dart';
+import 'package:hessflix/jellyfin/enum_models.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart' as dto;
+import 'package:hessflix/models/items/chapters_model.dart';
+import 'package:hessflix/models/items/images_models.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/items/item_stream_model.dart';
+import 'package:hessflix/models/items/media_streams_model.dart';
+import 'package:hessflix/models/items/overview_model.dart';
+import 'package:hessflix/models/items/series_model.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/string_extensions.dart';
 
 part 'episode_model.mapper.dart';
 

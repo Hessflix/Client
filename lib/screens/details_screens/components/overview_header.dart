@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/items/images_models.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/screens/shared/media/components/chip_button.dart';
-import 'package:fladder/screens/shared/media/components/media_header.dart';
-import 'package:fladder/screens/shared/media/components/small_detail_widgets.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/humanize_duration.dart';
-import 'package:fladder/util/list_padding.dart';
+import 'package:hessflix/models/items/images_models.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/screens/shared/media/components/chip_button.dart';
+import 'package:hessflix/screens/shared/media/components/media_header.dart';
+import 'package:hessflix/screens/shared/media/components/small_detail_widgets.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/humanize_duration.dart';
+import 'package:hessflix/util/list_padding.dart';
 
 class OverviewHeader extends ConsumerWidget {
   final String name;

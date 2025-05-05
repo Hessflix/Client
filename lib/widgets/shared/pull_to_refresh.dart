@@ -1,5 +1,5 @@
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/refresh_state.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/refresh_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/screens/settings/settings_list_tile.dart';
-import 'package:fladder/screens/settings/widgets/settings_label_divider.dart';
-import 'package:fladder/screens/shared/input_fields.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/widgets/shared/enum_selection.dart';
-import 'package:fladder/widgets/shared/fladder_slider.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/screens/settings/settings_list_tile.dart';
+import 'package:hessflix/screens/settings/widgets/settings_label_divider.dart';
+import 'package:hessflix/screens/shared/input_fields.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/widgets/shared/enum_selection.dart';
+import 'package:hessflix/widgets/shared/hessflix_slider.dart';
 
 List<Widget> buildClientSettingsVisual(
   BuildContext context,
@@ -141,7 +141,7 @@ List<Widget> buildClientSettingsVisual(
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: FladderSlider(
+          child: HessflixSlider(
             min: 0.5,
             max: 1.5,
             value: clientSettings.posterSize,

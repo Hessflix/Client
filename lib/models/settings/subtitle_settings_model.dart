@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/providers/settings/subtitle_settings_provider.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/util/color_extensions.dart';
+import 'package:hessflix/providers/settings/subtitle_settings_provider.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/util/color_extensions.dart';
 
 class SubtitleSettingsModel {
   final double fontSize;

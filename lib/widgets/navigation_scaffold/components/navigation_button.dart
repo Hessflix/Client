@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/util/widget_extensions.dart';
+import 'package:hessflix/util/widget_extensions.dart';
 
 class NavigationButton extends ConsumerStatefulWidget {
   final String? label;

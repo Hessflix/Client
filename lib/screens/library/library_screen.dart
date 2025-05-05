@@ -1,7 +1,7 @@
-import 'package:fladder/models/view_model.dart';
-import 'package:fladder/providers/library_provider.dart';
-import 'package:fladder/screens/library/components/library_tabs.dart';
-import 'package:fladder/util/adaptive_layout.dart';
+import 'package:hessflix/models/view_model.dart';
+import 'package:hessflix/providers/library_provider.dart';
+import 'package:hessflix/screens/library/components/library_tabs.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

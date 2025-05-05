@@ -5,15 +5,15 @@ import 'package:collection/collection.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/providers/items/identify_provider.dart';
-import 'package:fladder/screens/shared/adaptive_dialog.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/screens/shared/focused_outlined_text_field.dart';
-import 'package:fladder/screens/shared/media/external_urls.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/widgets/shared/alert_content.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/providers/items/identify_provider.dart';
+import 'package:hessflix/screens/shared/adaptive_dialog.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/screens/shared/focused_outlined_text_field.dart';
+import 'package:hessflix/screens/shared/media/external_urls.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/widgets/shared/alert_content.dart';
 
 Future<void> showIdentifyScreen(BuildContext context, ItemBaseModel item) async {
   return showDialogAdaptive(
@@ -177,10 +177,10 @@ class _IdentifyScreenState extends ConsumerState<IdentifyScreen> with TickerProv
                                           ? () async {
                                               final response = await ref.read(provider.notifier).setIdentity(result);
                                               if (response?.isSuccessful == true) {
-                                                fladderSnackbar(context,
+                                                hessflixSnackbar(context,
                                                     title: context.localized.setIdentityTo(result.name ?? ""));
                                               } else {
-                                                fladderSnackbarResponse(context, response,
+                                                hessflixSnackbarResponse(context, response,
                                                     altTitle: context.localized.somethingWentWrong);
                                               }
 

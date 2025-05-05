@@ -613,7 +613,7 @@
   "@settings": {},
   "settingsBlurEpisodesDesc": "Alle anstehenden Folgen verschwommen anzeigen",
   "@settingsBlurEpisodesDesc": {},
-  "settingsClientTitle": "Fladder",
+  "settingsClientTitle": "Hessflix",
   "@settingsClientTitle": {},
   "settingsContinue": "Weiter",
   "@settingsContinue": {},
@@ -1187,7 +1187,7 @@
   "@autoNextOffSmartTitle": {},
   "clientSettingsRequireWifiDesc": "Nur herunterladen, wenn Sie mit einem WLAN-Netzwerk verbunden sind",
   "@clientSettingsRequireWifiDesc": {},
-  "clientSettingsShowAllCollectionsDesc": "Wenn aktiviert, werden alle Sammlungstypen angezeigt, einschließlich derjenigen, die von Fladder nicht unterstützt werden.",
+  "clientSettingsShowAllCollectionsDesc": "Wenn aktiviert, werden alle Sammlungstypen angezeigt, einschließlich derjenigen, die von Hessflix nicht unterstützt werden.",
   "@clientSettingsShowAllCollectionsDesc": {},
   "downloadFile": "{type} herunterladen",
   "@downloadFile": {

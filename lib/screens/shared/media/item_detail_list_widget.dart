@@ -1,10 +1,10 @@
-import 'package:fladder/util/fladder_image.dart';
+import 'package:hessflix/util/hessflix_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/util/duration_extensions.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/util/duration_extensions.dart';
 
 class ItemDetailListWidget extends ConsumerStatefulWidget {
   final ItemBaseModel item;
@@ -40,7 +40,7 @@ class _ItemDetailListWidgetState extends ConsumerState<ItemDetailListWidget> {
                   onExit: (event) => setState(() => showImageOverlay = false),
                   child: Stack(
                     children: [
-                      FladderImage(image: widget.item.images?.primary),
+                      HessflixImage(image: widget.item.images?.primary),
                       if (widget.item.subTextShort(context) != null)
                         Card(
                           child: Padding(

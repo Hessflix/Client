@@ -8,13 +8,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:media_kit/media_kit.dart' as mpv;
 import 'package:media_kit_video/media_kit_video.dart';
 
-import 'package:fladder/models/items/media_streams_model.dart';
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/models/settings/subtitle_settings_model.dart';
-import 'package:fladder/models/settings/video_player_settings.dart';
-import 'package:fladder/providers/settings/subtitle_settings_provider.dart';
-import 'package:fladder/wrappers/players/base_player.dart';
-import 'package:fladder/wrappers/players/player_states.dart';
+import 'package:hessflix/models/items/media_streams_model.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/models/settings/subtitle_settings_model.dart';
+import 'package:hessflix/models/settings/video_player_settings.dart';
+import 'package:hessflix/providers/settings/subtitle_settings_provider.dart';
+import 'package:hessflix/wrappers/players/base_player.dart';
+import 'package:hessflix/wrappers/players/player_states.dart';
 
 class LibMPV extends BasePlayer {
   mpv.Player? _player;
@@ -34,7 +34,7 @@ class LibMPV extends BasePlayer {
     
     _player = mpv.Player(
       configuration: mpv.PlayerConfiguration(
-        title: "nl.jknaapen.fladder",
+        title: "tv.hessflix.client",
         libassAndroidFont: libassFallbackFont,
         libass: !kIsWeb && settings.useLibass,
         bufferSize: settings.bufferSize * 1024 * 1024, // MPV uses buffer size in bytes

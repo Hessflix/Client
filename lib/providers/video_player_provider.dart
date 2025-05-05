@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/media_playback_model.dart';
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/wrappers/media_control_wrapper.dart';
+import 'package:hessflix/models/media_playback_model.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/wrappers/media_control_wrapper.dart';
 
 final mediaPlaybackProvider = StateProvider<MediaPlaybackModel>((ref) => MediaPlaybackModel());
 

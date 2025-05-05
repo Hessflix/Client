@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/credentials_model.dart';
-import 'package:fladder/providers/discovery_provider.dart';
-import 'package:fladder/util/fladder_config.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/theme_extensions.dart';
+import 'package:hessflix/models/credentials_model.dart';
+import 'package:hessflix/providers/discovery_provider.dart';
+import 'package:hessflix/util/hessflix_config.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/theme_extensions.dart';
 
 class DiscoverServersWidget extends ConsumerWidget {
   final List<CredentialsModel> serverCredentials;
@@ -22,7 +22,7 @@ class DiscoverServersWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (FladderConfig.baseUrl?.isNotEmpty == true) return const SizedBox.shrink();
+    if (HessflixConfig.baseUrl?.isNotEmpty == true) return const SizedBox.shrink();
     final existingServers = serverCredentials
         .map(
           (credentials) => DiscoveryInfo(

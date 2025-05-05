@@ -1,10 +1,10 @@
 import 'package:animations/animations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/screens/search/search_screen.dart';
-import 'package:fladder/util/string_extensions.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/screens/search/search_screen.dart';
+import 'package:hessflix/util/string_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

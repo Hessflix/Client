@@ -4,35 +4,35 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/book_model.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/episode_model.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/screens/collections/add_to_collection.dart';
-import 'package:fladder/screens/metadata/edit_item.dart';
-import 'package:fladder/screens/metadata/identifty_screen.dart';
-import 'package:fladder/screens/metadata/info_screen.dart';
-import 'package:fladder/screens/metadata/refresh_metadata.dart';
-import 'package:fladder/screens/playlists/add_to_playlists.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/screens/syncing/sync_button.dart';
-import 'package:fladder/screens/syncing/sync_item_details.dart';
-import 'package:fladder/util/clipboard_helper.dart';
-import 'package:fladder/util/file_downloader.dart';
-import 'package:fladder/util/item_base_model/play_item_helpers.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/refresh_state.dart';
-import 'package:fladder/widgets/pop_up/delete_file.dart';
-import 'package:fladder/widgets/shared/item_actions.dart';
+import 'package:hessflix/models/book_model.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/episode_model.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/providers/sync_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/screens/collections/add_to_collection.dart';
+import 'package:hessflix/screens/metadata/edit_item.dart';
+import 'package:hessflix/screens/metadata/identifty_screen.dart';
+import 'package:hessflix/screens/metadata/info_screen.dart';
+import 'package:hessflix/screens/metadata/refresh_metadata.dart';
+import 'package:hessflix/screens/playlists/add_to_playlists.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/screens/syncing/sync_button.dart';
+import 'package:hessflix/screens/syncing/sync_item_details.dart';
+import 'package:hessflix/util/clipboard_helper.dart';
+import 'package:hessflix/util/file_downloader.dart';
+import 'package:hessflix/util/item_base_model/play_item_helpers.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/refresh_state.dart';
+import 'package:hessflix/widgets/pop_up/delete_file.dart';
+import 'package:hessflix/widgets/shared/item_actions.dart';
 
 extension ItemBaseModelsBooleans on List<ItemBaseModel> {
-  Map<FladderItemType, List<ItemBaseModel>> get groupedItems {
-    Map<FladderItemType, List<ItemBaseModel>> groupedItems = {};
+  Map<HessflixItemType, List<ItemBaseModel>> get groupedItems {
+    Map<HessflixItemType, List<ItemBaseModel>> groupedItems = {};
     for (int i = 0; i < length; i++) {
-      FladderItemType type = this[i].type;
+      HessflixItemType type = this[i].type;
       if (!groupedItems.containsKey(type)) {
         groupedItems[type] = [this[i]];
       } else {
@@ -91,13 +91,13 @@ extension ItemBaseModelExtensions on ItemBaseModel {
       if (parentId?.isNotEmpty == true) ...[
         if (!exclude.contains(ItemActions.openShow) && this is EpisodeModel)
           ItemActionButton(
-            icon: Icon(FladderItemType.series.icon),
+            icon: Icon(HessflixItemType.series.icon),
             action: () => parentBaseModel.navigateTo(context),
             label: Text(context.localized.openShow),
           ),
         if (!exclude.contains(ItemActions.openParent) && this is! EpisodeModel && !galleryItem)
           ItemActionButton(
-            icon: Icon(FladderItemType.folder.icon),
+            icon: Icon(HessflixItemType.folder.icon),
             action: () => parentBaseModel.navigateTo(context),
             label: Text(context.localized.openParent),
           ),
@@ -110,7 +110,7 @@ extension ItemBaseModelExtensions on ItemBaseModel {
         )
       else if (!exclude.contains(ItemActions.showAlbum) && galleryItem)
         ItemActionButton(
-          icon: Icon(FladderItemType.photoAlbum.icon),
+          icon: Icon(HessflixItemType.photoAlbum.icon),
           action: () => (this as PhotoModel).navigateToAlbum(context),
           label: Text(context.localized.showAlbum),
         ),
@@ -127,7 +127,7 @@ extension ItemBaseModelExtensions on ItemBaseModel {
           ),
       ItemActionDivider(),
       if (!exclude.contains(ItemActions.addCollection) && isAdmin)
-        if (type != FladderItemType.boxset)
+        if (type != HessflixItemType.boxset)
           ItemActionButton(
             icon: const Icon(IconsaxPlusLinear.archive_add),
             action: () async {
@@ -139,7 +139,7 @@ extension ItemBaseModelExtensions on ItemBaseModel {
             label: Text(context.localized.addToCollection),
           ),
       if (!exclude.contains(ItemActions.addPlaylist))
-        if (type != FladderItemType.playlist)
+        if (type != HessflixItemType.playlist)
           ItemActionButton(
             icon: const Icon(IconsaxPlusLinear.archive_add),
             action: () async {
@@ -243,7 +243,7 @@ extension ItemBaseModelExtensions on ItemBaseModel {
                 context.refreshData();
               }
             } else {
-              fladderSnackbarResponse(context, response);
+              hessflixSnackbarResponse(context, response);
             }
           },
           label: Text(context.localized.delete),

@@ -7611,6 +7611,24 @@ Map<String, dynamic> _$XbmcMetadataOptionsToJson(
         'EnableExtraThumbsDuplication': value,
     };
 
+Oauth2TokenPost$RequestBody _$Oauth2TokenPost$RequestBodyFromJson(
+        Map<String, dynamic> json) =>
+    Oauth2TokenPost$RequestBody(
+      grantType: json['grant_type'] as String,
+      code: json['code'] as String,
+      redirectUri: json['redirect_uri'] as String,
+      clientId: json['client_id'] as String,
+    );
+
+Map<String, dynamic> _$Oauth2TokenPost$RequestBodyToJson(
+        Oauth2TokenPost$RequestBody instance) =>
+    <String, dynamic>{
+      'grant_type': instance.grantType,
+      'code': instance.code,
+      'redirect_uri': instance.redirectUri,
+      'client_id': instance.clientId,
+    };
+
 BaseItemDto$ImageBlurHashes _$BaseItemDto$ImageBlurHashesFromJson(
         Map<String, dynamic> json) =>
     BaseItemDto$ImageBlurHashes(

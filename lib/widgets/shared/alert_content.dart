@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fladder/util/list_padding.dart';
+import 'package:hessflix/util/list_padding.dart';
 
 class ActionContent extends StatelessWidget {
   final Widget? title;

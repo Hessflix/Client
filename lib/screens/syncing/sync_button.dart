@@ -1,10 +1,10 @@
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/providers/sync/sync_provider_helpers.dart';
-import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/screens/shared/default_alert_dialog.dart';
-import 'package:fladder/screens/syncing/sync_item_details.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/providers/sync/sync_provider_helpers.dart';
+import 'package:hessflix/providers/sync_provider.dart';
+import 'package:hessflix/screens/shared/default_alert_dialog.dart';
+import 'package:hessflix/screens/syncing/sync_item_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

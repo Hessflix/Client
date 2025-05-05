@@ -1,10 +1,10 @@
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/screens/shared/passcode_input.dart';
-import 'package:fladder/util/auth_service.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/screens/shared/passcode_input.dart';
+import 'package:hessflix/util/auth_service.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
 import 'package:flutter/material.dart';
 
 void showAuthOptionsDialogue(
@@ -36,7 +36,7 @@ void showAuthOptionsDialogue(
                       if (authenticated) {
                         setMethod.call(currentUser.copyWith(authMethod: method));
                       } else if (context.mounted) {
-                        fladderSnackbar(context, title: context.localized.biometricsFailedCheckAgain);
+                        hessflixSnackbar(context, title: context.localized.biometricsFailedCheckAgain);
                       }
                       break;
                     case Authentication.passcode:

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'package:fladder/util/adaptive_layout.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
 
 class DefaultTitleBar extends ConsumerStatefulWidget {
   final String? label;
@@ -174,7 +174,7 @@ class _DefaultTitleBarState extends ConsumerState<DefaultTitleBar> with WindowLi
                     ],
                   ),
                 TargetPlatform.macOS => const SizedBox.shrink(),
-                _ => Text(widget.label ?? "Fladder"),
+                _ => Text(widget.label ?? "Hessflix"),
               },
       ),
     );

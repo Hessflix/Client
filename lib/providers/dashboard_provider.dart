@@ -1,11 +1,11 @@
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/models/home_model.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/providers/service_provider.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/views_provider.dart';
-import 'package:fladder/util/list_extensions.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/models/home_model.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/providers/api_provider.dart';
+import 'package:hessflix/providers/service_provider.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/views_provider.dart';
+import 'package:hessflix/util/list_extensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final dashboardProvider = StateNotifierProvider<DashboardNotifier, HomeModel>((ref) {

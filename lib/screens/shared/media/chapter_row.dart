@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/items/chapters_model.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/disable_keypad_focus.dart';
-import 'package:fladder/util/humanize_duration.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/widgets/shared/horizontal_list.dart';
-import 'package:fladder/widgets/shared/item_actions.dart';
-import 'package:fladder/widgets/shared/modal_bottom_sheet.dart';
+import 'package:hessflix/models/items/chapters_model.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/disable_keypad_focus.dart';
+import 'package:hessflix/util/humanize_duration.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/widgets/shared/horizontal_list.dart';
+import 'package:hessflix/widgets/shared/item_actions.dart';
+import 'package:hessflix/widgets/shared/modal_bottom_sheet.dart';
 
 class ChapterRow extends ConsumerWidget {
   final List<Chapter> chapters;

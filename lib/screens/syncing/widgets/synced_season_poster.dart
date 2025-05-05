@@ -1,11 +1,11 @@
-import 'package:fladder/models/items/episode_model.dart';
-import 'package:fladder/models/items/season_model.dart';
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/screens/syncing/widgets/synced_episode_item.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/util/list_padding.dart';
+import 'package:hessflix/models/items/episode_model.dart';
+import 'package:hessflix/models/items/season_model.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/providers/sync_provider.dart';
+import 'package:hessflix/screens/shared/animated_fade_size.dart';
+import 'package:hessflix/screens/syncing/widgets/synced_episode_item.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/util/list_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -38,7 +38,7 @@ class _SyncedSeasonPosterState extends ConsumerState<SyncedSeasonPoster> {
               child: AspectRatio(
                 aspectRatio: 0.65,
                 child: Card(
-                  child: FladderImage(
+                  child: HessflixImage(
                     image: season.getPosters?.primary ??
                         season.parentImages?.backDrop?.firstOrNull ??
                         season.parentImages?.primary,

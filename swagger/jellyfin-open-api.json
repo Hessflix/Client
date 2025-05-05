@@ -6,6 +6,45 @@
     "x-jellyfin-version": "10.10.1"
   },
   "paths": {
+    "/oauth2/token": {
+      "post": {
+        "summary": "Exchange code for token",
+        "operationId": "ExchangeToken",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "grant_type": { "type": "string" },
+                  "code": { "type": "string" },
+                  "redirect_uri": { "type": "string" },
+                  "client_id": { "type": "string" }
+                },
+                "required": ["grant_type", "code", "redirect_uri", "client_id"]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": { "type": "string" },
+                    "server_id": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/System/ActivityLog/Entries": {
       "get": {
         "tags": [

@@ -6,17 +6,17 @@ import 'package:collection/collection.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/views_provider.dart';
-import 'package:fladder/routes/auto_router.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/adaptive_fab.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/destination_model.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/navigation_drawer.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/settings_user_icon.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/views_provider.dart';
+import 'package:hessflix/routes/auto_router.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/screens/shared/animated_fade_size.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/adaptive_fab.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/destination_model.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/navigation_drawer.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/settings_user_icon.dart';
 
 class NavigationBody extends ConsumerStatefulWidget {
   final BuildContext parentContext;
@@ -139,7 +139,7 @@ class _NavigationBodyState extends ConsumerState<NavigationBody> {
         if (AdaptiveLayout.of(context).isDesktop && AdaptiveLayout.of(context).platform != TargetPlatform.macOS) ...{
           const SizedBox(height: 4),
           Text(
-            "Fladder",
+            "Hessflix",
             style: Theme.of(context).textTheme.titleSmall,
           ),
         },

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FladderFonts {
+class HessflixFonts {
   static TextTheme rubikTextTheme([TextTheme? textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
 

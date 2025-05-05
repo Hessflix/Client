@@ -1,5 +1,5 @@
-import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/theme.dart';
+import 'package:hessflix/screens/shared/animated_fade_size.dart';
+import 'package:hessflix/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -87,7 +87,7 @@ class _OutlinedTextFieldState extends ConsumerState<OutlinedTextField> {
                   duration: const Duration(milliseconds: 250),
                   decoration: BoxDecoration(
                     color: widget.fillColor ?? getColor(),
-                    borderRadius: FladderTheme.defaultShape.borderRadius,
+                    borderRadius: HessflixTheme.defaultShape.borderRadius,
                   ),
                 ),
               ),

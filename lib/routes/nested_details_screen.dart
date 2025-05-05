@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/providers/items/item_details_provider.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/util/fladder_image.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/providers/items/item_details_provider.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/util/hessflix_image.dart';
 
 @RoutePage()
 class DetailsScreen extends ConsumerStatefulWidget {
@@ -73,7 +73,7 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
             ),
             //Small offset to match detailscaffold
             child: Transform.translate(
-                offset: const Offset(0, -5), child: FladderImage(image: widget.item?.getPosters?.primary)),
+                offset: const Offset(0, -5), child: HessflixImage(image: widget.item?.getPosters?.primary)),
           ),
         ),
         AnimatedSwitcher(

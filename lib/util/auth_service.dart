@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/util/localization_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
@@ -21,7 +21,7 @@ class AuthService {
               context.localized.scanYourFingerprintToAuthenticate("(${user.name} - ${user.credentials.serverName})"),
           authMessages: <AuthMessages>[
             AndroidAuthMessages(
-              signInTitle: 'Fladder',
+              signInTitle: 'Hessflix',
               biometricHint: context.localized.scanBiometricHint,
             ),
             IOSAuthMessages(

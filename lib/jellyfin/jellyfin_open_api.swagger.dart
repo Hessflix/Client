@@ -48,6 +48,21 @@ abstract class JellyfinOpenApi extends ChopperService {
     return _$JellyfinOpenApi(newClient);
   }
 
+  ///Exchange code for token
+  Future<chopper.Response<Object>> oauth2TokenPost(
+      {required Map<String, String> body}) {
+    return _oauth2TokenPost(body: body);
+  }
+
+  ///Exchange code for token
+  @Post(
+    path: '/oauth2/token',
+    headers: {contentTypeKey: formEncodedHeaders},
+  )
+  @FactoryConverter(request: FormUrlEncodedConverter.requestFactory)
+  Future<chopper.Response<Object>> _oauth2TokenPost(
+      {@Body() required Map<String, String> body});
+
   ///Gets activity log entries.
   ///@param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
   ///@param limit Optional. The maximum number of records to return.
@@ -47859,6 +47874,87 @@ extension $XbmcMetadataOptionsExtension on XbmcMetadataOptions {
         enableExtraThumbsDuplication: (enableExtraThumbsDuplication != null
             ? enableExtraThumbsDuplication.value
             : this.enableExtraThumbsDuplication));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class Oauth2TokenPost$RequestBody {
+  const Oauth2TokenPost$RequestBody({
+    required this.grantType,
+    required this.code,
+    required this.redirectUri,
+    required this.clientId,
+  });
+
+  factory Oauth2TokenPost$RequestBody.fromJson(Map<String, dynamic> json) =>
+      _$Oauth2TokenPost$RequestBodyFromJson(json);
+
+  static const toJsonFactory = _$Oauth2TokenPost$RequestBodyToJson;
+  Map<String, dynamic> toJson() => _$Oauth2TokenPost$RequestBodyToJson(this);
+
+  @JsonKey(name: 'grant_type', includeIfNull: false)
+  final String grantType;
+  @JsonKey(name: 'code', includeIfNull: false)
+  final String code;
+  @JsonKey(name: 'redirect_uri', includeIfNull: false)
+  final String redirectUri;
+  @JsonKey(name: 'client_id', includeIfNull: false)
+  final String clientId;
+  static const fromJsonFactory = _$Oauth2TokenPost$RequestBodyFromJson;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is Oauth2TokenPost$RequestBody &&
+            (identical(other.grantType, grantType) ||
+                const DeepCollectionEquality()
+                    .equals(other.grantType, grantType)) &&
+            (identical(other.code, code) ||
+                const DeepCollectionEquality().equals(other.code, code)) &&
+            (identical(other.redirectUri, redirectUri) ||
+                const DeepCollectionEquality()
+                    .equals(other.redirectUri, redirectUri)) &&
+            (identical(other.clientId, clientId) ||
+                const DeepCollectionEquality()
+                    .equals(other.clientId, clientId)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(grantType) ^
+      const DeepCollectionEquality().hash(code) ^
+      const DeepCollectionEquality().hash(redirectUri) ^
+      const DeepCollectionEquality().hash(clientId) ^
+      runtimeType.hashCode;
+}
+
+extension $Oauth2TokenPost$RequestBodyExtension on Oauth2TokenPost$RequestBody {
+  Oauth2TokenPost$RequestBody copyWith(
+      {String? grantType,
+      String? code,
+      String? redirectUri,
+      String? clientId}) {
+    return Oauth2TokenPost$RequestBody(
+        grantType: grantType ?? this.grantType,
+        code: code ?? this.code,
+        redirectUri: redirectUri ?? this.redirectUri,
+        clientId: clientId ?? this.clientId);
+  }
+
+  Oauth2TokenPost$RequestBody copyWithWrapped(
+      {Wrapped<String>? grantType,
+      Wrapped<String>? code,
+      Wrapped<String>? redirectUri,
+      Wrapped<String>? clientId}) {
+    return Oauth2TokenPost$RequestBody(
+        grantType: (grantType != null ? grantType.value : this.grantType),
+        code: (code != null ? code.value : this.code),
+        redirectUri:
+            (redirectUri != null ? redirectUri.value : this.redirectUri),
+        clientId: (clientId != null ? clientId.value : this.clientId));
   }
 }
 

@@ -15,28 +15,28 @@ import 'package:isar/isar.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/chapters_model.dart';
-import 'package:fladder/models/items/episode_model.dart';
-import 'package:fladder/models/items/images_models.dart';
-import 'package:fladder/models/items/media_streams_model.dart';
-import 'package:fladder/models/items/movie_model.dart';
-import 'package:fladder/models/items/series_model.dart';
-import 'package:fladder/models/items/trick_play_model.dart';
-import 'package:fladder/models/syncing/download_stream.dart';
-import 'package:fladder/models/syncing/i_synced_item.dart';
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/models/syncing/sync_settings_model.dart';
-import 'package:fladder/models/video_stream_model.dart';
-import 'package:fladder/profiles/default_profile.dart';
-import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/providers/service_provider.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/sync/background_download_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/chapters_model.dart';
+import 'package:hessflix/models/items/episode_model.dart';
+import 'package:hessflix/models/items/images_models.dart';
+import 'package:hessflix/models/items/media_streams_model.dart';
+import 'package:hessflix/models/items/movie_model.dart';
+import 'package:hessflix/models/items/series_model.dart';
+import 'package:hessflix/models/items/trick_play_model.dart';
+import 'package:hessflix/models/syncing/download_stream.dart';
+import 'package:hessflix/models/syncing/i_synced_item.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/models/syncing/sync_settings_model.dart';
+import 'package:hessflix/models/video_stream_model.dart';
+import 'package:hessflix/profiles/default_profile.dart';
+import 'package:hessflix/providers/api_provider.dart';
+import 'package:hessflix/providers/service_provider.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/sync/background_download_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/util/localization_helper.dart';
 
 final syncProvider = StateNotifierProvider<SyncNotifier, SyncSettingsModel>((ref) => throw UnimplementedError());
 
@@ -229,20 +229,20 @@ class SyncNotifier extends StateNotifier<SyncSettingsModel> {
       String? selectedDirectory =
           await FilePicker.platform.getDirectoryPath(dialogTitle: context.localized.syncSelectDownloadsFolder);
       if (selectedDirectory?.isEmpty == true) {
-        fladderSnackbar(context, title: context.localized.syncNoFolderSetup);
+        hessflixSnackbar(context, title: context.localized.syncNoFolderSetup);
         return;
       }
       ref.read(clientSettingsProvider.notifier).setSyncPath(selectedDirectory);
     }
 
-    fladderSnackbar(context, title: context.localized.syncAddItemForSyncing(item.detailedName(context) ?? "Unknown"));
+    hessflixSnackbar(context, title: context.localized.syncAddItemForSyncing(item.detailedName(context) ?? "Unknown"));
     final newSync = switch (item) {
       EpisodeModel episode => await syncSeries(item.parentBaseModel, episode: episode),
       SeriesModel series => await syncSeries(series),
       MovieModel movie => await syncMovie(movie),
       _ => null
     };
-    fladderSnackbar(context,
+    hessflixSnackbar(context,
         title: newSync != null
             ? context.localized.startedSyncingItem(item.detailedName(context) ?? "Unknown")
             : context.localized.unableToSyncItem(item.detailedName(context) ?? "Unknown"));
@@ -293,7 +293,7 @@ class SyncNotifier extends StateNotifier<SyncSettingsModel> {
       log('Error deleting synced item');
       log(e.toString());
       state = state.copyWith(items: state.items.map((e) => e.copyWith(markedForDelete: false)).toList());
-      fladderSnackbar(context, title: context.localized.syncRemoveUnableToDeleteItem);
+      hessflixSnackbar(context, title: context.localized.syncRemoveUnableToDeleteItem);
       return false;
     }
   }

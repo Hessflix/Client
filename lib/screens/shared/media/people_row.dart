@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/screens/details_screens/person_detail_screen.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/widgets/shared/clickable_text.dart';
-import 'package:fladder/widgets/shared/horizontal_list.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/screens/details_screens/person_detail_screen.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/widgets/shared/clickable_text.dart';
+import 'package:hessflix/widgets/shared/horizontal_list.dart';
 
 class PeopleRow extends ConsumerWidget {
   final List<Person> people;
@@ -65,7 +65,7 @@ class PeopleRow extends ConsumerWidget {
                     children: [
                       Positioned.fill(
                         child: Card(
-                          child: FladderImage(
+                          child: HessflixImage(
                             image: person.image,
                             placeHolder: placeHolder(person.name),
                             fit: BoxFit.cover,

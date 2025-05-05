@@ -1,7 +1,7 @@
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart' as dto;
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/items/media_streams_model.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart' as dto;
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/items/media_streams_model.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

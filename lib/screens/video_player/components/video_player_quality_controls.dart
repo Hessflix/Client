@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/util/localization_helper.dart';
 
 Future<void> openQualityOptions(BuildContext context) async {
   return showDialog(

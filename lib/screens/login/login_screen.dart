@@ -6,27 +6,29 @@ import 'package:auto_route/auto_route.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/providers/auth_provider.dart';
-import 'package:fladder/providers/shared_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/screens/login/lock_screen.dart';
-import 'package:fladder/screens/login/login_edit_user.dart';
-import 'package:fladder/screens/login/login_user_grid.dart';
-import 'package:fladder/screens/login/widgets/discover_servers_widget.dart';
-import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/screens/shared/fladder_logo.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/screens/shared/outlined_text_field.dart';
-import 'package:fladder/screens/shared/passcode_input.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/auth_service.dart';
-import 'package:fladder/util/fladder_config.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/fladder_app_bar.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/providers/auth_provider.dart';
+import 'package:hessflix/providers/shared_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/screens/login/lock_screen.dart';
+import 'package:hessflix/screens/login/login_edit_user.dart';
+import 'package:hessflix/screens/login/login_user_grid.dart';
+import 'package:hessflix/screens/login/widgets/discover_servers_widget.dart';
+import 'package:hessflix/screens/shared/animated_fade_size.dart';
+import 'package:hessflix/screens/shared/hessflix_logo.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/screens/shared/outlined_text_field.dart';
+import 'package:hessflix/screens/shared/passcode_input.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/auth_service.dart';
+import 'package:hessflix/util/hessflix_config.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/hessflix_app_bar.dart';
+import 'package:hessflix/screens/login/oauth_webview.dart';
+
 
 @RoutePage()
 class LoginScreen extends ConsumerStatefulWidget {
@@ -54,9 +56,9 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
       addingNewUser = true;
       editingUsers = false;
     });
-    if (FladderConfig.baseUrl != null) {
-      serverTextController.text = FladderConfig.baseUrl!;
-      _parseUrl(FladderConfig.baseUrl!);
+    if (HessflixConfig.baseUrl != null) {
+      serverTextController.text = HessflixConfig.baseUrl!;
+      _parseUrl(HessflixConfig.baseUrl!);
       retrieveListOfUsers();
     }
   }
@@ -69,72 +71,68 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
       final currentAccounts = ref.read(authProvider.notifier).getSavedAccounts();
       addingNewUser = currentAccounts.isEmpty;
       ref.read(lockScreenActiveProvider.notifier).update((state) => true);
-      if (FladderConfig.baseUrl != null) {
-        serverTextController.text = FladderConfig.baseUrl!;
-        _parseUrl(FladderConfig.baseUrl!);
+      if (HessflixConfig.baseUrl != null) {
+        serverTextController.text = HessflixConfig.baseUrl!;
+        _parseUrl(HessflixConfig.baseUrl!);
         retrieveListOfUsers();
       }
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final loggedInUsers = ref.watch(authProvider.select((value) => value.accounts));
-    final authLoading = ref.watch(authProvider.select((value) => value.loading));
-    return Scaffold(
-      appBar: const FladderAppBar(),
-      floatingActionButton: !addingNewUser
-          ? Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                if (!AdaptiveLayout.of(context).isDesktop)
-                  FloatingActionButton(
-                    key: const Key("edit_button"),
-                    child: const Icon(IconsaxPlusLinear.edit_2),
-                    onPressed: () => setState(() => editingUsers = !editingUsers),
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: const HessflixAppBar(),
+    body: Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 600),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const HessflixLogo(),
+            const SizedBox(height: 32),
+            FilledButton.icon(
+              icon: const Icon(Icons.login),
+              label: const Text("Se connecter avec Hessflix"),
+              onPressed: () async {
+                // 🔐 Étape 1 : Lancer l'auth via Authentik + Jellyfin
+                final token = await Navigator.of(context).push<String?>(
+                  MaterialPageRoute(
+                    builder: (_) => const OAuthWebView(
+                      authorizationUrl: 'https://hessflix.tv/jellyfin/SSO/oid/p/Hessflix',
+                      redirectUrl: 'https://hessflix.tv/jellyfin/web/index.html',
+                    ),
                   ),
-                FloatingActionButton(
-                  key: const Key("new_button"),
-                  child: const Icon(IconsaxPlusLinear.add_square),
-                  onPressed: startAddingNewUser,
-                ),
-              ].addInBetween(const SizedBox(width: 16)),
-            )
-          : null,
-      body: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 900),
-          child: ListView(
-            shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-            children: [
-              const Center(
-                child: FladderLogo(),
-              ),
-              AnimatedFadeSize(
-                child: addingNewUser
-                    ? addUserFields(loggedInUsers, authLoading)
-                    : Column(
-                        key: UniqueKey(),
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          LoginUserGrid(
-                            users: loggedInUsers,
-                            editMode: editingUsers,
-                            onPressed: (user) async => tapLoggedInAccount(user),
-                            onLongPress: (user) => openUserEditDialogue(context, user),
-                          ),
-                        ],
-                      ),
-              ),
-            ].addPadding(const EdgeInsets.symmetric(vertical: 16)),
-          ),
+                );
+
+                // ✅ Étape 2 : Récupération du token Jellyfin via localStorage
+                if (token != null && token.isNotEmpty) {
+                  ref.read(authProvider.notifier).setSessionToken(token);
+
+                  final user = await ref.read(authProvider.notifier).loginWithCurrentSession(token);
+
+                  if (context.mounted && user != null) {
+                    context.router.replaceAll([const DashboardRoute()]);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Échec de la connexion à Hessflix.")),
+                    );
+                  }
+                } else {
+                  // ❌ Aucun token trouvé
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Session Jellyfin introuvable.")),
+                  );
+                }
+              },
+            ),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   void _parseUrl(String url) {
     setState(() {
@@ -197,7 +195,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
             if (newPin == user.localPin) {
               handleLogin(user);
             } else {
-              fladderSnackbar(context, title: context.localized.incorrectPinTryAgain);
+              hessflixSnackbar(context, title: context.localized.incorrectPinTryAgain);
             }
           });
         }
@@ -235,7 +233,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                 passwordController.text,
               );
           if (response?.isSuccessful == false) {
-            fladderSnackbar(context,
+            hessflixSnackbar(context,
                 title:
                     "(${response?.base.statusCode}) ${response?.base.reasonPhrase ?? context.localized.somethingWentWrongPasswordCheck}");
           } else if (response?.body != null) {
@@ -251,7 +249,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
     setState(() => loading = true);
     final response = await ref.read(authProvider.notifier).getPublicUsers();
     if ((response == null || response.isSuccessful == false) && context.mounted) {
-      fladderSnackbar(context, title: response?.base.reasonPhrase ?? context.localized.unableToConnectHost);
+      hessflixSnackbar(context, title: response?.base.reasonPhrase ?? context.localized.unableToConnectHost);
       setState(() => startCheckingForErrors = true);
     }
     if (response?.body?.isEmpty == true) {
@@ -291,7 +289,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                   ),
                 ),
               ),
-            if (FladderConfig.baseUrl == null) ...[
+            if (HessflixConfig.baseUrl == null) ...[
               Flexible(
                 child: OutlinedTextField(
                   controller: serverTextController,

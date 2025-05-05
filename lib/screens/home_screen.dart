@@ -4,13 +4,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/adaptive_fab.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/destination_model.dart';
-import 'package:fladder/widgets/navigation_scaffold/navigation_scaffold.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/adaptive_fab.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/destination_model.dart';
+import 'package:hessflix/widgets/navigation_scaffold/navigation_scaffold.dart';
 
 enum HomeTabs {
   dashboard,

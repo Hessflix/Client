@@ -1,4 +1,4 @@
-import 'package:fladder/util/application_info.dart';
+import 'package:hessflix/util/application_info.dart';
 import 'package:xid/xid.dart';
 
 Map<String, String> generateHeader(ApplicationInfo application) {

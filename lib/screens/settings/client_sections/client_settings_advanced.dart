@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/settings/home_settings_provider.dart';
-import 'package:fladder/screens/settings/settings_list_tile.dart';
-import 'package:fladder/screens/settings/widgets/settings_label_divider.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/option_dialogue.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/settings/home_settings_provider.dart';
+import 'package:hessflix/screens/settings/settings_list_tile.dart';
+import 'package:hessflix/screens/settings/widgets/settings_label_divider.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/option_dialogue.dart';
 
 List<Widget> buildClientSettingsAdvanced(BuildContext context, WidgetRef ref) {
   return [

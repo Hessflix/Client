@@ -14,29 +14,29 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smtc_windows/smtc_windows.dart' if (dart.library.html) 'package:fladder/stubs/web/smtc_web.dart';
+import 'package:smtc_windows/smtc_windows.dart' if (dart.library.html) 'package:hessflix/stubs/web/smtc_web.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:window_manager/window_manager.dart';
 
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/models/syncing/i_synced_item.dart';
-import 'package:fladder/providers/crash_log_provider.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/shared_provider.dart';
-import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/routes/auto_router.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/screens/login/lock_screen.dart';
-import 'package:fladder/theme.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/application_info.dart';
-import 'package:fladder/util/fladder_config.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/util/themes_data.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/models/syncing/i_synced_item.dart';
+import 'package:hessflix/providers/crash_log_provider.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/shared_provider.dart';
+import 'package:hessflix/providers/sync_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/routes/auto_router.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/screens/login/lock_screen.dart';
+import 'package:hessflix/theme.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/application_info.dart';
+import 'package:hessflix/util/hessflix_config.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/util/themes_data.dart';
 
 bool get _isDesktop {
   if (kIsWeb) return false;
@@ -63,7 +63,7 @@ void main() async {
   if (kIsWeb) {
     html.document.onContextMenu.listen((event) => event.preventDefault());
     final result = await loadConfig();
-    FladderConfig.fromJson(result);
+    HessflixConfig.fromJson(result);
   }
 
   final sharedPreferences = await SharedPreferences.getInstance();
@@ -75,7 +75,7 @@ void main() async {
 
   if (!kIsWeb) {
     applicationDirectory = await getApplicationDocumentsDirectory();
-    isarPath = Directory(path.joinAll([applicationDirectory.path, 'Fladder', 'Database']));
+    isarPath = Directory(path.joinAll([applicationDirectory.path, 'Hessflix', 'Database']));
     await isarPath.create(recursive: true);
   }
 
@@ -268,11 +268,11 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
       },
       child: DynamicColorBuilder(builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
         final lightTheme = themeColor == null
-            ? FladderTheme.theme(lightDynamic ?? FladderTheme.defaultScheme(Brightness.light), schemeVariant)
-            : FladderTheme.theme(themeColor.schemeLight, schemeVariant);
+            ? HessflixTheme.theme(lightDynamic ?? HessflixTheme.defaultScheme(Brightness.light), schemeVariant)
+            : HessflixTheme.theme(themeColor.schemeLight, schemeVariant);
         final darkTheme = (themeColor == null
-            ? FladderTheme.theme(darkDynamic ?? FladderTheme.defaultScheme(Brightness.dark), schemeVariant)
-            : FladderTheme.theme(themeColor.schemeDark, schemeVariant));
+            ? HessflixTheme.theme(darkDynamic ?? HessflixTheme.defaultScheme(Brightness.dark), schemeVariant)
+            : HessflixTheme.theme(themeColor.schemeDark, schemeVariant));
         final amoledOverwrite = amoledBlack ? Colors.black : null;
         return ThemesData(
           light: lightTheme,
@@ -315,4 +315,4 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
   }
 }
 
-final currentTitleProvider = StateProvider<String>((ref) => "Fladder");
+final currentTitleProvider = StateProvider<String>((ref) => "Hessflix");

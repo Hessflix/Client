@@ -5,19 +5,19 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
-import 'package:fladder/models/collection_types.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/models/view_model.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/screens/metadata/refresh_metadata.dart';
-import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/adaptive_fab.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/destination_model.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/drawer_list_button.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/settings_user_icon.dart';
-import 'package:fladder/widgets/shared/item_actions.dart';
+import 'package:hessflix/models/collection_types.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/models/view_model.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/screens/metadata/refresh_metadata.dart';
+import 'package:hessflix/screens/shared/animated_fade_size.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/adaptive_fab.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/destination_model.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/drawer_list_button.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/settings_user_icon.dart';
+import 'package:hessflix/widgets/shared/item_actions.dart';
 
 class NestedNavigationDrawer extends ConsumerWidget {
   final bool isExpanded;

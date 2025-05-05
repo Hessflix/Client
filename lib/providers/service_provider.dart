@@ -6,18 +6,18 @@ import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart';
 
-import 'package:fladder/fake/fake_jellyfin_open_api.dart';
-import 'package:fladder/jellyfin/enum_models.dart';
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/models/credentials_model.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/media_segments_model.dart';
-import 'package:fladder/models/items/trick_play_model.dart';
-import 'package:fladder/providers/auth_provider.dart';
-import 'package:fladder/providers/image_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/util/jellyfin_extension.dart';
+import 'package:hessflix/fake/fake_jellyfin_open_api.dart';
+import 'package:hessflix/jellyfin/enum_models.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/models/credentials_model.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/media_segments_model.dart';
+import 'package:hessflix/models/items/trick_play_model.dart';
+import 'package:hessflix/providers/auth_provider.dart';
+import 'package:hessflix/providers/image_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/util/jellyfin_extension.dart';
 
 class ServerQueryResult {
   final List<BaseItemDto> original;
@@ -90,6 +90,22 @@ class JellyService {
     );
     return response.copyWith(body: ItemBaseModel.fromBaseDto(response.bodyOrThrow, ref));
   }
+
+  Future<Response<dynamic>> exchangeCodeForToken({
+  required String grantType,
+  required String code,
+  required String redirectUri,
+  required String clientId,
+}) {
+  return api.oauth2TokenPost(body: {
+  'grant_type': grantType,
+  'code': code,
+  'redirect_uri': redirectUri,
+  'client_id': clientId,
+});
+
+}
+
 
   Future<Response<BaseItemDto>> usersUserIdItemsItemIdGetBaseItem({
     String? itemId,

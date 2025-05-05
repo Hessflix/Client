@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/providers/collections_provider.dart';
-import 'package:fladder/screens/shared/adaptive_dialog.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/screens/shared/outlined_text_field.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/widgets/shared/alert_content.dart';
-import 'package:fladder/widgets/shared/modal_bottom_sheet.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/providers/collections_provider.dart';
+import 'package:hessflix/screens/shared/adaptive_dialog.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/screens/shared/outlined_text_field.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/widgets/shared/alert_content.dart';
+import 'package:hessflix/widgets/shared/modal_bottom_sheet.dart';
 
 Future<void> addItemToCollection(BuildContext context, List<ItemBaseModel> item) {
   return showDialogAdaptive(
@@ -107,7 +107,7 @@ class _AddToCollectionState extends ConsumerState<AddToCollection> {
                               .read(provider.notifier)
                               .toggleCollection(boxSet: e.key, value: value == true, item: widget.items.first);
                           if (context.mounted) {
-                            fladderSnackbar(context,
+                            hessflixSnackbar(context,
                                 title: response.isSuccessful
                                     ? value == true
                                         ? context.localized.addedToCollection(e.key.name)
@@ -137,7 +137,7 @@ class _AddToCollectionState extends ConsumerState<AddToCollection> {
                                     final response =
                                         await ref.read(provider.notifier).addToCollection(boxSet: e.key, add: true);
                                     if (context.mounted) {
-                                      fladderSnackbar(context,
+                                      hessflixSnackbar(context,
                                           title: response.isSuccessful
                                               ? context.localized.addedToCollection(e.key.name)
                                               : '${context.localized.somethingWentWrong} - (${response.statusCode}) - ${response.base.reasonPhrase}');

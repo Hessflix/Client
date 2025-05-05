@@ -1,10 +1,10 @@
 import 'package:isar/isar.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:fladder/models/syncing/download_stream.dart';
-import 'package:fladder/models/syncing/i_synced_item.dart';
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/providers/sync_provider.dart';
+import 'package:hessflix/models/syncing/download_stream.dart';
+import 'package:hessflix/models/syncing/i_synced_item.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/providers/sync_provider.dart';
 
 part 'sync_provider_helpers.g.dart';
 

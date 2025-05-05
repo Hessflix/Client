@@ -1,6 +1,6 @@
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/screens/shared/media/poster_widget.dart';
-import 'package:fladder/widgets/shared/horizontal_list.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/screens/shared/media/poster_widget.dart';
+import 'package:hessflix/widgets/shared/horizontal_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

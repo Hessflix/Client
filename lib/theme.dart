@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:dynamic_color/dynamic_color.dart';
 
-import 'package:fladder/theme/fonts.dart';
-import 'package:fladder/util/custom_color_themes.dart';
+import 'package:hessflix/theme/fonts.dart';
+import 'package:hessflix/util/custom_color_themes.dart';
 
 ColorScheme? generateDynamicColourSchemes(ColorScheme? theme, DynamicSchemeVariant dynamicSchemeVariant) {
   if (theme == null) return null;
@@ -29,7 +29,7 @@ ColorScheme _insertAdditionalColours(ColorScheme scheme) => scheme.copyWith(
       surfaceContainerHighest: scheme.surfaceContainerHighest,
     );
 
-class FladderTheme {
+class HessflixTheme {
   static RoundedRectangleBorder get smallShape => RoundedRectangleBorder(borderRadius: BorderRadius.circular(4));
   static RoundedRectangleBorder get defaultShape => RoundedRectangleBorder(borderRadius: BorderRadius.circular(8));
   static RoundedRectangleBorder get largeShape => RoundedRectangleBorder(borderRadius: BorderRadius.circular(16));
@@ -40,7 +40,7 @@ class FladderTheme {
   static ThemeData theme(ColorScheme? colorScheme, DynamicSchemeVariant dynamicSchemeVariant) {
     final ColorScheme? scheme = generateDynamicColourSchemes(colorScheme, dynamicSchemeVariant);
 
-    final textTheme = FladderFonts.rubikTextTheme(
+    final textTheme = HessflixFonts.rubikTextTheme(
       const TextTheme(),
     );
     return ThemeData(
@@ -136,6 +136,6 @@ class FladderTheme {
   }
 
   static ColorScheme defaultScheme(Brightness brightness) {
-    return ColorScheme.fromSeed(seedColor: ColorThemes.fladder.color, brightness: brightness);
+    return ColorScheme.fromSeed(seedColor: ColorThemes.hessflix.color, brightness: brightness);
   }
 }

@@ -1,5 +1,5 @@
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/widgets/shared/shapes.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/widgets/shared/shapes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

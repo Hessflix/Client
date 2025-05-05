@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:screen_brightness/screen_brightness.dart';
 
-import 'package:fladder/models/settings/video_player_settings.dart';
-import 'package:fladder/providers/shared_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
+import 'package:hessflix/models/settings/video_player_settings.dart';
+import 'package:hessflix/providers/shared_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
 
 final videoPlayerSettingsProvider =
     StateNotifierProvider<VideoPlayerSettingsProviderNotifier, VideoPlayerSettingsModel>((ref) {

@@ -5,7 +5,7 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Fladder Development (debug)",
+			"name": "Hessflix Development (debug)",
 			"request": "launch",
 			"type": "dart",
 			"args": [
@@ -14,7 +14,7 @@
 			]
 		},
 		{
-			"name": "Fladder Production (debug)",
+			"name": "Hessflix Production (debug)",
 			"request": "launch",
 			"type": "dart",
 			"args": [
@@ -23,7 +23,7 @@
 			]
 		},
 		{
-			"name": "Fladder Development (profile mode)",
+			"name": "Hessflix Development (profile mode)",
 			"request": "launch",
 			"type": "dart",
 			"flutterMode": "profile",
@@ -33,7 +33,7 @@
 			]
 		},
 		{
-			"name": "Fladder Production (profile mode)",
+			"name": "Hessflix Production (profile mode)",
 			"request": "launch",
 			"type": "dart",
 			"flutterMode": "profile",
@@ -43,7 +43,7 @@
 			]
 		},
 		{
-			"name": "Fladder Development (release mode)",
+			"name": "Hessflix Development (release mode)",
 			"request": "launch",
 			"type": "dart",
 			"flutterMode": "release",
@@ -53,7 +53,7 @@
 			]
 		},
 		{
-			"name": "Fladder Production (release mode)",
+			"name": "Hessflix Production (release mode)",
 			"request": "launch",
 			"type": "dart",
 			"flutterMode": "release",

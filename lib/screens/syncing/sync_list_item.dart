@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/providers/sync/sync_provider_helpers.dart';
-import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/screens/shared/default_alert_dialog.dart';
-import 'package:fladder/screens/syncing/sync_item_details.dart';
-import 'package:fladder/screens/syncing/sync_widgets.dart';
-import 'package:fladder/screens/syncing/widgets/sync_progress_builder.dart';
-import 'package:fladder/screens/syncing/widgets/sync_status_overlay.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/size_formatting.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/providers/sync/sync_provider_helpers.dart';
+import 'package:hessflix/providers/sync_provider.dart';
+import 'package:hessflix/screens/shared/default_alert_dialog.dart';
+import 'package:hessflix/screens/syncing/sync_item_details.dart';
+import 'package:hessflix/screens/syncing/sync_widgets.dart';
+import 'package:hessflix/screens/syncing/widgets/sync_progress_builder.dart';
+import 'package:hessflix/screens/syncing/widgets/sync_status_overlay.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/size_formatting.dart';
 
 class SyncListItem extends ConsumerStatefulWidget {
   final SyncedItem syncedItem;
@@ -80,7 +80,7 @@ class SyncListItemState extends ConsumerState<SyncListItem> {
                           child: Card(
                             child: AspectRatio(
                                 aspectRatio: baseItem?.primaryRatio ?? 1.0,
-                                child: FladderImage(
+                                child: HessflixImage(
                                   image: baseItem?.getPosters?.primary,
                                   fit: BoxFit.cover,
                                 )),

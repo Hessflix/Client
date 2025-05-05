@@ -5,14 +5,14 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:fladder/screens/crash_screen/crash_screen.dart';
-import 'package:fladder/screens/settings/settings_scaffold.dart';
-import 'package:fladder/screens/shared/fladder_icon.dart';
-import 'package:fladder/screens/shared/fladder_logo.dart';
-import 'package:fladder/screens/shared/media/external_urls.dart';
-import 'package:fladder/util/application_info.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/screens/crash_screen/crash_screen.dart';
+import 'package:hessflix/screens/settings/settings_scaffold.dart';
+import 'package:hessflix/screens/shared/hessflix_icon.dart';
+import 'package:hessflix/screens/shared/hessflix_logo.dart';
+import 'package:hessflix/screens/shared/media/external_urls.dart';
+import 'package:hessflix/util/application_info.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
 
 class _Socials {
   final String label;
@@ -25,12 +25,12 @@ class _Socials {
 const socials = [
   _Socials(
     'Github',
-    'https://github.com/DonutWare/Fladder',
+    'https://github.com/DonutWare/Hessflix',
     FontAwesomeIcons.githubAlt,
   ),
   _Socials(
     'Weblate',
-    'https://hosted.weblate.org/projects/fladder/',
+    'https://hosted.weblate.org/projects/hessflix/',
     IconsaxPlusLinear.global,
   ),
 ];
@@ -46,7 +46,7 @@ class AboutSettingsPage extends ConsumerWidget {
       child: SettingsScaffold(
         label: "",
         items: [
-          const FladderLogo(),
+          const HessflixLogo(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -89,7 +89,7 @@ class AboutSettingsPage extends ConsumerWidget {
               FilledButton.tonal(
                 onPressed: () => showLicensePage(
                   context: context,
-                  applicationIcon: const FladderIcon(size: 55),
+                  applicationIcon: const HessflixIcon(size: 55),
                   applicationVersion: applicationInfo.versionPlatformBuild,
                   applicationLegalese: "DonutWare",
                 ),

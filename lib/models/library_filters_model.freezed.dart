@@ -31,7 +31,7 @@ mixin _$LibraryFiltersModel {
   Map<String, bool> get tags => throw _privateConstructorUsedError;
   Map<int, bool> get years => throw _privateConstructorUsedError;
   Map<String, bool> get officialRatings => throw _privateConstructorUsedError;
-  Map<FladderItemType, bool> get types => throw _privateConstructorUsedError;
+  Map<HessflixItemType, bool> get types => throw _privateConstructorUsedError;
   SortingOptions get sortingOption => throw _privateConstructorUsedError;
   SortingOrder get sortOrder => throw _privateConstructorUsedError;
   bool get favourites => throw _privateConstructorUsedError;
@@ -66,7 +66,7 @@ abstract class $LibraryFiltersModelCopyWith<$Res> {
       Map<String, bool> tags,
       Map<int, bool> years,
       Map<String, bool> officialRatings,
-      Map<FladderItemType, bool> types,
+      Map<HessflixItemType, bool> types,
       SortingOptions sortingOption,
       SortingOrder sortOrder,
       bool favourites,
@@ -152,7 +152,7 @@ class _$LibraryFiltersModelCopyWithImpl<$Res, $Val extends LibraryFiltersModel>
       types: null == types
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
-              as Map<FladderItemType, bool>,
+              as Map<HessflixItemType, bool>,
       sortingOption: null == sortingOption
           ? _value.sortingOption
           : sortingOption // ignore: cast_nullable_to_non_nullable
@@ -200,7 +200,7 @@ abstract class _$$LibraryFiltersModelImplCopyWith<$Res>
       Map<String, bool> tags,
       Map<int, bool> years,
       Map<String, bool> officialRatings,
-      Map<FladderItemType, bool> types,
+      Map<HessflixItemType, bool> types,
       SortingOptions sortingOption,
       SortingOrder sortOrder,
       bool favourites,
@@ -284,7 +284,7 @@ class __$$LibraryFiltersModelImplCopyWithImpl<$Res>
       types: null == types
           ? _value._types
           : types // ignore: cast_nullable_to_non_nullable
-              as Map<FladderItemType, bool>,
+              as Map<HessflixItemType, bool>,
       sortingOption: null == sortingOption
           ? _value.sortingOption
           : sortingOption // ignore: cast_nullable_to_non_nullable
@@ -327,7 +327,7 @@ class _$LibraryFiltersModelImpl extends _LibraryFiltersModel {
       required final Map<String, bool> tags,
       required final Map<int, bool> years,
       required final Map<String, bool> officialRatings,
-      required final Map<FladderItemType, bool> types,
+      required final Map<HessflixItemType, bool> types,
       required this.sortingOption,
       required this.sortOrder,
       required this.favourites,
@@ -410,9 +410,9 @@ class _$LibraryFiltersModelImpl extends _LibraryFiltersModel {
     return EqualUnmodifiableMapView(_officialRatings);
   }
 
-  final Map<FladderItemType, bool> _types;
+  final Map<HessflixItemType, bool> _types;
   @override
-  Map<FladderItemType, bool> get types {
+  Map<HessflixItemType, bool> get types {
     if (_types is EqualUnmodifiableMapView) return _types;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_types);
@@ -518,7 +518,7 @@ abstract class _LibraryFiltersModel extends LibraryFiltersModel {
       required final Map<String, bool> tags,
       required final Map<int, bool> years,
       required final Map<String, bool> officialRatings,
-      required final Map<FladderItemType, bool> types,
+      required final Map<HessflixItemType, bool> types,
       required final SortingOptions sortingOption,
       required final SortingOrder sortOrder,
       required final bool favourites,
@@ -552,7 +552,7 @@ abstract class _LibraryFiltersModel extends LibraryFiltersModel {
   @override
   Map<String, bool> get officialRatings;
   @override
-  Map<FladderItemType, bool> get types;
+  Map<HessflixItemType, bool> get types;
   @override
   SortingOptions get sortingOption;
   @override

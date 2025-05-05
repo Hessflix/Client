@@ -1,6 +1,6 @@
-import 'package:fladder/models/syncing/download_stream.dart';
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/providers/sync/sync_provider_helpers.dart';
+import 'package:hessflix/models/syncing/download_stream.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/providers/sync/sync_provider_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

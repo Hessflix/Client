@@ -5,13 +5,13 @@ import 'package:collection/collection.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/items/chapters_model.dart';
-import 'package:fladder/models/items/item_stream_model.dart';
-import 'package:fladder/models/items/media_segments_model.dart';
-import 'package:fladder/models/items/media_streams_model.dart';
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/providers/user_provider.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/items/chapters_model.dart';
+import 'package:hessflix/models/items/item_stream_model.dart';
+import 'package:hessflix/models/items/media_segments_model.dart';
+import 'package:hessflix/models/items/media_streams_model.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/providers/user_provider.dart';
 
 enum PlaybackType {
   directStream,

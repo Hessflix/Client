@@ -1,9 +1,9 @@
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/providers/items/folder_details_provider.dart';
-import 'package:fladder/screens/photo_viewer/photo_viewer_screen.dart';
-import 'package:fladder/screens/shared/media/poster_grid.dart';
-import 'package:fladder/widgets/shared/pull_to_refresh.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/providers/items/folder_details_provider.dart';
+import 'package:hessflix/screens/photo_viewer/photo_viewer_screen.dart';
+import 'package:hessflix/screens/shared/media/poster_grid.dart';
+import 'package:hessflix/widgets/shared/pull_to_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:page_transition/page_transition.dart';

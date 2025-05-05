@@ -1,17 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/util/localization_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart' as dto;
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/images_models.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/items/overview_model.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/util/refresh_state.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart' as dto;
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/images_models.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/items/overview_model.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/util/refresh_state.dart';
 
 import 'package:dart_mappable/dart_mappable.dart';
 
@@ -68,7 +68,7 @@ class PhotoModel extends ItemBaseModel with PhotoModelMappable {
   final String? albumId;
   final DateTime? dateTaken;
   final ImagesData? thumbnail;
-  final FladderItemType internalType;
+  final HessflixItemType internalType;
 
   const PhotoModel({
     required this.albumId,
@@ -108,8 +108,8 @@ class PhotoModel extends ItemBaseModel with PhotoModelMappable {
 
   @override
   bool get galleryItem => switch (internalType) {
-        FladderItemType.photo => albumId?.isNotEmpty == true,
-        FladderItemType.video => parentId?.isNotEmpty == true,
+        HessflixItemType.photo => albumId?.isNotEmpty == true,
+        HessflixItemType.video => parentId?.isNotEmpty == true,
         _ => false,
       };
 
@@ -133,8 +133,8 @@ class PhotoModel extends ItemBaseModel with PhotoModelMappable {
       canDelete: item.canDelete,
       canDownload: item.canDownload,
       internalType: switch (item.type) {
-        BaseItemKind.video => FladderItemType.video,
-        _ => FladderItemType.photo,
+        BaseItemKind.video => HessflixItemType.video,
+        _ => HessflixItemType.photo,
       },
     );
   }
@@ -145,7 +145,7 @@ class PhotoModel extends ItemBaseModel with PhotoModelMappable {
 
   Future<void> navigateToAlbum(BuildContext context) async {
     if ((albumId ?? parentId) == null) {
-      fladderSnackbar(context, title: context.localized.notPartOfAlbum);
+      hessflixSnackbar(context, title: context.localized.notPartOfAlbum);
       return;
     }
     await parentBaseModel.navigateTo(context);

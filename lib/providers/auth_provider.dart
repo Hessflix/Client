@@ -1,18 +1,18 @@
 import 'package:chopper/chopper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/models/credentials_model.dart';
-import 'package:fladder/models/login_screen_model.dart';
-import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/providers/dashboard_provider.dart';
-import 'package:fladder/providers/favourites_provider.dart';
-import 'package:fladder/providers/image_provider.dart';
-import 'package:fladder/providers/service_provider.dart';
-import 'package:fladder/providers/shared_provider.dart';
-import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/providers/views_provider.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/models/credentials_model.dart';
+import 'package:hessflix/models/login_screen_model.dart';
+import 'package:hessflix/providers/api_provider.dart';
+import 'package:hessflix/providers/dashboard_provider.dart';
+import 'package:hessflix/providers/favourites_provider.dart';
+import 'package:hessflix/providers/image_provider.dart';
+import 'package:hessflix/providers/service_provider.dart';
+import 'package:hessflix/providers/shared_provider.dart';
+import 'package:hessflix/providers/sync_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/providers/views_provider.dart';
 
 final authProvider = StateNotifierProvider<AuthNotifier, LoginScreenModel>((ref) {
   return AuthNotifier(ref);
@@ -32,6 +32,16 @@ class AuthNotifier extends StateNotifier<LoginScreenModel> {
 
   late final JellyService api = ref.read(jellyApiProvider);
 
+  void setSessionToken(String token) {
+  state = state.copyWith(
+    tempCredentials: state.tempCredentials.copyWith(
+      token: token,
+      server: 'https://hessflix.tv/jellyfin', // 🔧 indispensable
+    ),
+  );
+}
+
+
   Future<Response<List<AccountModel>>?> getPublicUsers() async {
     try {
       var response = await api.usersPublicGet(state.tempCredentials);
@@ -45,6 +55,57 @@ class AuthNotifier extends StateNotifier<LoginScreenModel> {
       return null;
     }
   }
+
+Future<AccountModel?> loginWithCurrentSession(String token) async {
+  try {
+    print('🔐 Tentative de connexion avec la session actuelle...');
+    print('🔑 Jeton reçu : $token');
+
+    if (token.trim().isEmpty) {
+      print('❌ Aucun token reçu depuis la WebView');
+      return null;
+    }
+
+    // Met à jour les credentials avec le token
+    setSessionToken(token);
+    final credentials = state.tempCredentials;
+
+    final meResponse = await api.usersMeGet();
+    print('📡 usersMeGet status: ${meResponse.statusCode}');
+    print('📥 usersMeGet body: ${meResponse.body}');
+
+    if (!meResponse.isSuccessful || meResponse.body == null) {
+      print('❌ Échec lors de la récupération de l’utilisateur');
+      return null;
+    }
+
+    final me = meResponse.body!;
+    final imageUrl = ref.read(imageUtilityProvider).getUserImageUrl(me.id ?? "");
+
+    final updatedCredentials = credentials.copyWith(
+      token: token,
+      serverId: credentials.serverId,
+    );
+
+    final account = AccountModel(
+      id: me.id ?? "",
+      name: me.name ?? "",
+      avatar: imageUrl,
+      credentials: updatedCredentials,
+      lastUsed: DateTime.now(),
+    );
+
+    await ref.read(sharedUtilityProvider).addAccount(account);
+    ref.read(userProvider.notifier).updateUser(account);
+
+    print('✅ Connexion réussie pour ${account.name}');
+    return account;
+  } catch (e, stack) {
+    print('❌ Exception pendant la connexion avec session : $e\n$stack');
+    return null;
+  }
+}
+
 
   Future<Response<AccountModel>?> authenticateByName(String userName, String password) async {
     state = state.copyWith(loading: true);
@@ -67,13 +128,15 @@ class AuthNotifier extends StateNotifier<LoginScreenModel> {
         lastUsed: DateTime.now(),
       );
       ref.read(sharedUtilityProvider).addAccount(newUser);
-      ref.read(userProvider.notifier).userState = newUser;
+      ref.read(userProvider.notifier).updateUser(newUser);
       state = state.copyWith(loading: false);
       return Response(response.base, newUser);
     }
     state = state.copyWith(loading: false);
     return Response(response.base, null);
   }
+
+  
 
   Future<Response?> logOutUser() async {
     final currentUser = ref.read(userProvider);

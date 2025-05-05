@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:isar/isar.dart';
 
-import 'package:fladder/models/syncing/sync_item.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
 
 part 'i_synced_item.g.dart';
 

@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:async/async.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/util/input_handler.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/util/input_handler.dart';
+import 'package:hessflix/util/localization_helper.dart';
 
 class VideoPlayerSeekIndicator extends ConsumerStatefulWidget {
   const VideoPlayerSeekIndicator({super.key});

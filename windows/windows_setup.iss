@@ -1,29 +1,29 @@
 [Setup]
 AppId={{D573EDD5-117A-47AD-88AC-62C8EBD11DC7}
-AppName="Fladder"
-AppVersion={%FLADDER_VERSION|latest}
+AppName="Hessflix"
+AppVersion={%HESSFLIX_VERSION|latest}
 AppPublisher="DonutWare"
-AppPublisherURL="https://github.com/DonutWare/Fladder"
-AppSupportURL="https://github.com/DonutWare/Fladder"
-AppUpdatesURL="https://github.com/DonutWare/Fladder"
-DefaultDirName={localappdata}\Programs\Fladder
+AppPublisherURL="https://github.com/DonutWare/Hessflix"
+AppSupportURL="https://github.com/DonutWare/Hessflix"
+AppUpdatesURL="https://github.com/DonutWare/Hessflix"
+DefaultDirName={localappdata}\Programs\Hessflix
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 DisableProgramGroupPage=yes
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputBaseFilename=fladder_setup
+OutputBaseFilename=hessflix_setup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
 
 SetupLogging=yes
 UninstallLogging=yes
-UninstallDisplayName="Fladder"
-UninstallDisplayIcon={app}\fladder.exe
-SetupIconFile="D:\a\Fladder\Fladder\icons\production\fladder_icon.ico"
-LicenseFile="D:\a\Fladder\Fladder\LICENSE"
-WizardImageFile=D:\a\Fladder\Fladder\assets\windows-installer\fladder-installer-100.bmp,D:\a\Fladder\Fladder\assets\windows-installer\fladder-installer-125.bmp,D:\a\Fladder\Fladder\assets\windows-installer\fladder-installer-150.bmp
+UninstallDisplayName="Hessflix"
+UninstallDisplayIcon={app}\hessflix.exe
+SetupIconFile="D:\a\Hessflix\Hessflix\icons\production\hessflix_icon.ico"
+LicenseFile="D:\a\Hessflix\Hessflix\LICENSE"
+WizardImageFile=D:\a\Hessflix\Hessflix\assets\windows-installer\hessflix-installer-100.bmp,D:\a\Hessflix\Hessflix\assets\windows-installer\hessflix-installer-125.bmp,D:\a\Hessflix\Hessflix\assets\windows-installer\hessflix-installer-150.bmp
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -32,14 +32,14 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\a\Fladder\Fladder\build\windows\x64\runner\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\a\Hessflix\Hessflix\build\windows\x64\runner\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{autoprograms}\Fladder"; Filename: "{app}\fladder.exe"
-Name: "{autodesktop}\Fladder"; Filename: "{app}\fladder.exe"; Tasks: desktopicon
+Name: "{autoprograms}\Hessflix"; Filename: "{app}\hessflix.exe"
+Name: "{autodesktop}\Hessflix"; Filename: "{app}\hessflix.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\fladder.exe"; Description: "{cm:LaunchProgram,Fladder}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\hessflix.exe"; Description: "{cm:LaunchProgram,Hessflix}"; Flags: nowait postinstall skipifsilent
 
 [Code]
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);

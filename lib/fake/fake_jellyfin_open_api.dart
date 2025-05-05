@@ -4,8 +4,8 @@ import 'package:chopper/chopper.dart' as chopper;
 import 'package:collection/collection.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart' as enums;
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart' as enums;
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
 
 List<BaseItemDto> _baseItems = [
   BaseItemDto(
@@ -684,7 +684,7 @@ class FakeJellyfinOpenApi extends JellyfinOpenApi {
 class FakeHelper {
   static http.BaseResponse fakeCorrectResponse = http.Response('', 200);
 
-  static String fakeTestServerUrl = "http://22b469df.fladder.nl";
+  static String fakeTestServerUrl = "http://22b469df.hessflix.nl";
 
   static UserDto fakeCorrectUser = const UserDto(id: '1', name: 'User 1', configuration: UserConfiguration());
   static String fakeCorrectPassword = "Txnw6RWYb8yEtD";

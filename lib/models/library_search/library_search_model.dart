@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/library_search/library_search_options.dart';
-import 'package:fladder/models/view_model.dart';
-import 'package:fladder/util/list_extensions.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/map_bool_helper.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/library_search/library_search_options.dart';
+import 'package:hessflix/models/view_model.dart';
+import 'package:hessflix/util/list_extensions.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/map_bool_helper.dart';
 
 part 'library_search_model.mapper.dart';
 
@@ -31,7 +31,7 @@ class LibrarySearchModel with LibrarySearchModelMappable {
   final Map<String, bool> tags;
   final Map<int, bool> years;
   final Map<String, bool> officialRatings;
-  final Map<FladderItemType, bool> types;
+  final Map<HessflixItemType, bool> types;
   final SortingOptions sortingOption;
   final SortingOrder sortOrder;
   final bool favourites;
@@ -61,20 +61,20 @@ class LibrarySearchModel with LibrarySearchModelMappable {
     this.years = const {},
     this.officialRatings = const {},
     this.types = const {
-      FladderItemType.audio: false,
-      FladderItemType.boxset: false,
-      FladderItemType.book: false,
-      FladderItemType.collectionFolder: false,
-      FladderItemType.episode: false,
-      FladderItemType.folder: false,
-      FladderItemType.movie: true,
-      FladderItemType.musicAlbum: false,
-      FladderItemType.musicVideo: false,
-      FladderItemType.photo: false,
-      FladderItemType.person: false,
-      FladderItemType.photoAlbum: false,
-      FladderItemType.series: true,
-      FladderItemType.video: true,
+      HessflixItemType.audio: false,
+      HessflixItemType.boxset: false,
+      HessflixItemType.book: false,
+      HessflixItemType.collectionFolder: false,
+      HessflixItemType.episode: false,
+      HessflixItemType.folder: false,
+      HessflixItemType.movie: true,
+      HessflixItemType.musicAlbum: false,
+      HessflixItemType.musicVideo: false,
+      HessflixItemType.photo: false,
+      HessflixItemType.person: false,
+      HessflixItemType.photoAlbum: false,
+      HessflixItemType.series: true,
+      HessflixItemType.video: true,
     },
     this.favourites = false,
     this.sortingOption = SortingOptions.name,
@@ -139,7 +139,7 @@ class LibrarySearchModel with LibrarySearchModelMappable {
     if (totalItemCount == 0) return false;
     return types.included.isEmpty ||
         types.included.containsAny(
-          {...FladderItemType.playable, FladderItemType.folder},
+          {...HessflixItemType.playable, HessflixItemType.folder},
         );
   }
 
@@ -147,7 +147,7 @@ class LibrarySearchModel with LibrarySearchModelMappable {
     if (totalItemCount == 0) return false;
     return types.included.isEmpty ||
         types.included.containsAny(
-          {...FladderItemType.galleryItem, FladderItemType.photoAlbum, FladderItemType.folder},
+          {...HessflixItemType.galleryItem, HessflixItemType.photoAlbum, HessflixItemType.folder},
         );
   }
 

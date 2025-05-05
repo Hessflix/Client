@@ -5,12 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:page_transition/page_transition.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/providers/library_search_provider.dart';
-import 'package:fladder/theme.dart';
-import 'package:fladder/util/debouncer.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/providers/library_search_provider.dart';
+import 'package:hessflix/theme.dart';
+import 'package:hessflix/util/debouncer.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/util/localization_helper.dart';
 
 class SuggestionSearchBar extends ConsumerStatefulWidget {
   final String? title;
@@ -80,7 +80,7 @@ class _SearchBarState extends ConsumerState<SuggestionSearchBar> {
         decorationBuilder: (context, child) => DecoratedBox(
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.secondaryContainer,
-            borderRadius: FladderTheme.defaultShape.borderRadius,
+            borderRadius: HessflixTheme.defaultShape.borderRadius,
           ),
           child: child,
         ),
@@ -141,7 +141,7 @@ class _SearchBarState extends ConsumerState<SuggestionSearchBar> {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                     child: AspectRatio(
                       aspectRatio: 0.8,
-                      child: FladderImage(
+                      child: HessflixImage(
                         image: suggestion.images?.primary,
                         fit: BoxFit.cover,
                       ),

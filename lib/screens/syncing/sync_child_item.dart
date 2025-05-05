@@ -1,11 +1,11 @@
-import 'package:fladder/models/items/season_model.dart';
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/screens/syncing/widgets/synced_season_poster.dart';
+import 'package:hessflix/models/items/season_model.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/screens/syncing/widgets/synced_season_poster.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/items/episode_model.dart';
-import 'package:fladder/providers/sync_provider.dart';
+import 'package:hessflix/models/items/episode_model.dart';
+import 'package:hessflix/providers/sync_provider.dart';
 
 import 'widgets/synced_episode_item.dart';
 

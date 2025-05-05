@@ -7,19 +7,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:screen_brightness/screen_brightness.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
-import 'package:fladder/models/book_model.dart';
-import 'package:fladder/providers/book_viewer_provider.dart';
-import 'package:fladder/providers/items/book_details_provider.dart';
-import 'package:fladder/providers/settings/book_viewer_settings_provider.dart';
-import 'package:fladder/screens/book_viewer/book_viewer_chapters.dart';
-import 'package:fladder/screens/book_viewer/book_viewer_settings.dart';
-import 'package:fladder/screens/shared/default_title_bar.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/input_handler.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/throttler.dart';
-import 'package:fladder/widgets/shared/fladder_slider.dart';
+import 'package:hessflix/models/book_model.dart';
+import 'package:hessflix/providers/book_viewer_provider.dart';
+import 'package:hessflix/providers/items/book_details_provider.dart';
+import 'package:hessflix/providers/settings/book_viewer_settings_provider.dart';
+import 'package:hessflix/screens/book_viewer/book_viewer_chapters.dart';
+import 'package:hessflix/screens/book_viewer/book_viewer_settings.dart';
+import 'package:hessflix/screens/shared/default_title_bar.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/input_handler.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/throttler.dart';
+import 'package:hessflix/widgets/shared/hessflix_slider.dart';
 
 class BookViewController {
   bool controlsVisible = true;
@@ -316,7 +316,7 @@ class _BookViewerControlsState extends ConsumerState<BookViewerControls> {
                                                 },
                                               );
                                             }
-                                          : () => fladderSnackbar(context, title: "No other chapters"),
+                                          : () => hessflixSnackbar(context, title: "No other chapters"),
                                       icon: const Icon(IconsaxPlusLinear.bookmark_2),
                                     )
                                   ],
@@ -388,7 +388,7 @@ class _BookViewerControlsState extends ConsumerState<BookViewerControls> {
             flipX: bookViewerSettings.readDirection == ReadDirection.rightToLeft,
             child: SizedBox(
               height: 40,
-              child: FladderSlider(
+              child: HessflixSlider(
                 value: clampedCurrentPage.toDouble(),
                 divisions: details.pages.length - 1,
                 min: 1,

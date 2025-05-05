@@ -8,18 +8,18 @@ import 'package:path/path.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/models/settings/video_player_settings.dart';
-import 'package:fladder/providers/settings/photo_view_settings_provider.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/util/duration_extensions.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/widgets/shared/fladder_slider.dart';
-import 'package:fladder/wrappers/players/base_player.dart';
-import 'package:fladder/wrappers/players/lib_mdk.dart'
-    if (dart.library.html) 'package:fladder/stubs/web/lib_mdk_web.dart';
-import 'package:fladder/wrappers/players/lib_mpv.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/models/settings/video_player_settings.dart';
+import 'package:hessflix/providers/settings/photo_view_settings_provider.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/util/duration_extensions.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/widgets/shared/hessflix_slider.dart';
+import 'package:hessflix/wrappers/players/base_player.dart';
+import 'package:hessflix/wrappers/players/lib_mdk.dart'
+    if (dart.library.html) 'package:hessflix/stubs/web/lib_mdk_web.dart';
+import 'package:hessflix/wrappers/players/lib_mpv.dart';
 
 class SimpleVideoPlayer extends ConsumerStatefulWidget {
   final PhotoModel video;
@@ -137,7 +137,7 @@ class _SimpleVideoPlayerState extends ConsumerState<SimpleVideoPlayer> with Wind
         alignment: Alignment.center,
         children: [
           Positioned.fill(
-            child: FladderImage(
+            child: HessflixImage(
               image: widget.video.thumbnail?.primary,
               disableBlur: true,
               fit: BoxFit.contain,
@@ -175,7 +175,7 @@ class _SimpleVideoPlayerState extends ConsumerState<SimpleVideoPlayer> with Wind
                                 children: [
                                   SizedBox(
                                     height: 40,
-                                    child: FladderSlider(
+                                    child: HessflixSlider(
                                       min: 0.0,
                                       max: duration.inMilliseconds.toDouble(),
                                       value: position.inMilliseconds.toDouble().clamp(

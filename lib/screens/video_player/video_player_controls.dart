@@ -10,30 +10,30 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:screen_brightness/screen_brightness.dart';
 
-import 'package:fladder/models/items/media_segments_model.dart';
-import 'package:fladder/models/media_playback_model.dart';
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/screens/shared/default_title_bar.dart';
-import 'package:fladder/screens/shared/media/components/item_logo.dart';
-import 'package:fladder/screens/video_player/components/video_playback_information.dart';
-import 'package:fladder/screens/video_player/components/video_player_controls_extras.dart';
-import 'package:fladder/screens/video_player/components/video_player_options_sheet.dart';
-import 'package:fladder/screens/video_player/components/video_player_quality_controls.dart';
-import 'package:fladder/screens/video_player/components/video_player_seek_indicator.dart';
-import 'package:fladder/screens/video_player/components/video_progress_bar.dart';
-import 'package:fladder/screens/video_player/components/video_volume_slider.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/duration_extensions.dart';
-import 'package:fladder/util/input_handler.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/widgets/shared/full_screen_button.dart'
-    if (dart.library.html) 'package:fladder/widgets/shared/full_screen_button_web.dart';
+import 'package:hessflix/models/items/media_segments_model.dart';
+import 'package:hessflix/models/media_playback_model.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/screens/shared/default_title_bar.dart';
+import 'package:hessflix/screens/shared/media/components/item_logo.dart';
+import 'package:hessflix/screens/video_player/components/video_playback_information.dart';
+import 'package:hessflix/screens/video_player/components/video_player_controls_extras.dart';
+import 'package:hessflix/screens/video_player/components/video_player_options_sheet.dart';
+import 'package:hessflix/screens/video_player/components/video_player_quality_controls.dart';
+import 'package:hessflix/screens/video_player/components/video_player_seek_indicator.dart';
+import 'package:hessflix/screens/video_player/components/video_progress_bar.dart';
+import 'package:hessflix/screens/video_player/components/video_volume_slider.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/duration_extensions.dart';
+import 'package:hessflix/util/input_handler.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/widgets/shared/full_screen_button.dart'
+    if (dart.library.html) 'package:hessflix/widgets/shared/full_screen_button_web.dart';
 
 class DesktopControls extends ConsumerStatefulWidget {
   const DesktopControls({super.key});

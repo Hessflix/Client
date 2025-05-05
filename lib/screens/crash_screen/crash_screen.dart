@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/error_log_model.dart';
-import 'package:fladder/providers/crash_log_provider.dart';
-import 'package:fladder/util/clipboard_helper.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/widgets/shared/enum_selection.dart';
+import 'package:hessflix/models/error_log_model.dart';
+import 'package:hessflix/providers/crash_log_provider.dart';
+import 'package:hessflix/util/clipboard_helper.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/widgets/shared/enum_selection.dart';
 
 final _selectedWarningProvider = StateProvider<ErrorType?>((ref) => null);
 

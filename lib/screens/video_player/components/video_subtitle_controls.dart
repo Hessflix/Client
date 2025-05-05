@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/providers/settings/subtitle_settings_provider.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/widget_extensions.dart';
-import 'package:fladder/widgets/shared/fladder_slider.dart';
+import 'package:hessflix/providers/settings/subtitle_settings_provider.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/widget_extensions.dart';
+import 'package:hessflix/widgets/shared/hessflix_slider.dart';
 
 Future<void> showSubtitleControls({
   required BuildContext context,
@@ -138,7 +138,7 @@ class _VideoSubtitleControlsState extends ConsumerState<VideoSubtitleControls> {
                                 children: [
                                   const Icon(Icons.format_size_rounded),
                                   Flexible(
-                                    child: FladderSlider(
+                                    child: HessflixSlider(
                                       min: 8.0,
                                       max: 160.0,
                                       onChangeStart: (value) => setOpacity(const Key('fontSize')),
@@ -165,7 +165,7 @@ class _VideoSubtitleControlsState extends ConsumerState<VideoSubtitleControls> {
                                 children: [
                                   const Icon(Icons.height_rounded),
                                   Flexible(
-                                    child: FladderSlider(
+                                    child: HessflixSlider(
                                       min: 0.0,
                                       max: 1.0,
                                       divisions: 80,
@@ -248,7 +248,7 @@ class _VideoSubtitleControlsState extends ConsumerState<VideoSubtitleControls> {
                                 children: [
                                   const Icon(Icons.border_style),
                                   Flexible(
-                                    child: FladderSlider(
+                                    child: HessflixSlider(
                                       min: 1,
                                       max: 25,
                                       divisions: 24,
@@ -278,7 +278,7 @@ class _VideoSubtitleControlsState extends ConsumerState<VideoSubtitleControls> {
                                 children: [
                                   const Icon(Icons.square_rounded),
                                   Flexible(
-                                    child: FladderSlider(
+                                    child: HessflixSlider(
                                       min: 0,
                                       max: 1,
                                       divisions: 20,
@@ -309,7 +309,7 @@ class _VideoSubtitleControlsState extends ConsumerState<VideoSubtitleControls> {
                                 children: [
                                   const Icon(Icons.blur_circular_rounded),
                                   Flexible(
-                                    child: FladderSlider(
+                                    child: HessflixSlider(
                                       min: 0,
                                       max: 1,
                                       divisions: 20,

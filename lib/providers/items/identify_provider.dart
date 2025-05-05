@@ -1,13 +1,13 @@
 import 'package:chopper/chopper.dart';
-import 'package:fladder/models/items/movie_model.dart';
-import 'package:fladder/models/items/series_model.dart';
-import 'package:fladder/providers/service_provider.dart';
+import 'package:hessflix/models/items/movie_model.dart';
+import 'package:hessflix/models/items/series_model.dart';
+import 'package:hessflix/providers/service_provider.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/providers/api_provider.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/providers/api_provider.dart';
 
 class IdentifyModel {
   final ItemBaseModel? item;

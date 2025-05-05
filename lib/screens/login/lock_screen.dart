@@ -5,14 +5,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/screens/login/widgets/login_icon.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/screens/shared/passcode_input.dart';
-import 'package:fladder/util/auth_service.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/screens/login/widgets/login_icon.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/screens/shared/passcode_input.dart';
+import 'package:hessflix/util/auth_service.dart';
+import 'package:hessflix/util/localization_helper.dart';
 
 final lockScreenActiveProvider = StateProvider<bool>((ref) => false);
 
@@ -79,7 +79,7 @@ class _LockScreenState extends ConsumerState<LockScreen> with WidgetsBindingObse
             if (newPin == user.localPin) {
               handleLogin(user);
             } else {
-              fladderSnackbar(context, title: context.localized.incorrectPinTryAgain);
+              hessflixSnackbar(context, title: context.localized.incorrectPinTryAgain);
             }
           });
         }

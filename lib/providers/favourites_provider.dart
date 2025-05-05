@@ -1,11 +1,11 @@
 import 'package:chopper/chopper.dart';
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/favourites_model.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/view_model.dart';
-import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/providers/views_provider.dart';
-import 'package:fladder/util/item_base_model/item_base_model_extensions.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/favourites_model.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/view_model.dart';
+import 'package:hessflix/providers/api_provider.dart';
+import 'package:hessflix/providers/views_provider.dart';
+import 'package:hessflix/util/item_base_model/item_base_model_extensions.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final favouritesProvider = StateNotifierProvider<FavouritesNotifier, FavouritesModel>((ref) {

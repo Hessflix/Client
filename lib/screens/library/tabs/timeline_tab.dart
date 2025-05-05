@@ -1,13 +1,13 @@
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/models/view_model.dart';
-import 'package:fladder/providers/library_provider.dart';
-import 'package:fladder/screens/photo_viewer/photo_viewer_screen.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/util/sticky_header_text.dart';
-import 'package:fladder/widgets/shared/pull_to_refresh.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/models/view_model.dart';
+import 'package:hessflix/providers/library_provider.dart';
+import 'package:hessflix/screens/photo_viewer/photo_viewer_screen.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/util/sticky_header_text.dart';
+import 'package:hessflix/widgets/shared/pull_to_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -73,7 +73,7 @@ class _TimelineTabState extends ConsumerState<TimelineTab> with AutomaticKeepAli
                             clipBehavior: Clip.antiAlias,
                             child: Stack(
                               children: [
-                                FladderImage(image: e.thumbnail?.primary),
+                                HessflixImage(image: e.thumbnail?.primary),
                                 FlatButton(
                                   onLongPress: () {},
                                   onTap: () async {

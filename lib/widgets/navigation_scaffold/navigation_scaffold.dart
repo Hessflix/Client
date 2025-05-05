@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/media_playback_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/providers/views_provider.dart';
-import 'package:fladder/routes/auto_router.dart';
-import 'package:fladder/screens/shared/nested_bottom_appbar.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/destination_model.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/fladder_app_bar.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/floating_player_bar.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/navigation_body.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/navigation_drawer.dart';
-import 'package:fladder/widgets/shared/hide_on_scroll.dart';
+import 'package:hessflix/models/media_playback_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/providers/views_provider.dart';
+import 'package:hessflix/routes/auto_router.dart';
+import 'package:hessflix/screens/shared/nested_bottom_appbar.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/destination_model.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/hessflix_app_bar.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/floating_player_bar.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/navigation_body.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/navigation_drawer.dart';
+import 'package:hessflix/widgets/shared/hide_on_scroll.dart';
 
 class NavigationScaffold extends ConsumerStatefulWidget {
   final String? currentRouteName;
@@ -65,7 +65,7 @@ class _NavigationScaffoldState extends ConsumerState<NavigationScaffold> {
       },
       child: Scaffold(
         key: _key,
-        appBar: const FladderAppBar(),
+        appBar: const HessflixAppBar(),
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
         extendBody: true,

@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/providers/session_info_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/util/clipboard_helper.dart';
-import 'package:fladder/util/humanize_duration.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/wrappers/players/player_states.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/providers/session_info_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/util/clipboard_helper.dart';
+import 'package:hessflix/util/humanize_duration.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/wrappers/players/player_states.dart';
 
 Future<void> showVideoPlaybackInformation(BuildContext context) {
   return showDialog(

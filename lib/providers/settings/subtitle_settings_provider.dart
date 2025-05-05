@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:fladder/models/settings/subtitle_settings_model.dart';
-import 'package:fladder/providers/shared_provider.dart';
+import 'package:hessflix/models/settings/subtitle_settings_model.dart';
+import 'package:hessflix/providers/shared_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final subtitleSettingsProvider = StateNotifierProvider<SubtitleSettingsNotifier, SubtitleSettingsModel>((ref) {

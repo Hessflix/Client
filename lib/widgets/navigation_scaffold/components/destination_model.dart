@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/adaptive_fab.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/navigation_button.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/adaptive_fab.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/navigation_button.dart';
 import 'package:flutter/material.dart';
 
 class DestinationModel {

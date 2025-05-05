@@ -2,17 +2,17 @@ import 'package:flutter/widgets.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/chapters_model.dart';
-import 'package:fladder/models/items/media_segments_model.dart';
-import 'package:fladder/models/items/media_streams_model.dart';
-import 'package:fladder/models/items/trick_play_model.dart';
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/util/duration_extensions.dart';
-import 'package:fladder/util/list_extensions.dart';
-import 'package:fladder/wrappers/media_control_wrapper.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/chapters_model.dart';
+import 'package:hessflix/models/items/media_segments_model.dart';
+import 'package:hessflix/models/items/media_streams_model.dart';
+import 'package:hessflix/models/items/trick_play_model.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/providers/sync_provider.dart';
+import 'package:hessflix/util/duration_extensions.dart';
+import 'package:hessflix/util/list_extensions.dart';
+import 'package:hessflix/wrappers/media_control_wrapper.dart';
 
 class OfflinePlaybackModel extends PlaybackModel {
   OfflinePlaybackModel({

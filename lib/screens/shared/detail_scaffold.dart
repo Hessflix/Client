@@ -4,23 +4,23 @@ import 'package:auto_route/auto_route.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/images_models.dart';
-import 'package:fladder/models/media_playback_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/theme.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/refresh_state.dart';
-import 'package:fladder/util/router_extension.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/floating_player_bar.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/settings_user_icon.dart';
-import 'package:fladder/widgets/shared/item_actions.dart';
-import 'package:fladder/widgets/shared/modal_bottom_sheet.dart';
-import 'package:fladder/widgets/shared/pull_to_refresh.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/images_models.dart';
+import 'package:hessflix/models/media_playback_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/theme.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/refresh_state.dart';
+import 'package:hessflix/util/router_extension.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/floating_player_bar.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/settings_user_icon.dart';
+import 'package:hessflix/widgets/shared/item_actions.dart';
+import 'package:hessflix/widgets/shared/modal_bottom_sheet.dart';
+import 'package:hessflix/widgets/shared/pull_to_refresh.dart';
 
 class DetailScaffold extends ConsumerStatefulWidget {
   final String label;
@@ -99,7 +99,7 @@ class _DetailScaffoldState extends ConsumerState<DetailScaffold> {
                   SizedBox(
                     height: maxHeight,
                     width: MediaQuery.sizeOf(context).width,
-                    child: FladderImage(
+                    child: HessflixImage(
                       image: backgroundImage,
                       blurOnly: true,
                     ),
@@ -202,7 +202,7 @@ class _DetailScaffoldState extends ConsumerState<DetailScaffold> {
                       duration: const Duration(milliseconds: 250),
                       child: Container(
                         decoration:
-                            BoxDecoration(color: backGroundColor, borderRadius: FladderTheme.defaultShape.borderRadius),
+                            BoxDecoration(color: backGroundColor, borderRadius: HessflixTheme.defaultShape.borderRadius),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [

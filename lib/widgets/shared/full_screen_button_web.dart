@@ -4,7 +4,7 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:universal_html/html.dart' as html;
 
-import 'package:fladder/providers/video_player_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
 
 Future<void> closeFullScreen() async {
   if (html.document.fullscreenElement != null) {

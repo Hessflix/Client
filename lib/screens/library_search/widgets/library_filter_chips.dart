@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/library_search/library_search_model.dart';
-import 'package:fladder/models/library_search/library_search_options.dart';
-import 'package:fladder/providers/library_search_provider.dart';
-import 'package:fladder/screens/library_search/widgets/library_views.dart';
-import 'package:fladder/screens/shared/chips/category_chip.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/map_bool_helper.dart';
-import 'package:fladder/util/refresh_state.dart';
-import 'package:fladder/widgets/shared/scroll_position.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/library_search/library_search_model.dart';
+import 'package:hessflix/models/library_search/library_search_options.dart';
+import 'package:hessflix/providers/library_search_provider.dart';
+import 'package:hessflix/screens/library_search/widgets/library_views.dart';
+import 'package:hessflix/screens/shared/chips/category_chip.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/map_bool_helper.dart';
+import 'package:hessflix/util/refresh_state.dart';
+import 'package:hessflix/widgets/shared/scroll_position.dart';
 
 class LibraryFilterChips extends ConsumerWidget {
   final Key uniqueKey;
@@ -109,7 +109,7 @@ List<Widget> libraryFilterChips(
         onCancel: () => libraryProvider.setViews(librarySearchResults.views),
         onClear: () => libraryProvider.setViews(librarySearchResults.views.setAll(false)),
       ),
-    CategoryChip<FladderItemType>(
+    CategoryChip<HessflixItemType>(
       label: Text(context.localized.type(librarySearchResults.types.length)),
       items: librarySearchResults.types,
       labelBuilder: (item) => Row(
@@ -187,7 +187,7 @@ List<Widget> libraryFilterChips(
       onSave: (value) => libraryProvider.setFilters(value),
       onClear: () => libraryProvider.setFilters(librarySearchResults.filters.setAll(false)),
     ),
-    if (librarySearchResults.types[FladderItemType.series] == true)
+    if (librarySearchResults.types[HessflixItemType.series] == true)
       FilterChip(
         avatar: Icon(
           librarySearchResults.hideEmptyShows ? Icons.visibility_off_rounded : Icons.visibility_rounded,

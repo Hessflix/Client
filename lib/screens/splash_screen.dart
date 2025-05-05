@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/providers/shared_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/screens/shared/fladder_logo.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/providers/shared_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/screens/shared/hessflix_logo.dart';
 
 @RoutePage()
 class SplashScreen extends ConsumerStatefulWidget {
@@ -65,7 +65,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       body: Center(
         child: FractionallySizedBox(
           heightFactor: 0.4,
-          child: FladderLogo(),
+          child: HessflixLogo(),
         ),
       ),
     );

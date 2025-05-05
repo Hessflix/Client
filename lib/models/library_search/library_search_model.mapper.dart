@@ -69,23 +69,23 @@ class LibrarySearchModelMapper extends ClassMapperBase<LibrarySearchModel> {
       v.officialRatings;
   static const Field<LibrarySearchModel, Map<String, bool>> _f$officialRatings =
       Field('officialRatings', _$officialRatings, opt: true, def: const {});
-  static Map<FladderItemType, bool> _$types(LibrarySearchModel v) => v.types;
-  static const Field<LibrarySearchModel, Map<FladderItemType, bool>> _f$types =
+  static Map<HessflixItemType, bool> _$types(LibrarySearchModel v) => v.types;
+  static const Field<LibrarySearchModel, Map<HessflixItemType, bool>> _f$types =
       Field('types', _$types, opt: true, def: const {
-    FladderItemType.audio: false,
-    FladderItemType.boxset: false,
-    FladderItemType.book: false,
-    FladderItemType.collectionFolder: false,
-    FladderItemType.episode: false,
-    FladderItemType.folder: false,
-    FladderItemType.movie: true,
-    FladderItemType.musicAlbum: false,
-    FladderItemType.musicVideo: false,
-    FladderItemType.photo: false,
-    FladderItemType.person: false,
-    FladderItemType.photoAlbum: false,
-    FladderItemType.series: true,
-    FladderItemType.video: true
+    HessflixItemType.audio: false,
+    HessflixItemType.boxset: false,
+    HessflixItemType.book: false,
+    HessflixItemType.collectionFolder: false,
+    HessflixItemType.episode: false,
+    HessflixItemType.folder: false,
+    HessflixItemType.movie: true,
+    HessflixItemType.musicAlbum: false,
+    HessflixItemType.musicVideo: false,
+    HessflixItemType.photo: false,
+    HessflixItemType.person: false,
+    HessflixItemType.photoAlbum: false,
+    HessflixItemType.series: true,
+    HessflixItemType.video: true
   });
   static bool _$favourites(LibrarySearchModel v) => v.favourites;
   static const Field<LibrarySearchModel, bool> _f$favourites =
@@ -234,7 +234,7 @@ abstract class LibrarySearchModelCopyWith<$R, $In extends LibrarySearchModel,
   MapCopyWith<$R, int, bool, ObjectCopyWith<$R, bool, bool>> get years;
   MapCopyWith<$R, String, bool, ObjectCopyWith<$R, bool, bool>>
       get officialRatings;
-  MapCopyWith<$R, FladderItemType, bool, ObjectCopyWith<$R, bool, bool>>
+  MapCopyWith<$R, HessflixItemType, bool, ObjectCopyWith<$R, bool, bool>>
       get types;
   MapCopyWith<$R, String, int, ObjectCopyWith<$R, int, int>> get lastIndices;
   MapCopyWith<$R, String, int, ObjectCopyWith<$R, int, int>>
@@ -253,7 +253,7 @@ abstract class LibrarySearchModelCopyWith<$R, $In extends LibrarySearchModel,
       Map<String, bool>? tags,
       Map<int, bool>? years,
       Map<String, bool>? officialRatings,
-      Map<FladderItemType, bool>? types,
+      Map<HessflixItemType, bool>? types,
       bool? favourites,
       SortingOptions? sortingOption,
       SortingOrder? sortOrder,
@@ -321,7 +321,7 @@ class _LibrarySearchModelCopyWithImpl<$R, $Out>
           (v, t) => ObjectCopyWith(v, $identity, t),
           (v) => call(officialRatings: v));
   @override
-  MapCopyWith<$R, FladderItemType, bool, ObjectCopyWith<$R, bool, bool>>
+  MapCopyWith<$R, HessflixItemType, bool, ObjectCopyWith<$R, bool, bool>>
       get types => MapCopyWith($value.types,
           (v, t) => ObjectCopyWith(v, $identity, t), (v) => call(types: v));
   @override
@@ -349,7 +349,7 @@ class _LibrarySearchModelCopyWithImpl<$R, $Out>
           Map<String, bool>? tags,
           Map<int, bool>? years,
           Map<String, bool>? officialRatings,
-          Map<FladderItemType, bool>? types,
+          Map<HessflixItemType, bool>? types,
           bool? favourites,
           SortingOptions? sortingOption,
           SortingOrder? sortOrder,

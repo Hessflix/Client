@@ -1,9 +1,9 @@
-import 'package:fladder/providers/settings/book_viewer_settings_provider.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/widgets/shared/enum_selection.dart';
-import 'package:fladder/widgets/shared/fladder_slider.dart';
-import 'package:fladder/widgets/shared/modal_side_sheet.dart';
+import 'package:hessflix/providers/settings/book_viewer_settings_provider.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/widgets/shared/enum_selection.dart';
+import 'package:hessflix/widgets/shared/hessflix_slider.dart';
+import 'package:hessflix/widgets/shared/modal_side_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -49,7 +49,7 @@ class BookViewerSettingsScreen extends ConsumerWidget {
                 Flexible(
                   child: Opacity(
                     opacity: settings.screenBrightness == null ? 0.5 : 1,
-                    child: FladderSlider(
+                    child: HessflixSlider(
                       value: settings.screenBrightness ?? 1.0,
                       min: 0,
                       max: 1,

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/fladder_image.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/hessflix_image.dart';
 
 Future<void> showBottomSheetPill({
   ItemBaseModel? item,
@@ -64,7 +64,7 @@ class ItemBottomSheetPreview extends ConsumerWidget {
                 height: 90,
                 child: AspectRatio(
                   aspectRatio: 1,
-                  child: FladderImage(
+                  child: HessflixImage(
                     image: item.images?.primary,
                     fit: BoxFit.contain,
                   ),

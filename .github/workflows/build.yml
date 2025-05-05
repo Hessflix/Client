@@ -1,4 +1,4 @@
-name: Build Fladder
+name: Build Hessflix
 
 on:
   push:
@@ -109,7 +109,7 @@ jobs:
       - name: Archive Android artifacts
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: fladder-android
+          name: hessflix-android
           path: build/app/outputs/android_artifacts/
 
   build-windows:
@@ -141,19 +141,19 @@ jobs:
           path: windows/windows_setup.iss
           options: /O+
         env:
-          FLADDER_VERSION: ${{needs.fetch-info.outputs.version_name}}
+          HESSFLIX_VERSION: ${{needs.fetch-info.outputs.version_name}}
 
       - name: Archive Windows portable artifact
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: fladder-windows-portable
+          name: hessflix-windows-portable
           path: build\windows\x64\runner\Release\
 
       - name: Archive Windows installer artifact
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: fladder-windows-installer
-          path: windows\Output\fladder_setup.exe
+          name: hessflix-windows-installer
+          path: windows\Output\hessflix_setup.exe
 
   build-ios:
     runs-on: macos-latest
@@ -188,7 +188,7 @@ jobs:
       - name: Archive iOS IPA artifact
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: fladder-iOS
+          name: hessflix-iOS
           path: build/ios/archive/Runner.xcarchive/Products/Applications/iOS.ipa
 
   build-macos:
@@ -215,12 +215,12 @@ jobs:
         run: flutter build macos --flavor production --build-number=${{ github.run_number }}
 
       - name: Create DMG file
-        run: hdiutil create -format UDZO -srcfolder build/macos/Build/Products/Release-production/fladder.app build/macos/Build/Products/Release-production/macOS.dmg
+        run: hdiutil create -format UDZO -srcfolder build/macos/Build/Products/Release-production/hessflix.app build/macos/Build/Products/Release-production/macOS.dmg
 
       - name: Archive macOS artifact
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: fladder-macOS
+          name: hessflix-macOS
           path: build/macos/Build/Products/Release-production/macOS.dmg
 
   build-linux:
@@ -261,12 +261,12 @@ jobs:
             [[ -f "$lib" && -n "$(patchelf --print-rpath "$lib")" ]] && \
             patchelf --set-rpath '$ORIGIN' "$lib"
           done
-          patchelf --set-rpath '$ORIGIN/lib' "build/linux/x64/release/bundle/Fladder"
+          patchelf --set-rpath '$ORIGIN/lib' "build/linux/x64/release/bundle/Hessflix"
 
       - name: Archive Linux artifact
         uses: actions/upload-artifact@v4
         with:
-          name: fladder-linux
+          name: hessflix-linux
           path: build/linux/x64/release/bundle
 
       - name: Build AppImage
@@ -280,10 +280,10 @@ jobs:
       - name: Archive Linux artifact
         uses: actions/upload-artifact@v4
         with:
-          name: fladder-linux-appimage
+          name: hessflix-linux-appimage
           path: |
-            Fladder_x86_64.AppImage
-            Fladder_x86_64.AppImage.zsync
+            Hessflix_x86_64.AppImage
+            Hessflix_x86_64.AppImage.zsync
 
   build-linux-flatpak:
     name: "Flatpak"
@@ -302,19 +302,19 @@ jobs:
       - name: Download Artifacts Linux
         uses: actions/download-artifact@v4
         with:
-          name: fladder-linux
+          name: hessflix-linux
           path: build/linux/x64/release/bundle
 
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
-          bundle: Fladder-Linux.flatpak
-          manifest-path: flatpak/nl.jknaapen.fladder.yaml
+          bundle: Hessflix-Linux.flatpak
+          manifest-path: flatpak/tv.hessflix.client.yaml
 
       - name: Archive Linux Flatpak bundle
         uses: actions/upload-artifact@v4
         with:
-          name: fladder-linux-flatpak
-          path: Fladder-Linux.flatpak
+          name: hessflix-linux-flatpak
+          path: Hessflix-Linux.flatpak
 
   build-web:
     runs-on: ubuntu-latest
@@ -343,7 +343,7 @@ jobs:
       - name: Archive web artifact
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: fladder-web
+          name: hessflix-web
           path: build/web
 
       - name: Build Github pages web
@@ -353,7 +353,7 @@ jobs:
       - name: Archive web pages artifact
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: fladder-web-pages
+          name: hessflix-web-pages
           path: build/web
 
   create_release:
@@ -373,93 +373,93 @@ jobs:
       - name: Download Artifacts Android
         uses: actions/download-artifact@v4
         with:
-          name: fladder-android
-          path: fladder-android
+          name: hessflix-android
+          path: hessflix-android
 
       - name: Move Android
         run: |
-          mv fladder-android/release-signed.apk Fladder-Android-${{needs.fetch-info.outputs.version_name}}.apk
-          mv fladder-android/release-signed.aab Fladder-Android-${{needs.fetch-info.outputs.version_name}}.aab
+          mv hessflix-android/release-signed.apk Hessflix-Android-${{needs.fetch-info.outputs.version_name}}.apk
+          mv hessflix-android/release-signed.aab Hessflix-Android-${{needs.fetch-info.outputs.version_name}}.aab
 
       - name: Download Windows portable artifact
         uses: actions/download-artifact@v4
         with:
-          name: fladder-windows-portable
-          path: fladder-windows-portable
+          name: hessflix-windows-portable
+          path: hessflix-windows-portable
 
       - name: Compress Windows
         run: |
-          cd fladder-windows-portable
-          zip -r ../Fladder-Windows-${{needs.fetch-info.outputs.version_name}}.zip .
+          cd hessflix-windows-portable
+          zip -r ../Hessflix-Windows-${{needs.fetch-info.outputs.version_name}}.zip .
 
       - name: Download Windows installer artifact
         uses: actions/download-artifact@v4
         with:
-          name: fladder-windows-installer
-          path: fladder-windows-installer
+          name: hessflix-windows-installer
+          path: hessflix-windows-installer
 
       - name: Rename Windows installer
-        run: mv fladder-windows-installer/fladder_setup.exe Fladder-Windows-${{needs.fetch-info.outputs.version_name}}-Setup.exe
+        run: mv hessflix-windows-installer/hessflix_setup.exe Hessflix-Windows-${{needs.fetch-info.outputs.version_name}}-Setup.exe
 
       - name: Download Artifacts iOS
         uses: actions/download-artifact@v4
         with:
-          name: fladder-iOS
-          path: fladder-iOS
+          name: hessflix-iOS
+          path: hessflix-iOS
 
       - name: Move iOS
-        run: mv fladder-iOS/iOS.ipa Fladder-iOS-${{needs.fetch-info.outputs.version_name}}.ipa
+        run: mv hessflix-iOS/iOS.ipa Hessflix-iOS-${{needs.fetch-info.outputs.version_name}}.ipa
 
       - name: Download Artifacts macOS
         uses: actions/download-artifact@v4
         with:
-          name: fladder-macOS
-          path: fladder-macOS
+          name: hessflix-macOS
+          path: hessflix-macOS
 
       - name: Move macOS
-        run: mv fladder-macOS/macOS.dmg Fladder-macOS-${{needs.fetch-info.outputs.version_name}}.dmg
+        run: mv hessflix-macOS/macOS.dmg Hessflix-macOS-${{needs.fetch-info.outputs.version_name}}.dmg
 
       - name: Download Artifacts Linux
         uses: actions/download-artifact@v4
         with:
-          name: fladder-linux
-          path: fladder-linux
+          name: hessflix-linux
+          path: hessflix-linux
 
       - name: Compress Linux
         run: |
-          cd fladder-linux
-          zip -r ../Fladder-Linux-${{needs.fetch-info.outputs.version_name}}.zip .
+          cd hessflix-linux
+          zip -r ../Hessflix-Linux-${{needs.fetch-info.outputs.version_name}}.zip .
 
       - name: Download Artifacts Linux Flatpak
         uses: actions/download-artifact@v4
         with:
-          name: fladder-linux-flatpak
-          path: fladder-linux-flatpak
+          name: hessflix-linux-flatpak
+          path: hessflix-linux-flatpak
 
       - name: Move Linux Flatpak
-        run: mv fladder-linux-flatpak/Fladder-Linux.flatpak Fladder-Linux-${{needs.fetch-info.outputs.version_name}}.flatpak
+        run: mv hessflix-linux-flatpak/Hessflix-Linux.flatpak Hessflix-Linux-${{needs.fetch-info.outputs.version_name}}.flatpak
 
       - name: Download Artifacts Linux AppImage
         uses: actions/download-artifact@v4
         with:
-          name: fladder-linux-appimage
-          path: fladder-linux-appimage
+          name: hessflix-linux-appimage
+          path: hessflix-linux-appimage
 
       - name: Move linux AppImages
         run: |
-          mv fladder-linux-appimage/Fladder_x86_64.AppImage Fladder-Linux-${{needs.fetch-info.outputs.version_name}}.AppImage
-          mv fladder-linux-appimage/Fladder_x86_64.AppImage.zsync Fladder-Linux-${{needs.fetch-info.outputs.version_name}}.AppImage.zsync
+          mv hessflix-linux-appimage/Hessflix_x86_64.AppImage Hessflix-Linux-${{needs.fetch-info.outputs.version_name}}.AppImage
+          mv hessflix-linux-appimage/Hessflix_x86_64.AppImage.zsync Hessflix-Linux-${{needs.fetch-info.outputs.version_name}}.AppImage.zsync
 
       - name: Download Artifacts Web
         uses: actions/download-artifact@v4
         with:
-          name: fladder-web
-          path: fladder-web
+          name: hessflix-web
+          path: hessflix-web
 
       - name: Compress Web
         run: |
-          cd fladder-web
-          zip -r ../Fladder-Web-${{needs.fetch-info.outputs.version_name}}.zip .
+          cd hessflix-web
+          zip -r ../Hessflix-Web-${{needs.fetch-info.outputs.version_name}}.zip .
 
       - name: Release
         uses: softprops/action-gh-release@v2
@@ -468,16 +468,16 @@ jobs:
           fail_on_unmatched_files: true
           generate_release_notes: true
           files: |
-            Fladder-Android-${{needs.fetch-info.outputs.version_name}}.apk
-            Fladder-Windows-${{needs.fetch-info.outputs.version_name}}-Setup.exe
-            Fladder-Windows-${{needs.fetch-info.outputs.version_name}}.zip
-            Fladder-iOS-${{needs.fetch-info.outputs.version_name}}.ipa
-            Fladder-macOS-${{needs.fetch-info.outputs.version_name}}.dmg
-            Fladder-Web-${{needs.fetch-info.outputs.version_name}}.zip
-            Fladder-Linux-${{needs.fetch-info.outputs.version_name}}.zip
-            Fladder-Linux-${{needs.fetch-info.outputs.version_name}}.flatpak
-            Fladder-Linux-${{needs.fetch-info.outputs.version_name}}.AppImage
-            Fladder-Linux-${{needs.fetch-info.outputs.version_name}}.AppImage.zsync
+            Hessflix-Android-${{needs.fetch-info.outputs.version_name}}.apk
+            Hessflix-Windows-${{needs.fetch-info.outputs.version_name}}-Setup.exe
+            Hessflix-Windows-${{needs.fetch-info.outputs.version_name}}.zip
+            Hessflix-iOS-${{needs.fetch-info.outputs.version_name}}.ipa
+            Hessflix-macOS-${{needs.fetch-info.outputs.version_name}}.dmg
+            Hessflix-Web-${{needs.fetch-info.outputs.version_name}}.zip
+            Hessflix-Linux-${{needs.fetch-info.outputs.version_name}}.zip
+            Hessflix-Linux-${{needs.fetch-info.outputs.version_name}}.flatpak
+            Hessflix-Linux-${{needs.fetch-info.outputs.version_name}}.AppImage
+            Hessflix-Linux-${{needs.fetch-info.outputs.version_name}}.AppImage.zsync
 
   release_web:
     name: Release Web
@@ -492,13 +492,13 @@ jobs:
       - name: Download Artifacts Web
         uses: actions/download-artifact@v4
         with:
-          name: fladder-web
+          name: hessflix-web
           path: build/web
 
       - name: Deploy to ghcr.io
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          image: fladder
+          image: hessflix
           addLatest: true
           multiPlatform: true
           platform: linux/amd64,linux/arm64,linux/arm/v7
@@ -512,7 +512,7 @@ jobs:
       - name: Download Artifacts Web
         uses: actions/download-artifact@v4
         with:
-          name: fladder-web-pages
+          name: hessflix-web-pages
           path: build/web
 
       - name: Deploy to GitHub Pages

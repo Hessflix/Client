@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/screens/settings/settings_list_tile.dart';
-import 'package:fladder/screens/settings/widgets/settings_label_divider.dart';
-import 'package:fladder/util/color_extensions.dart';
-import 'package:fladder/util/custom_color_themes.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/option_dialogue.dart';
-import 'package:fladder/util/theme_mode_extension.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/screens/settings/settings_list_tile.dart';
+import 'package:hessflix/screens/settings/widgets/settings_label_divider.dart';
+import 'package:hessflix/util/color_extensions.dart';
+import 'package:hessflix/util/custom_color_themes.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/option_dialogue.dart';
+import 'package:hessflix/util/theme_mode_extension.dart';
 
 List<Widget> buildClientSettingsTheme(BuildContext context, WidgetRef ref) {
   final clientSettings = ref.watch(clientSettingsProvider);

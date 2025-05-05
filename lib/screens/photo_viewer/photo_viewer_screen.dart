@@ -9,25 +9,25 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/providers/settings/photo_view_settings_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/screens/photo_viewer/photo_viewer_controls.dart';
-import 'package:fladder/screens/photo_viewer/simple_video_player.dart';
-import 'package:fladder/screens/shared/default_title_bar.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/custom_cache_manager.dart';
-import 'package:fladder/util/item_base_model/item_base_model_extensions.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/themes_data.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/fladder_app_bar.dart';
-import 'package:fladder/widgets/shared/animated_icon.dart';
-import 'package:fladder/widgets/shared/elevated_icon.dart';
-import 'package:fladder/widgets/shared/hover_widget.dart';
-import 'package:fladder/widgets/shared/item_actions.dart';
-import 'package:fladder/widgets/shared/modal_bottom_sheet.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/providers/settings/photo_view_settings_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/screens/photo_viewer/photo_viewer_controls.dart';
+import 'package:hessflix/screens/photo_viewer/simple_video_player.dart';
+import 'package:hessflix/screens/shared/default_title_bar.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/custom_cache_manager.dart';
+import 'package:hessflix/util/item_base_model/item_base_model_extensions.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/themes_data.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/hessflix_app_bar.dart';
+import 'package:hessflix/widgets/shared/animated_icon.dart';
+import 'package:hessflix/widgets/shared/elevated_icon.dart';
+import 'package:hessflix/widgets/shared/hover_widget.dart';
+import 'package:hessflix/widgets/shared/item_actions.dart';
+import 'package:hessflix/widgets/shared/modal_bottom_sheet.dart';
 
 class PhotoViewerScreen extends ConsumerStatefulWidget {
   final List<PhotoModel>? items;
@@ -153,7 +153,7 @@ class _PhotoViewerScreenState extends ConsumerState<PhotoViewerScreen> with Widg
           onExit: (event) => setState(() => _showOverlay(show: false)),
           child: Scaffold(
             appBar: photos.isEmpty
-                ? const FladderAppBar(
+                ? const HessflixAppBar(
                     automaticallyImplyLeading: true,
                   )
                 : null,
@@ -248,7 +248,7 @@ class _PhotoViewerScreenState extends ConsumerState<PhotoViewerScreen> with Widg
                             child: CircularProgressIndicator.adaptive(strokeCap: StrokeCap.round),
                           ),
                         LoadState.completed => switch (photo.internalType) {
-                            FladderItemType.video => SimpleVideoPlayer(
+                            HessflixItemType.video => SimpleVideoPlayer(
                                 onTapped: _showOverlay,
                                 showOverlay: showInterface,
                                 video: photos[index],

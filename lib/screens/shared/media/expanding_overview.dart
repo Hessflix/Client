@@ -1,6 +1,6 @@
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/sticky_header_text.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/sticky_header_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';

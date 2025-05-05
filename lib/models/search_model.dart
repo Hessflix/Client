@@ -1,10 +1,10 @@
-import 'package:fladder/models/item_base_model.dart';
+import 'package:hessflix/models/item_base_model.dart';
 
 class SearchModel {
   final bool loading;
   final String searchQuery;
   final int resultCount;
-  final Map<FladderItemType, List<ItemBaseModel>> results;
+  final Map<HessflixItemType, List<ItemBaseModel>> results;
   SearchModel({
     this.loading = false,
     this.searchQuery = "",
@@ -16,7 +16,7 @@ class SearchModel {
     bool? loading,
     String? searchQuery,
     int? resultCount,
-    Map<FladderItemType, List<ItemBaseModel>>? results,
+    Map<HessflixItemType, List<ItemBaseModel>>? results,
   }) {
     return SearchModel(
       loading: loading ?? this.loading,

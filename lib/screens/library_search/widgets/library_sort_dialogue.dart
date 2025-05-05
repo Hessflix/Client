@@ -1,6 +1,6 @@
-import 'package:fladder/models/library_search/library_search_options.dart';
-import 'package:fladder/providers/library_search_provider.dart';
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/models/library_search/library_search_options.dart';
+import 'package:hessflix/providers/library_search_provider.dart';
+import 'package:hessflix/util/localization_helper.dart';
 import 'package:flutter/material.dart';
 
 Future<(SortingOptions? sortOptions, SortingOrder? sortingOrder)?> openSortByDialogue(

@@ -1,7 +1,7 @@
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/screens/shared/user_icon.dart';
-import 'package:fladder/util/list_padding.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/screens/shared/user_icon.dart';
+import 'package:hessflix/util/list_padding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

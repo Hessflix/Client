@@ -3,25 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/book_model.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/models/items/series_model.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/screens/shared/media/components/poster_placeholder.dart';
-import 'package:fladder/theme.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/disable_keypad_focus.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/util/humanize_duration.dart';
-import 'package:fladder/util/item_base_model/item_base_model_extensions.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/refresh_state.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/widgets/shared/item_actions.dart';
-import 'package:fladder/widgets/shared/modal_bottom_sheet.dart';
-import 'package:fladder/widgets/shared/status_card.dart';
+import 'package:hessflix/models/book_model.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/models/items/series_model.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/screens/shared/media/components/poster_placeholder.dart';
+import 'package:hessflix/theme.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/disable_keypad_focus.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/util/humanize_duration.dart';
+import 'package:hessflix/util/item_base_model/item_base_model_extensions.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/refresh_state.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/widgets/shared/item_actions.dart';
+import 'package:hessflix/widgets/shared/modal_bottom_sheet.dart';
+import 'package:hessflix/widgets/shared/status_card.dart';
 
 class PosterImage extends ConsumerStatefulWidget {
   final ItemBaseModel poster;
@@ -101,16 +101,16 @@ class _PosterImageState extends ConsumerState<PosterImage> {
               width: 1.0,
               color: Colors.white.withValues(alpha: 0.10),
             ),
-            borderRadius: FladderTheme.defaultShape.borderRadius,
+            borderRadius: HessflixTheme.defaultShape.borderRadius,
           ),
           child: Stack(
             fit: StackFit.expand,
             children: [
-              FladderImage(
+              HessflixImage(
                 image: widget.poster.getPosters?.primary ?? widget.poster.getPosters?.backDrop?.lastOrNull,
                 placeHolder: PosterPlaceholder(item: widget.poster),
               ),
-              if (poster.userData.progress > 0 && widget.poster.type == FladderItemType.book)
+              if (poster.userData.progress > 0 && widget.poster.type == HessflixItemType.book)
                 Align(
                   alignment: Alignment.topLeft,
                   child: Padding(
@@ -135,7 +135,7 @@ class _PosterImageState extends ConsumerState<PosterImage> {
                   decoration: BoxDecoration(
                     color: Colors.black.withValues(alpha: 0.15),
                     border: Border.all(width: 3, color: Theme.of(context).colorScheme.primary),
-                    borderRadius: FladderTheme.defaultShape.borderRadius,
+                    borderRadius: HessflixTheme.defaultShape.borderRadius,
                   ),
                   clipBehavior: Clip.antiAlias,
                   child: Stack(
@@ -179,7 +179,7 @@ class _PosterImageState extends ConsumerState<PosterImage> {
                         ],
                       ),
                     if ((poster.userData.progress > 0 && poster.userData.progress < 100) &&
-                        widget.poster.type != FladderItemType.book) ...{
+                        widget.poster.type != HessflixItemType.book) ...{
                       const SizedBox(
                         height: 4,
                       ),
@@ -203,7 +203,7 @@ class _PosterImageState extends ConsumerState<PosterImage> {
               ),
               //Desktop overlay
               if (AdaptiveLayout.of(context).inputDevice != InputDevice.touch &&
-                  widget.poster.type != FladderItemType.person)
+                  widget.poster.type != HessflixItemType.person)
                 AnimatedOpacity(
                   opacity: hover ? 1 : 0,
                   duration: const Duration(milliseconds: 125),
@@ -215,7 +215,7 @@ class _PosterImageState extends ConsumerState<PosterImage> {
                           decoration: BoxDecoration(
                         color: Colors.black.withValues(alpha: 0.55),
                         border: Border.all(width: 3, color: Theme.of(context).colorScheme.primary),
-                        borderRadius: FladderTheme.defaultShape.borderRadius,
+                        borderRadius: HessflixTheme.defaultShape.borderRadius,
                       )),
                       //Poster Button
                       Focus(
@@ -381,7 +381,7 @@ class _PosterImageState extends ConsumerState<PosterImage> {
                 ),
               if (widget.poster.overview.runTime != null &&
                   ((widget.poster is PhotoModel) &&
-                      (widget.poster as PhotoModel).internalType == FladderItemType.video)) ...{
+                      (widget.poster as PhotoModel).internalType == HessflixItemType.video)) ...{
                 Align(
                   alignment: Alignment.topRight,
                   child: Padding(

@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/screens/library/tabs/favourites_tab.dart';
-import 'package:fladder/screens/library/tabs/library_tab.dart';
-import 'package:fladder/screens/library/tabs/timeline_tab.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/screens/library/tabs/favourites_tab.dart';
+import 'package:hessflix/screens/library/tabs/library_tab.dart';
+import 'package:hessflix/screens/library/tabs/timeline_tab.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fladder/models/view_model.dart';
-import 'package:fladder/screens/library/tabs/recommendations_tab.dart';
+import 'package:hessflix/models/view_model.dart';
+import 'package:hessflix/screens/library/tabs/recommendations_tab.dart';
 
 class LibraryTabs {
   final String name;

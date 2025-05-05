@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/util/input_handler.dart';
-import 'package:fladder/util/list_padding.dart';
+import 'package:hessflix/screens/shared/animated_fade_size.dart';
+import 'package:hessflix/util/input_handler.dart';
+import 'package:hessflix/util/list_padding.dart';
 
 class PassCodeInput extends ConsumerStatefulWidget {
   final ValueChanged<String> passCode;

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/screens/shared/media/components/poster_image.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/item_base_model/item_base_model_extensions.dart';
-import 'package:fladder/util/item_base_model/play_item_helpers.dart';
-import 'package:fladder/widgets/shared/clickable_text.dart';
-import 'package:fladder/widgets/shared/item_actions.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/screens/shared/media/components/poster_image.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/item_base_model/item_base_model_extensions.dart';
+import 'package:hessflix/util/item_base_model/play_item_helpers.dart';
+import 'package:hessflix/widgets/shared/clickable_text.dart';
+import 'package:hessflix/widgets/shared/item_actions.dart';
 
 class PosterWidget extends ConsumerWidget {
   final ItemBaseModel poster;

@@ -18,6 +18,27 @@ final class _$JellyfinOpenApi extends JellyfinOpenApi {
   final Type definitionType = JellyfinOpenApi;
 
   @override
+  Future<Response<Object>> _oauth2TokenPost(
+      {required Map<String, String> body}) {
+    final Uri $url = Uri.parse('/oauth2/token');
+    final Map<String, String> $headers = {
+      'content-type': 'application/x-www-form-urlencoded',
+    };
+    final $body = body;
+    final Request $request = Request(
+      'POST',
+      $url,
+      client.baseUrl,
+      body: $body,
+      headers: $headers,
+    );
+    return client.send<Object, Object>(
+      $request,
+      requestConverter: FormUrlEncodedConverter.requestFactory,
+    );
+  }
+
+  @override
   Future<Response<ActivityLogEntryQueryResult>> _systemActivityLogEntriesGet({
     int? startIndex,
     int? limit,

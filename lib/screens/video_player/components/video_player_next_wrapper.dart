@@ -5,25 +5,25 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:screen_brightness/screen_brightness.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/movie_model.dart';
-import 'package:fladder/models/media_playback_model.dart';
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/models/settings/video_player_settings.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/screens/shared/default_title_bar.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/floating_player_bar.dart';
-import 'package:fladder/widgets/shared/full_screen_button.dart'
-    if (dart.library.html) 'package:fladder/widgets/shared/full_screen_button_web.dart';
-import 'package:fladder/widgets/shared/progress_floating_button.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/movie_model.dart';
+import 'package:hessflix/models/media_playback_model.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/models/settings/video_player_settings.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/screens/shared/animated_fade_size.dart';
+import 'package:hessflix/screens/shared/default_title_bar.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/floating_player_bar.dart';
+import 'package:hessflix/widgets/shared/full_screen_button.dart'
+    if (dart.library.html) 'package:hessflix/widgets/shared/full_screen_button_web.dart';
+import 'package:hessflix/widgets/shared/progress_floating_button.dart';
 
 class VideoPlayerNextWrapper extends ConsumerStatefulWidget {
   final Widget video;
@@ -370,7 +370,7 @@ class _NextUpInformation extends StatelessWidget {
                     child: AspectRatio(
                       aspectRatio: 0.67,
                       child: Card(
-                        child: FladderImage(
+                        child: HessflixImage(
                           image: item.images?.primary,
                         ),
                       ),
@@ -419,7 +419,7 @@ class _NextUpInformation extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 2.1,
                 child: Card(
-                  child: FladderImage(
+                  child: HessflixImage(
                     image: item.images?.primary,
                   ),
                 ),

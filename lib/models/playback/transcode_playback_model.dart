@@ -3,18 +3,18 @@ import 'package:flutter/widgets.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/chapters_model.dart';
-import 'package:fladder/models/items/media_segments_model.dart';
-import 'package:fladder/models/items/media_streams_model.dart';
-import 'package:fladder/models/items/trick_play_model.dart';
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/util/bitrate_helper.dart';
-import 'package:fladder/util/duration_extensions.dart';
-import 'package:fladder/wrappers/media_control_wrapper.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/chapters_model.dart';
+import 'package:hessflix/models/items/media_segments_model.dart';
+import 'package:hessflix/models/items/media_streams_model.dart';
+import 'package:hessflix/models/items/trick_play_model.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/providers/api_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/util/bitrate_helper.dart';
+import 'package:hessflix/util/duration_extensions.dart';
+import 'package:hessflix/wrappers/media_control_wrapper.dart';
 
 class TranscodePlaybackModel extends PlaybackModel {
   TranscodePlaybackModel({

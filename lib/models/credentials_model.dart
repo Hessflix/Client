@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:xid/xid.dart';
 
-import 'package:fladder/util/application_info.dart';
+import 'package:hessflix/util/application_info.dart';
 
 class CredentialsModel {
   final String token;

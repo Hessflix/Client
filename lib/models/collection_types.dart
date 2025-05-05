@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:iconsax_plus/iconsax_plus.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/item_base_model.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/item_base_model.dart';
 
 extension CollectionTypeExtension on CollectionType {
   IconData get iconOutlined {
@@ -15,14 +15,14 @@ extension CollectionTypeExtension on CollectionType {
     return getIconType(false);
   }
 
-  Set<FladderItemType> get itemKinds {
+  Set<HessflixItemType> get itemKinds {
     switch (this) {
       case CollectionType.movies:
-        return {FladderItemType.movie};
+        return {HessflixItemType.movie};
       case CollectionType.tvshows:
-        return {FladderItemType.series};
+        return {HessflixItemType.series};
       case CollectionType.homevideos:
-        return {FladderItemType.photoAlbum, FladderItemType.folder, FladderItemType.photo, FladderItemType.video};
+        return {HessflixItemType.photoAlbum, HessflixItemType.folder, HessflixItemType.photo, HessflixItemType.video};
       default:
         return {};
     }

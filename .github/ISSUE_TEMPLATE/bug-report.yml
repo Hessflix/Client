@@ -61,5 +61,5 @@ body:
   - type: input
     attributes:
       label: App Version
-      description: What version of Fladder are you using?
+      description: What version of Hessflix are you using?
       placeholder: e.g. v0.2.1 (25) or just v0.2.1

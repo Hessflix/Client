@@ -9,29 +9,29 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i16;
-import 'package:fladder/models/item_base_model.dart' as _i17;
-import 'package:fladder/models/items/photos_model.dart' as _i20;
-import 'package:fladder/models/library_search/library_search_options.dart'
-    as _i19;
-import 'package:fladder/routes/nested_details_screen.dart' as _i4;
-import 'package:fladder/screens/dashboard/dashboard_screen.dart' as _i3;
-import 'package:fladder/screens/favourites/favourites_screen.dart' as _i5;
-import 'package:fladder/screens/home_screen.dart' as _i6;
-import 'package:fladder/screens/library_search/library_search_screen.dart'
-    as _i7;
-import 'package:fladder/screens/login/lock_screen.dart' as _i8;
-import 'package:fladder/screens/login/login_screen.dart' as _i9;
-import 'package:fladder/screens/settings/about_settings_page.dart' as _i1;
-import 'package:fladder/screens/settings/client_settings_page.dart' as _i2;
-import 'package:fladder/screens/settings/player_settings_page.dart' as _i10;
-import 'package:fladder/screens/settings/security_settings_page.dart' as _i11;
-import 'package:fladder/screens/settings/settings_screen.dart' as _i12;
-import 'package:fladder/screens/settings/settings_selection_screen.dart'
-    as _i13;
-import 'package:fladder/screens/splash_screen.dart' as _i14;
-import 'package:fladder/screens/syncing/synced_screen.dart' as _i15;
 import 'package:flutter/foundation.dart' as _i18;
 import 'package:flutter/material.dart' as _i21;
+import 'package:hessflix/models/item_base_model.dart' as _i17;
+import 'package:hessflix/models/items/photos_model.dart' as _i20;
+import 'package:hessflix/models/library_search/library_search_options.dart'
+    as _i19;
+import 'package:hessflix/routes/nested_details_screen.dart' as _i4;
+import 'package:hessflix/screens/dashboard/dashboard_screen.dart' as _i3;
+import 'package:hessflix/screens/favourites/favourites_screen.dart' as _i5;
+import 'package:hessflix/screens/home_screen.dart' as _i6;
+import 'package:hessflix/screens/library_search/library_search_screen.dart'
+    as _i7;
+import 'package:hessflix/screens/login/lock_screen.dart' as _i8;
+import 'package:hessflix/screens/login/login_screen.dart' as _i9;
+import 'package:hessflix/screens/settings/about_settings_page.dart' as _i1;
+import 'package:hessflix/screens/settings/client_settings_page.dart' as _i2;
+import 'package:hessflix/screens/settings/player_settings_page.dart' as _i10;
+import 'package:hessflix/screens/settings/security_settings_page.dart' as _i11;
+import 'package:hessflix/screens/settings/settings_screen.dart' as _i12;
+import 'package:hessflix/screens/settings/settings_selection_screen.dart'
+    as _i13;
+import 'package:hessflix/screens/splash_screen.dart' as _i14;
+import 'package:hessflix/screens/syncing/synced_screen.dart' as _i15;
 
 /// generated route for
 /// [_i1.AboutSettingsPage]

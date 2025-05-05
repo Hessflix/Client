@@ -5,17 +5,17 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'package:fladder/models/media_playback_model.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/screens/video_player/video_player.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/duration_extensions.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/refresh_state.dart';
+import 'package:hessflix/models/media_playback_model.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/screens/video_player/video_player.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/duration_extensions.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/refresh_state.dart';
 
 const videoPlayerHeroTag = "HeroPlayer";
 
@@ -72,7 +72,7 @@ class _CurrentlyPlayingBarState extends ConsumerState<FloatingPlayerBar> {
       direction: DismissDirection.vertical,
       child: InkWell(
         onLongPress: () {
-          fladderSnackbar(context, title: "Swipe up/down to open/close the player");
+          hessflixSnackbar(context, title: "Swipe up/down to open/close the player");
         },
         child: Card(
           elevation: 5,

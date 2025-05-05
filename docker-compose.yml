@@ -1,7 +1,7 @@
 services:
-  fladder:
-    image: ghcr.io/donutware/fladder:latest
+  hessflix:
+    image: ghcr.io/donutware/hessflix:latest
     ports:
       - 80:80
     environment:
-      - BASE_URL=https://server-url #OPTIONAL: Locks the Fladder front-end to a certain jellyfin server
+      - BASE_URL=https://server-url #OPTIONAL: Locks the Hessflix front-end to a certain jellyfin server

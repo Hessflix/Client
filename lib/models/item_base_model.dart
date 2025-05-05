@@ -5,31 +5,31 @@ import 'package:dart_mappable/dart_mappable.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.enums.swagger.dart';
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart' as dto;
-import 'package:fladder/models/book_model.dart';
-import 'package:fladder/models/boxset_model.dart';
-import 'package:fladder/models/items/episode_model.dart';
-import 'package:fladder/models/items/folder_model.dart';
-import 'package:fladder/models/items/images_models.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/items/media_streams_model.dart';
-import 'package:fladder/models/items/movie_model.dart';
-import 'package:fladder/models/items/overview_model.dart';
-import 'package:fladder/models/items/person_model.dart';
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/models/items/season_model.dart';
-import 'package:fladder/models/items/series_model.dart';
-import 'package:fladder/models/library_search/library_search_options.dart';
-import 'package:fladder/models/playlist_model.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/screens/details_screens/book_detail_screen.dart';
-import 'package:fladder/screens/details_screens/details_screens.dart';
-import 'package:fladder/screens/details_screens/episode_detail_screen.dart';
-import 'package:fladder/screens/details_screens/season_detail_screen.dart';
-import 'package:fladder/screens/library_search/library_search_screen.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/string_extensions.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.enums.swagger.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart' as dto;
+import 'package:hessflix/models/book_model.dart';
+import 'package:hessflix/models/boxset_model.dart';
+import 'package:hessflix/models/items/episode_model.dart';
+import 'package:hessflix/models/items/folder_model.dart';
+import 'package:hessflix/models/items/images_models.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/items/media_streams_model.dart';
+import 'package:hessflix/models/items/movie_model.dart';
+import 'package:hessflix/models/items/overview_model.dart';
+import 'package:hessflix/models/items/person_model.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/models/items/season_model.dart';
+import 'package:hessflix/models/items/series_model.dart';
+import 'package:hessflix/models/library_search/library_search_options.dart';
+import 'package:hessflix/models/playlist_model.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/screens/details_screens/book_detail_screen.dart';
+import 'package:hessflix/screens/details_screens/details_screens.dart';
+import 'package:hessflix/screens/details_screens/episode_detail_screen.dart';
+import 'package:hessflix/screens/details_screens/season_detail_screen.dart';
+import 'package:hessflix/screens/library_search/library_search_screen.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/string_extensions.dart';
 
 part 'item_base_model.mapper.dart';
 
@@ -206,17 +206,17 @@ class ItemBaseModel with ItemBaseModelMappable {
     );
   }
 
-  FladderItemType get type => switch (this) {
-        MovieModel _ => FladderItemType.movie,
-        SeriesModel _ => FladderItemType.series,
-        SeasonModel _ => FladderItemType.season,
-        PhotoAlbumModel _ => FladderItemType.photoAlbum,
+  HessflixItemType get type => switch (this) {
+        MovieModel _ => HessflixItemType.movie,
+        SeriesModel _ => HessflixItemType.series,
+        SeasonModel _ => HessflixItemType.season,
+        PhotoAlbumModel _ => HessflixItemType.photoAlbum,
         PhotoModel model => model.internalType,
-        EpisodeModel _ => FladderItemType.episode,
-        BookModel _ => FladderItemType.book,
-        PlaylistModel _ => FladderItemType.playlist,
-        FolderModel _ => FladderItemType.folder,
-        ItemBaseModel _ => FladderItemType.baseType,
+        EpisodeModel _ => HessflixItemType.episode,
+        BookModel _ => HessflixItemType.book,
+        PlaylistModel _ => HessflixItemType.playlist,
+        FolderModel _ => HessflixItemType.folder,
+        ItemBaseModel _ => HessflixItemType.baseType,
       };
 
   @override
@@ -232,7 +232,7 @@ class ItemBaseModel with ItemBaseModelMappable {
 }
 
 // Currently supported types
-enum FladderItemType {
+enum HessflixItemType {
   baseType(
     icon: IconsaxPlusLinear.folder_2,
     selectedicon: IconsaxPlusBold.folder_2,
@@ -302,61 +302,61 @@ enum FladderItemType {
     selectedicon: IconsaxPlusBold.book,
   );
 
-  const FladderItemType({required this.icon, required this.selectedicon});
+  const HessflixItemType({required this.icon, required this.selectedicon});
 
-  static Set<FladderItemType> get playable => {
-        FladderItemType.series,
-        FladderItemType.episode,
-        FladderItemType.season,
-        FladderItemType.movie,
-        FladderItemType.musicVideo,
+  static Set<HessflixItemType> get playable => {
+        HessflixItemType.series,
+        HessflixItemType.episode,
+        HessflixItemType.season,
+        HessflixItemType.movie,
+        HessflixItemType.musicVideo,
       };
 
-  static Set<FladderItemType> get galleryItem => {
-        FladderItemType.photo,
-        FladderItemType.video,
+  static Set<HessflixItemType> get galleryItem => {
+        HessflixItemType.photo,
+        HessflixItemType.video,
       };
 
   String label(BuildContext context) {
     return switch (this) {
-      FladderItemType.baseType => context.localized.mediaTypeBase,
-      FladderItemType.audio => context.localized.audio,
-      FladderItemType.collectionFolder => context.localized.collectionFolder,
-      FladderItemType.musicAlbum => context.localized.musicAlbum,
-      FladderItemType.musicVideo => context.localized.video,
-      FladderItemType.video => context.localized.video,
-      FladderItemType.movie => context.localized.mediaTypeMovie,
-      FladderItemType.series => context.localized.mediaTypeSeries,
-      FladderItemType.season => context.localized.mediaTypeSeason,
-      FladderItemType.episode => context.localized.mediaTypeEpisode,
-      FladderItemType.photo => context.localized.mediaTypePhoto,
-      FladderItemType.person => context.localized.mediaTypePerson,
-      FladderItemType.photoAlbum => context.localized.mediaTypePhotoAlbum,
-      FladderItemType.folder => context.localized.mediaTypeFolder,
-      FladderItemType.boxset => context.localized.mediaTypeBoxset,
-      FladderItemType.playlist => context.localized.mediaTypePlaylist,
-      FladderItemType.book => context.localized.mediaTypeBook,
+      HessflixItemType.baseType => context.localized.mediaTypeBase,
+      HessflixItemType.audio => context.localized.audio,
+      HessflixItemType.collectionFolder => context.localized.collectionFolder,
+      HessflixItemType.musicAlbum => context.localized.musicAlbum,
+      HessflixItemType.musicVideo => context.localized.video,
+      HessflixItemType.video => context.localized.video,
+      HessflixItemType.movie => context.localized.mediaTypeMovie,
+      HessflixItemType.series => context.localized.mediaTypeSeries,
+      HessflixItemType.season => context.localized.mediaTypeSeason,
+      HessflixItemType.episode => context.localized.mediaTypeEpisode,
+      HessflixItemType.photo => context.localized.mediaTypePhoto,
+      HessflixItemType.person => context.localized.mediaTypePerson,
+      HessflixItemType.photoAlbum => context.localized.mediaTypePhotoAlbum,
+      HessflixItemType.folder => context.localized.mediaTypeFolder,
+      HessflixItemType.boxset => context.localized.mediaTypeBoxset,
+      HessflixItemType.playlist => context.localized.mediaTypePlaylist,
+      HessflixItemType.book => context.localized.mediaTypeBook,
     };
   }
 
   BaseItemKind get dtoKind => switch (this) {
-        FladderItemType.baseType => BaseItemKind.userrootfolder,
-        FladderItemType.audio => BaseItemKind.audio,
-        FladderItemType.collectionFolder => BaseItemKind.collectionfolder,
-        FladderItemType.musicAlbum => BaseItemKind.musicalbum,
-        FladderItemType.musicVideo => BaseItemKind.video,
-        FladderItemType.video => BaseItemKind.video,
-        FladderItemType.movie => BaseItemKind.movie,
-        FladderItemType.series => BaseItemKind.series,
-        FladderItemType.season => BaseItemKind.season,
-        FladderItemType.episode => BaseItemKind.episode,
-        FladderItemType.photo => BaseItemKind.photo,
-        FladderItemType.person => BaseItemKind.person,
-        FladderItemType.photoAlbum => BaseItemKind.photoalbum,
-        FladderItemType.folder => BaseItemKind.folder,
-        FladderItemType.boxset => BaseItemKind.boxset,
-        FladderItemType.playlist => BaseItemKind.playlist,
-        FladderItemType.book => BaseItemKind.book,
+        HessflixItemType.baseType => BaseItemKind.userrootfolder,
+        HessflixItemType.audio => BaseItemKind.audio,
+        HessflixItemType.collectionFolder => BaseItemKind.collectionfolder,
+        HessflixItemType.musicAlbum => BaseItemKind.musicalbum,
+        HessflixItemType.musicVideo => BaseItemKind.video,
+        HessflixItemType.video => BaseItemKind.video,
+        HessflixItemType.movie => BaseItemKind.movie,
+        HessflixItemType.series => BaseItemKind.series,
+        HessflixItemType.season => BaseItemKind.season,
+        HessflixItemType.episode => BaseItemKind.episode,
+        HessflixItemType.photo => BaseItemKind.photo,
+        HessflixItemType.person => BaseItemKind.person,
+        HessflixItemType.photoAlbum => BaseItemKind.photoalbum,
+        HessflixItemType.folder => BaseItemKind.folder,
+        HessflixItemType.boxset => BaseItemKind.boxset,
+        HessflixItemType.playlist => BaseItemKind.playlist,
+        HessflixItemType.book => BaseItemKind.book,
       };
 
   final IconData icon;

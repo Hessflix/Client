@@ -7,25 +7,25 @@ import 'package:auto_route/auto_route.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/items/media_segments_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/models/settings/video_player_settings.dart';
-import 'package:fladder/providers/connectivity_provider.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/screens/settings/settings_list_tile.dart';
-import 'package:fladder/screens/settings/settings_scaffold.dart';
-import 'package:fladder/screens/settings/widgets/settings_label_divider.dart';
-import 'package:fladder/screens/settings/widgets/settings_message_box.dart';
-import 'package:fladder/screens/settings/widgets/subtitle_editor.dart';
-import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/screens/shared/input_fields.dart';
-import 'package:fladder/screens/video_player/components/video_player_options_sheet.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/bitrate_helper.dart';
-import 'package:fladder/util/box_fit_extension.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/option_dialogue.dart';
-import 'package:fladder/widgets/shared/enum_selection.dart';
+import 'package:hessflix/models/items/media_segments_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/models/settings/video_player_settings.dart';
+import 'package:hessflix/providers/connectivity_provider.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/screens/settings/settings_list_tile.dart';
+import 'package:hessflix/screens/settings/settings_scaffold.dart';
+import 'package:hessflix/screens/settings/widgets/settings_label_divider.dart';
+import 'package:hessflix/screens/settings/widgets/settings_message_box.dart';
+import 'package:hessflix/screens/settings/widgets/subtitle_editor.dart';
+import 'package:hessflix/screens/shared/animated_fade_size.dart';
+import 'package:hessflix/screens/shared/input_fields.dart';
+import 'package:hessflix/screens/video_player/components/video_player_options_sheet.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/bitrate_helper.dart';
+import 'package:hessflix/util/box_fit_extension.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/option_dialogue.dart';
+import 'package:hessflix/widgets/shared/enum_selection.dart';
 
 @RoutePage()
 class PlayerSettingsPage extends ConsumerStatefulWidget {

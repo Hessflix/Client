@@ -4,17 +4,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/auth_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/routes/auto_router.gr.dart';
-import 'package:fladder/screens/settings/quick_connect_window.dart';
-import 'package:fladder/screens/settings/settings_list_tile.dart';
-import 'package:fladder/screens/settings/settings_scaffold.dart';
-import 'package:fladder/screens/shared/fladder_icon.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/theme_extensions.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/auth_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/routes/auto_router.gr.dart';
+import 'package:hessflix/screens/settings/quick_connect_window.dart';
+import 'package:hessflix/screens/settings/settings_list_tile.dart';
+import 'package:hessflix/screens/settings/settings_scaffold.dart';
+import 'package:hessflix/screens/shared/hessflix_icon.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/theme_extensions.dart';
 
 @RoutePage()
 class SettingsScreen extends ConsumerStatefulWidget {
@@ -134,11 +134,11 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
           SettingsListTile(
             label: Text(context.localized.about),
-            subLabel: const Text("Fladder"),
+            subLabel: const Text("Hessflix"),
             selected: containsRoute(const AboutSettingsRoute()),
             suffix: Opacity(
               opacity: 1,
-              child: FladderIconOutlined(
+              child: HessflixIconOutlined(
                 size: 24,
                 color: context.colors.onSurfaceVariant,
               ),

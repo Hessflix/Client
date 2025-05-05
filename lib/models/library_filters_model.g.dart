@@ -24,7 +24,8 @@ _$LibraryFiltersModelImpl _$$LibraryFiltersModelImplFromJson(
       ),
       officialRatings: Map<String, bool>.from(json['officialRatings'] as Map),
       types: (json['types'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry($enumDecode(_$FladderItemTypeEnumMap, k), e as bool),
+        (k, e) =>
+            MapEntry($enumDecode(_$HessflixItemTypeEnumMap, k), e as bool),
       ),
       sortingOption:
           $enumDecode(_$SortingOptionsEnumMap, json['sortingOption']),
@@ -50,7 +51,7 @@ Map<String, dynamic> _$$LibraryFiltersModelImplToJson(
       'years': instance.years.map((k, e) => MapEntry(k.toString(), e)),
       'officialRatings': instance.officialRatings,
       'types': instance.types
-          .map((k, e) => MapEntry(_$FladderItemTypeEnumMap[k]!, e)),
+          .map((k, e) => MapEntry(_$HessflixItemTypeEnumMap[k]!, e)),
       'sortingOption': _$SortingOptionsEnumMap[instance.sortingOption]!,
       'sortOrder': _$SortingOrderEnumMap[instance.sortOrder]!,
       'favourites': instance.favourites,
@@ -72,24 +73,24 @@ const _$ItemFilterEnumMap = {
   ItemFilter.isfavoriteorlikes: 'IsFavoriteOrLikes',
 };
 
-const _$FladderItemTypeEnumMap = {
-  FladderItemType.baseType: 'baseType',
-  FladderItemType.audio: 'audio',
-  FladderItemType.musicAlbum: 'musicAlbum',
-  FladderItemType.musicVideo: 'musicVideo',
-  FladderItemType.collectionFolder: 'collectionFolder',
-  FladderItemType.video: 'video',
-  FladderItemType.movie: 'movie',
-  FladderItemType.series: 'series',
-  FladderItemType.season: 'season',
-  FladderItemType.episode: 'episode',
-  FladderItemType.photo: 'photo',
-  FladderItemType.person: 'person',
-  FladderItemType.photoAlbum: 'photoAlbum',
-  FladderItemType.folder: 'folder',
-  FladderItemType.boxset: 'boxset',
-  FladderItemType.playlist: 'playlist',
-  FladderItemType.book: 'book',
+const _$HessflixItemTypeEnumMap = {
+  HessflixItemType.baseType: 'baseType',
+  HessflixItemType.audio: 'audio',
+  HessflixItemType.musicAlbum: 'musicAlbum',
+  HessflixItemType.musicVideo: 'musicVideo',
+  HessflixItemType.collectionFolder: 'collectionFolder',
+  HessflixItemType.video: 'video',
+  HessflixItemType.movie: 'movie',
+  HessflixItemType.series: 'series',
+  HessflixItemType.season: 'season',
+  HessflixItemType.episode: 'episode',
+  HessflixItemType.photo: 'photo',
+  HessflixItemType.person: 'person',
+  HessflixItemType.photoAlbum: 'photoAlbum',
+  HessflixItemType.folder: 'folder',
+  HessflixItemType.boxset: 'boxset',
+  HessflixItemType.playlist: 'playlist',
+  HessflixItemType.book: 'book',
 };
 
 const _$SortingOptionsEnumMap = {

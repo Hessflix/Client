@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fladder/screens/shared/flat_button.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
 
 class SettingsListTile extends StatelessWidget {
   final Widget label;

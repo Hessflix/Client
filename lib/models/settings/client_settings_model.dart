@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:fladder/util/custom_color_themes.dart';
+import 'package:hessflix/util/custom_color_themes.dart';
 
 part 'client_settings_model.freezed.dart';
 part 'client_settings_model.g.dart';

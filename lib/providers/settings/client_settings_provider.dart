@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/settings/client_settings_model.dart';
-import 'package:fladder/providers/shared_provider.dart';
-import 'package:fladder/util/custom_color_themes.dart';
-import 'package:fladder/util/debouncer.dart';
+import 'package:hessflix/models/settings/client_settings_model.dart';
+import 'package:hessflix/providers/shared_provider.dart';
+import 'package:hessflix/util/custom_color_themes.dart';
+import 'package:hessflix/util/debouncer.dart';
 
 final clientSettingsProvider = StateNotifierProvider<ClientSettingsNotifier, ClientSettingsModel>((ref) {
   return ClientSettingsNotifier(ref);

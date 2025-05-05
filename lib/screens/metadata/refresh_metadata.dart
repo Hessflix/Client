@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/enum_models.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/screens/settings/settings_list_tile.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/widgets/shared/enum_selection.dart';
+import 'package:hessflix/jellyfin/enum_models.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/screens/settings/settings_list_tile.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/widgets/shared/enum_selection.dart';
 
 Future<void> showRefreshPopup(BuildContext context, String itemId, String itemName) async {
   return showDialog(
@@ -109,9 +109,9 @@ class _RefreshPopupDialogState extends ConsumerState<RefreshPopupDialog> {
                                   replaceAllMetadata: replaceAllMetadata,
                                 );
                             if (!response.isSuccessful) {
-                              fladderSnackbarResponse(context, response);
+                              hessflixSnackbarResponse(context, response);
                             } else {
-                              fladderSnackbar(context, title: context.localized.scanningName(widget.name));
+                              hessflixSnackbar(context, title: context.localized.scanningName(widget.name));
                             }
                             Navigator.of(context).pop();
                           },

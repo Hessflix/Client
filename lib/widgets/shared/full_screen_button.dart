@@ -4,7 +4,7 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'package:fladder/providers/video_player_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
 
 Future<void> closeFullScreen() async {
   final isFullScreen = await windowManager.isFullScreen();

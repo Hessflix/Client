@@ -1,4 +1,4 @@
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart' as dto;
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart' as dto;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'item_properties_model.freezed.dart';

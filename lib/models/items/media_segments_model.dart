@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart' as dto;
-import 'package:fladder/util/localization_helper.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart' as dto;
+import 'package:hessflix/util/localization_helper.dart';
 
 part 'media_segments_model.freezed.dart';
 part 'media_segments_model.g.dart';

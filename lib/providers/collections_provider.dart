@@ -1,12 +1,12 @@
 import 'package:chopper/chopper.dart';
-import 'package:fladder/providers/service_provider.dart';
+import 'package:hessflix/providers/service_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/boxset_model.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/util/map_bool_helper.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/boxset_model.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/providers/api_provider.dart';
+import 'package:hessflix/util/map_bool_helper.dart';
 
 class _CollectionSetModel {
   final List<ItemBaseModel> items;

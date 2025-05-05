@@ -7,28 +7,28 @@ import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:page_transition/page_transition.dart';
 
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/collection_types.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/folder_model.dart';
-import 'package:fladder/models/items/item_shared_models.dart';
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/models/library_filters_model.dart';
-import 'package:fladder/models/library_search/library_search_model.dart';
-import 'package:fladder/models/library_search/library_search_options.dart';
-import 'package:fladder/models/playlist_model.dart';
-import 'package:fladder/models/view_model.dart';
-import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/providers/library_filters_provider.dart';
-import 'package:fladder/providers/service_provider.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/screens/photo_viewer/photo_viewer_screen.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/util/item_base_model/play_item_helpers.dart';
-import 'package:fladder/util/list_extensions.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/map_bool_helper.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/collection_types.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/folder_model.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/models/library_filters_model.dart';
+import 'package:hessflix/models/library_search/library_search_model.dart';
+import 'package:hessflix/models/library_search/library_search_options.dart';
+import 'package:hessflix/models/playlist_model.dart';
+import 'package:hessflix/models/view_model.dart';
+import 'package:hessflix/providers/api_provider.dart';
+import 'package:hessflix/providers/library_filters_provider.dart';
+import 'package:hessflix/providers/service_provider.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/screens/photo_viewer/photo_viewer_screen.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/util/item_base_model/play_item_helpers.dart';
+import 'package:hessflix/util/list_extensions.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/map_bool_helper.dart';
 
 final librarySearchProvider =
     StateNotifierProvider.family.autoDispose<LibrarySearchNotifier, LibrarySearchModel, Key>((ref, id) {
@@ -341,7 +341,7 @@ class LibrarySearchNotifier extends StateNotifier<LibrarySearchModel> {
 
   void toggleFavourite() => state = state.copyWith(favourites: !state.favourites);
   void toggleRecursive() => state = state.copyWith(recursive: !state.recursive);
-  void toggleType(FladderItemType type) => state = state.copyWith(types: state.types.toggleKey(type));
+  void toggleType(HessflixItemType type) => state = state.copyWith(types: state.types.toggleKey(type));
   void toggleView(ViewModel view) => state = state.copyWith(views: state.views.toggleKey(view));
   void toggleGenre(String genre) => state = state.copyWith(genres: state.genres.toggleKey(genre));
   void toggleStudio(Studio studio) => state = state.copyWith(studios: state.studios.toggleKey(studio));
@@ -359,7 +359,7 @@ class LibrarySearchNotifier extends StateNotifier<LibrarySearchModel> {
   void setGenres(Map<String, bool> genres) => state = state.copyWith(genres: genres);
   void setStudios(Map<Studio, bool> studios) => state = state.copyWith(studios: studios);
   void setTags(Map<String, bool> tags) => state = state.copyWith(tags: tags);
-  void setTypes(Map<FladderItemType, bool> types) => state = state.copyWith(types: types);
+  void setTypes(Map<HessflixItemType, bool> types) => state = state.copyWith(types: types);
   void setRatings(Map<String, bool> officialRatings) => state = state.copyWith(officialRatings: officialRatings);
   void setYears(Map<int, bool> years) => state = state.copyWith(years: years);
   void setFilters(Map<ItemFilter, bool> filters) => state = state.copyWith(filters: filters);
@@ -577,7 +577,7 @@ class LibrarySearchNotifier extends StateNotifier<LibrarySearchModel> {
     if (itemsToPlay.isNotEmpty) {
       await itemsToPlay.playLibraryItems(context, ref);
     } else {
-      fladderSnackbar(context, title: context.localized.libraryFetchNoItemsFound);
+      hessflixSnackbar(context, title: context.localized.libraryFetchNoItemsFound);
     }
   }
 
@@ -593,7 +593,7 @@ class LibrarySearchNotifier extends StateNotifier<LibrarySearchModel> {
 
       List<PhotoModel> albumItems = [];
 
-      if (!state.types.included.containsAny([FladderItemType.video, FladderItemType.photo]) && state.recursive) {
+      if (!state.types.included.containsAny([HessflixItemType.video, HessflixItemType.photo]) && state.recursive) {
         for (var album in itemsToPlay.where(
           (element) => element is PhotoAlbumModel || element is FolderModel,
         )) {
@@ -658,7 +658,7 @@ class LibrarySearchNotifier extends StateNotifier<LibrarySearchModel> {
         );
       }
     } else {
-      fladderSnackbar(context, title: context.localized.libraryFetchNoItemsFound);
+      hessflixSnackbar(context, title: context.localized.libraryFetchNoItemsFound);
     }
     state = state.copyWith(fetchingItems: false);
   }

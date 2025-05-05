@@ -6,49 +6,49 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
-import 'package:fladder/models/boxset_model.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/models/library_search/library_search_model.dart';
-import 'package:fladder/models/library_search/library_search_options.dart';
-import 'package:fladder/models/media_playback_model.dart';
-import 'package:fladder/models/playlist_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/library_search_provider.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/screens/collections/add_to_collection.dart';
-import 'package:fladder/screens/library_search/widgets/library_filter_chips.dart';
-import 'package:fladder/screens/library_search/widgets/library_play_options_.dart';
-import 'package:fladder/screens/library_search/widgets/library_saved_filters.dart';
-import 'package:fladder/screens/library_search/widgets/library_sort_dialogue.dart';
-import 'package:fladder/screens/library_search/widgets/library_views.dart';
-import 'package:fladder/screens/library_search/widgets/suggestion_search_bar.dart';
-import 'package:fladder/screens/playlists/add_to_playlists.dart';
-import 'package:fladder/screens/shared/animated_fade_size.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/screens/shared/nested_bottom_appbar.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/debouncer.dart';
-import 'package:fladder/util/fab_extended_anim.dart';
-import 'package:fladder/util/item_base_model/item_base_model_extensions.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/map_bool_helper.dart';
-import 'package:fladder/util/refresh_state.dart';
-import 'package:fladder/util/router_extension.dart';
-import 'package:fladder/util/sliver_list_padding.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/floating_player_bar.dart';
-import 'package:fladder/widgets/navigation_scaffold/components/settings_user_icon.dart';
-import 'package:fladder/widgets/shared/fladder_scrollbar.dart';
-import 'package:fladder/widgets/shared/hide_on_scroll.dart';
-import 'package:fladder/widgets/shared/item_actions.dart';
-import 'package:fladder/widgets/shared/modal_bottom_sheet.dart';
-import 'package:fladder/widgets/shared/pinch_poster_zoom.dart';
-import 'package:fladder/widgets/shared/poster_size_slider.dart';
-import 'package:fladder/widgets/shared/pull_to_refresh.dart';
-import 'package:fladder/widgets/shared/scroll_position.dart';
-import 'package:fladder/widgets/shared/shapes.dart';
+import 'package:hessflix/models/boxset_model.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/models/library_search/library_search_model.dart';
+import 'package:hessflix/models/library_search/library_search_options.dart';
+import 'package:hessflix/models/media_playback_model.dart';
+import 'package:hessflix/models/playlist_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/library_search_provider.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/screens/collections/add_to_collection.dart';
+import 'package:hessflix/screens/library_search/widgets/library_filter_chips.dart';
+import 'package:hessflix/screens/library_search/widgets/library_play_options_.dart';
+import 'package:hessflix/screens/library_search/widgets/library_saved_filters.dart';
+import 'package:hessflix/screens/library_search/widgets/library_sort_dialogue.dart';
+import 'package:hessflix/screens/library_search/widgets/library_views.dart';
+import 'package:hessflix/screens/library_search/widgets/suggestion_search_bar.dart';
+import 'package:hessflix/screens/playlists/add_to_playlists.dart';
+import 'package:hessflix/screens/shared/animated_fade_size.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/screens/shared/nested_bottom_appbar.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/debouncer.dart';
+import 'package:hessflix/util/fab_extended_anim.dart';
+import 'package:hessflix/util/item_base_model/item_base_model_extensions.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/map_bool_helper.dart';
+import 'package:hessflix/util/refresh_state.dart';
+import 'package:hessflix/util/router_extension.dart';
+import 'package:hessflix/util/sliver_list_padding.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/floating_player_bar.dart';
+import 'package:hessflix/widgets/navigation_scaffold/components/settings_user_icon.dart';
+import 'package:hessflix/widgets/shared/hessflix_scrollbar.dart';
+import 'package:hessflix/widgets/shared/hide_on_scroll.dart';
+import 'package:hessflix/widgets/shared/item_actions.dart';
+import 'package:hessflix/widgets/shared/modal_bottom_sheet.dart';
+import 'package:hessflix/widgets/shared/pinch_poster_zoom.dart';
+import 'package:hessflix/widgets/shared/poster_size_slider.dart';
+import 'package:hessflix/widgets/shared/pull_to_refresh.dart';
+import 'package:hessflix/widgets/shared/scroll_position.dart';
+import 'package:hessflix/widgets/shared/shapes.dart';
 
 @RoutePage()
 class LibrarySearchScreen extends ConsumerStatefulWidget {
@@ -233,7 +233,7 @@ class _LibrarySearchScreenState extends ConsumerState<LibrarySearchScreen> {
                       borderRadius: AdaptiveLayout.viewSizeOf(context) == ViewSize.desktop
                           ? BorderRadius.circular(15)
                           : BorderRadius.circular(0),
-                      child: FladderScrollbar(
+                      child: HessflixScrollbar(
                         visible: AdaptiveLayout.of(context).inputDevice != InputDevice.pointer,
                         controller: scrollController,
                         child: PullToRefresh(

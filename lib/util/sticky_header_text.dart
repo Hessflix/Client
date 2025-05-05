@@ -1,5 +1,5 @@
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

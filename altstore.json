@@ -1,28 +1,28 @@
 {
 	"name": "DonutWare Repository",
-	"subtitle": "A source for Fladder and co.",
+	"subtitle": "A source for Hessflix and co.",
 	"iconURL": "https://avatars.githubusercontent.com/u/42371342",
 	"tintColor": "#3A2101",
 	"apps": [
 	  {
-	    "name": "Fladder",
-	    "bundleIdentifier": "nl.jknaapen.fladder",
+	    "name": "Hessflix",
+	    "bundleIdentifier": "tv.hessflix.client",
 	    "developerName": "DonutWare",
 	    "localizedDescription": "A Simple Jellyfin Frontend built on top of Flutter.",
-	    "iconURL": "https://github.com/DonutWare/Fladder/raw/develop/icons/fladder_macos_icon.png?raw=true",
+	    "iconURL": "https://github.com/DonutWare/Hessflix/raw/develop/icons/hessflix_macos_icon.png?raw=true",
 	    "category": "entertainment",
 	    "screenshots": [
 	      {
-	        "imageURL": "https://github.com/DonutWare/Fladder/blob/develop/assets/marketing/screenshots/Mobile/Dashboard.png?raw=true"
+	        "imageURL": "https://github.com/DonutWare/Hessflix/blob/develop/assets/marketing/screenshots/Mobile/Dashboard.png?raw=true"
 	      },
 	      {
-	        "imageURL": "https://github.com/DonutWare/Fladder/blob/develop/assets/marketing/screenshots/Mobile/Details.png?raw=true"
+	        "imageURL": "https://github.com/DonutWare/Hessflix/blob/develop/assets/marketing/screenshots/Mobile/Details.png?raw=true"
 	      },
 	      {
-	        "imageURL": "https://github.com/DonutWare/Fladder/blob/develop/assets/marketing/screenshots/Mobile/Sync.png?raw=true"
+	        "imageURL": "https://github.com/DonutWare/Hessflix/blob/develop/assets/marketing/screenshots/Mobile/Sync.png?raw=true"
 	      },
 	      {
-	        "imageURL": "https://github.com/DonutWare/Fladder/blob/develop/assets/marketing/screenshots/Mobile/Favourites.png?raw=true"
+	        "imageURL": "https://github.com/DonutWare/Hessflix/blob/develop/assets/marketing/screenshots/Mobile/Favourites.png?raw=true"
 	      }
 	    ],
 	    "versions": [
@@ -31,7 +31,7 @@
 				"buildVersion": "56",
 				"date": "2024-10-18",
 				"size": 29129014,
-				"downloadURL": "https://github.com/DonutWare/Fladder/releases/download/v0.2.6/fladder-iOS-0.2.6.ipa",
+				"downloadURL": "https://github.com/DonutWare/Hessflix/releases/download/v0.2.6/hessflix-iOS-0.2.6.ipa",
 				"minOSVersion": "13"
 			},
 			{
@@ -39,7 +39,7 @@
 				"buildVersion": "52",
 				"date": "2024-10-16",
 				"size": 28835840,
-				"downloadURL": "https://github.com/DonutWare/Fladder/releases/download/v0.2.5/fladder-iOS-0.2.5.ipa",
+				"downloadURL": "https://github.com/DonutWare/Hessflix/releases/download/v0.2.5/hessflix-iOS-0.2.5.ipa",
 				"minOSVersion": "13"
 			}
 	    ]

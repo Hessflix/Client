@@ -10,20 +10,20 @@ import 'package:square_progress_indicator/square_progress_indicator.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/providers/settings/photo_view_settings_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/screens/shared/input_fields.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/input_handler.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/throttler.dart';
-import 'package:fladder/widgets/shared/elevated_icon.dart';
-import 'package:fladder/widgets/shared/full_screen_button.dart'
-    if (dart.library.html) 'package:fladder/widgets/shared/full_screen_button_web.dart';
-import 'package:fladder/widgets/shared/progress_floating_button.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/providers/settings/photo_view_settings_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/screens/shared/input_fields.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/input_handler.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/throttler.dart';
+import 'package:hessflix/widgets/shared/elevated_icon.dart';
+import 'package:hessflix/widgets/shared/full_screen_button.dart'
+    if (dart.library.html) 'package:hessflix/widgets/shared/full_screen_button_web.dart';
+import 'package:hessflix/widgets/shared/progress_floating_button.dart';
 
 class PhotoViewerControls extends ConsumerStatefulWidget {
   final EdgeInsets padding;

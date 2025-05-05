@@ -1,4 +1,4 @@
-import 'package:fladder/models/items/item_shared_models.dart';
+import 'package:hessflix/models/items/item_shared_models.dart';
 
 extension StringExtensions on String {
   String capitalize() {

@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/providers/playlist_provider.dart';
-import 'package:fladder/screens/shared/adaptive_dialog.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/screens/shared/outlined_text_field.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/widgets/shared/alert_content.dart';
-import 'package:fladder/widgets/shared/modal_bottom_sheet.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/providers/playlist_provider.dart';
+import 'package:hessflix/screens/shared/adaptive_dialog.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/screens/shared/outlined_text_field.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/widgets/shared/alert_content.dart';
+import 'package:hessflix/widgets/shared/modal_bottom_sheet.dart';
 
 Future<void> addItemToPlaylist(BuildContext context, List<ItemBaseModel> item) {
   return showDialogAdaptive(context: context, builder: (context) => AddToPlaylist(items: item));
@@ -81,7 +81,7 @@ class _AddToPlaylistState extends ConsumerState<AddToPlaylist> {
                                 name: controller.text,
                               );
                           if (context.mounted) {
-                            fladderSnackbar(context,
+                            hessflixSnackbar(context,
                                 title: response.isSuccessful
                                     ? context.localized.addedToPlaylist(controller.text)
                                     : '${context.localized.somethingWentWrong} - (${response.statusCode}) - ${response.base.reasonPhrase}');
@@ -119,7 +119,7 @@ class _AddToPlaylistState extends ConsumerState<AddToPlaylist> {
                                 onPressed: () async {
                                   final response = await ref.read(provider.notifier).addToPlaylist(playlist: e.key);
                                   if (context.mounted) {
-                                    fladderSnackbar(context,
+                                    hessflixSnackbar(context,
                                         title: response.isSuccessful
                                             ? context.localized.addedToPlaylist(controller.text)
                                             : '${context.localized.somethingWentWrong} - (${response.statusCode}) - ${response.base.reasonPhrase}');

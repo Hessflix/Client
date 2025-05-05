@@ -4,29 +4,29 @@ import 'package:auto_route/auto_route.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/items/episode_details_provider.dart';
-import 'package:fladder/providers/user_provider.dart';
-import 'package:fladder/screens/details_screens/components/media_stream_information.dart';
-import 'package:fladder/screens/details_screens/components/overview_header.dart';
-import 'package:fladder/screens/shared/detail_scaffold.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/screens/shared/media/chapter_row.dart';
-import 'package:fladder/screens/shared/media/components/media_play_button.dart';
-import 'package:fladder/screens/shared/media/episode_posters.dart';
-import 'package:fladder/screens/shared/media/expanding_overview.dart';
-import 'package:fladder/screens/shared/media/external_urls.dart';
-import 'package:fladder/screens/shared/media/people_row.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/item_base_model/item_base_model_extensions.dart';
-import 'package:fladder/util/item_base_model/play_item_helpers.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/people_extension.dart';
-import 'package:fladder/util/router_extension.dart';
-import 'package:fladder/util/widget_extensions.dart';
-import 'package:fladder/widgets/shared/selectable_icon_button.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/items/episode_details_provider.dart';
+import 'package:hessflix/providers/user_provider.dart';
+import 'package:hessflix/screens/details_screens/components/media_stream_information.dart';
+import 'package:hessflix/screens/details_screens/components/overview_header.dart';
+import 'package:hessflix/screens/shared/detail_scaffold.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/screens/shared/media/chapter_row.dart';
+import 'package:hessflix/screens/shared/media/components/media_play_button.dart';
+import 'package:hessflix/screens/shared/media/episode_posters.dart';
+import 'package:hessflix/screens/shared/media/expanding_overview.dart';
+import 'package:hessflix/screens/shared/media/external_urls.dart';
+import 'package:hessflix/screens/shared/media/people_row.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/item_base_model/item_base_model_extensions.dart';
+import 'package:hessflix/util/item_base_model/play_item_helpers.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/people_extension.dart';
+import 'package:hessflix/util/router_extension.dart';
+import 'package:hessflix/util/widget_extensions.dart';
+import 'package:hessflix/widgets/shared/selectable_icon_button.dart';
 
 class EpisodeDetailScreen extends ConsumerStatefulWidget {
   final ItemBaseModel item;
@@ -176,7 +176,7 @@ class _ItemDetailScreenState extends ConsumerState<EpisodeDetailScreen> {
                           .moreFrom("${context.localized.season(1).toLowerCase()} ${episodeDetails.season}"),
                       onEpisodeTap: (action, episodeModel) {
                         if (episodeModel.id == episodeDetails.id) {
-                          fladderSnackbar(context, title: context.localized.selectedWith(context.localized.episode(0)));
+                          hessflixSnackbar(context, title: context.localized.selectedWith(context.localized.episode(0)));
                         } else {
                           action();
                         }

@@ -6,27 +6,27 @@ import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'package:fladder/models/book_model.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/photos_model.dart';
-import 'package:fladder/models/media_playback_model.dart';
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/models/video_stream_model.dart';
-import 'package:fladder/providers/api_provider.dart';
-import 'package:fladder/providers/book_viewer_provider.dart';
-import 'package:fladder/providers/items/book_details_provider.dart';
-import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/screens/book_viewer/book_viewer_screen.dart';
-import 'package:fladder/screens/photo_viewer/photo_viewer_screen.dart';
-import 'package:fladder/screens/shared/adaptive_dialog.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/screens/video_player/video_player.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/list_extensions.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/refresh_state.dart';
+import 'package:hessflix/models/book_model.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/photos_model.dart';
+import 'package:hessflix/models/media_playback_model.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/models/video_stream_model.dart';
+import 'package:hessflix/providers/api_provider.dart';
+import 'package:hessflix/providers/book_viewer_provider.dart';
+import 'package:hessflix/providers/items/book_details_provider.dart';
+import 'package:hessflix/providers/sync_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/screens/book_viewer/book_viewer_screen.dart';
+import 'package:hessflix/screens/photo_viewer/photo_viewer_screen.dart';
+import 'package:hessflix/screens/shared/adaptive_dialog.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/screens/video_player/video_player.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/list_extensions.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/refresh_state.dart';
 
 Future<void> _showLoadingIndicator(BuildContext context) async {
   return showDialog(
@@ -74,7 +74,7 @@ Future<void> _playVideo(
   if (current == null) {
     if (context.mounted) {
       Navigator.of(context, rootNavigator: true).pop();
-      fladderSnackbar(context, title: context.localized.unableToPlayMedia);
+      hessflixSnackbar(context, title: context.localized.unableToPlayMedia);
     }
     return;
   }
@@ -87,7 +87,7 @@ Future<void> _playVideo(
   if (!loadedCorrectly) {
     if (context.mounted) {
       Navigator.of(context, rootNavigator: true).pop();
-      fladderSnackbar(context, title: context.localized.errorOpeningMedia);
+      hessflixSnackbar(context, title: context.localized.errorOpeningMedia);
     }
     return;
   }
@@ -125,7 +125,7 @@ extension BookBaseModelExtension on BookModel? {
     BuildContext? parentContext,
   }) async {
     if (kIsWeb) {
-      fladderSnackbar(context, title: context.localized.unableToPlayBooksOnWeb);
+      hessflixSnackbar(context, title: context.localized.unableToPlayBooksOnWeb);
       return;
     }
     if (this == null) {
@@ -166,7 +166,7 @@ extension PhotoAlbumExtension on PhotoAlbumModel? {
     final api = ref.read(jellyApiProvider);
     final getChildItems = await api.itemsGet(
         parentId: albumModel.id,
-        includeItemTypes: FladderItemType.galleryItem.map((e) => e.dtoKind).toList(),
+        includeItemTypes: HessflixItemType.galleryItem.map((e) => e.dtoKind).toList(),
         recursive: true);
     final photos = getChildItems.body?.items.whereType<PhotoModel>() ?? [];
 
@@ -255,7 +255,7 @@ extension ItemBaseModelsBooleans on List<ItemBaseModel> {
     // Replace all shows/seasons with all episodes
     List<List<ItemBaseModel>> newList = await Future.wait(map((element) async {
       switch (element.type) {
-        case FladderItemType.series:
+        case HessflixItemType.series:
           return await ref.read(jellyApiProvider).fetchEpisodeFromShow(seriesId: element.id);
         default:
           return [element];

@@ -1,7 +1,7 @@
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:fladder/screens/shared/outlined_text_field.dart';
-import 'package:fladder/util/adaptive_layout.dart';
+import 'package:hessflix/screens/shared/outlined_text_field.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
 import 'package:flutter/foundation.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as p;
@@ -10,11 +10,11 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FladderFile {
+class HessflixFile {
   final String name;
   final String? path;
   final Uint8List? data;
-  FladderFile({
+  HessflixFile({
     required this.name,
     this.path,
     this.data,
@@ -29,11 +29,11 @@ class FladderFile {
   };
 
   @override
-  String toString() => 'FladderFile(name: $name, path: $path, data: ${data?.length})';
+  String toString() => 'HessflixFile(name: $name, path: $path, data: ${data?.length})';
 }
 
 class FilePickerBar extends ConsumerStatefulWidget {
-  final Function(List<FladderFile> file)? onFilesPicked;
+  final Function(List<HessflixFile> file)? onFilesPicked;
   final Function(String url)? urlPicked;
   final Set<String> extensions;
   final bool multipleFiles;
@@ -66,11 +66,11 @@ class _FilePickerBarState extends ConsumerState<FilePickerBar> {
       onDragEntered: (details) => setState(() => dragStart = true),
       onDragDone: (details) async {
         if (widget.multipleFiles) {
-          List<FladderFile> newFiles = [];
+          List<HessflixFile> newFiles = [];
           await Future.forEach(details.files, (element) async {
             if (widget.extensions.contains(p.extension(element.path).substring(1))) {
               newFiles.add(
-                FladderFile(
+                HessflixFile(
                   name: element.name,
                   path: element.path,
                   data: await element.readAsBytes(),
@@ -83,7 +83,7 @@ class _FilePickerBarState extends ConsumerState<FilePickerBar> {
           final file = details.files.lastOrNull;
           if (file != null) {
             widget.onFilesPicked?.call([
-              FladderFile(
+              HessflixFile(
                 name: file.name,
                 path: file.path,
                 data: await file.readAsBytes(),
@@ -154,10 +154,10 @@ class _FilePickerBarState extends ConsumerState<FilePickerBar> {
                                 withData: true,
                               );
                               if (result != null && result.count != 0) {
-                                List<FladderFile> newFiles = [];
+                                List<HessflixFile> newFiles = [];
                                 await Future.forEach(result.files, (element) async {
                                   newFiles.add(
-                                    FladderFile(
+                                    HessflixFile(
                                       name: element.name,
                                       path: element.path,
                                       data: element.bytes,

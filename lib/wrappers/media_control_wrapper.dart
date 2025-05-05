@@ -6,22 +6,22 @@ import 'package:flutter/material.dart';
 
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:smtc_windows/smtc_windows.dart' if (dart.library.html) 'package:fladder/stubs/web/smtc_web.dart';
+import 'package:smtc_windows/smtc_windows.dart' if (dart.library.html) 'package:hessflix/stubs/web/smtc_web.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/models/items/media_streams_model.dart';
-import 'package:fladder/models/playback/playback_model.dart';
-import 'package:fladder/models/settings/video_player_settings.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/wrappers/players/base_player.dart';
-import 'package:fladder/wrappers/players/lib_mdk.dart'
-    if (dart.library.html) 'package:fladder/stubs/web/lib_mdk_web.dart';
-import 'package:fladder/wrappers/players/lib_mpv.dart';
-import 'package:fladder/wrappers/players/player_states.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/models/items/media_streams_model.dart';
+import 'package:hessflix/models/playback/playback_model.dart';
+import 'package:hessflix/models/settings/video_player_settings.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/wrappers/players/base_player.dart';
+import 'package:hessflix/wrappers/players/lib_mdk.dart'
+    if (dart.library.html) 'package:hessflix/stubs/web/lib_mdk_web.dart';
+import 'package:hessflix/wrappers/players/lib_mpv.dart';
+import 'package:hessflix/wrappers/players/player_states.dart';
 
 class MediaControlsWrapper extends BaseAudioHandler {
   MediaControlsWrapper({required this.ref});
@@ -54,7 +54,7 @@ class MediaControlsWrapper extends BaseAudioHandler {
       await AudioService.init(
         builder: () => this,
         config: const AudioServiceConfig(
-          androidNotificationChannelId: 'nl.jknaapen.fladder.channel.playback',
+          androidNotificationChannelId: 'tv.hessflix.client.channel.playback',
           androidNotificationChannelName: 'Video playback',
           androidNotificationOngoing: true,
           androidStopForegroundOnPause: true,

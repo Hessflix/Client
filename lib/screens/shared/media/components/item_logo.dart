@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/util/fladder_image.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/util/hessflix_image.dart';
 
 class ItemLogo extends StatelessWidget {
   final ItemBaseModel item;
@@ -34,7 +34,7 @@ class ItemLogo extends StatelessWidget {
     return logo != null
         ? ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 500, maxHeight: 500),
-            child: FladderImage(
+            child: HessflixImage(
               image: logo,
               disableBlur: true,
               alignment: imageAlignment,

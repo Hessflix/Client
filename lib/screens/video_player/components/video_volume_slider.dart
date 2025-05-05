@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/widgets/shared/fladder_slider.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/widgets/shared/hessflix_slider.dart';
 
 class VideoVolumeSlider extends ConsumerStatefulWidget {
   final double? width;
@@ -34,7 +34,7 @@ class _VideoVolumeSliderState extends ConsumerState<VideoVolumeSlider> {
           child: SizedBox(
             height: 30,
             width: 75,
-            child: FladderSlider(
+            child: HessflixSlider(
               min: 0,
               max: 100,
               value: volume,

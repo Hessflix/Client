@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/theme.dart';
+import 'package:hessflix/theme.dart';
 
 class FlatButton extends ConsumerWidget {
   final Widget? child;
@@ -44,7 +44,7 @@ class FlatButton extends ConsumerWidget {
           child: Material(
             color: Colors.transparent,
             clipBehavior: clipBehavior,
-            borderRadius: borderRadiusGeometry ?? FladderTheme.defaultShape.borderRadius,
+            borderRadius: borderRadiusGeometry ?? HessflixTheme.defaultShape.borderRadius,
             elevation: 0,
             child: InkWell(
               onTap: onTap,

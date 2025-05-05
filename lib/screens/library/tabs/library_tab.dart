@@ -1,9 +1,9 @@
-import 'package:fladder/models/view_model.dart';
-import 'package:fladder/providers/library_provider.dart';
-import 'package:fladder/screens/shared/media/poster_grid.dart';
-import 'package:fladder/util/grouping.dart';
-import 'package:fladder/util/keyed_list_view.dart';
-import 'package:fladder/widgets/shared/pull_to_refresh.dart';
+import 'package:hessflix/models/view_model.dart';
+import 'package:hessflix/providers/library_provider.dart';
+import 'package:hessflix/screens/shared/media/poster_grid.dart';
+import 'package:hessflix/util/grouping.dart';
+import 'package:hessflix/util/keyed_list_view.dart';
+import 'package:hessflix/widgets/shared/pull_to_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

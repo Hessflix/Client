@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Hessflix
+StartupWMClass=tv.hessflix.client
+Comment=A Simple Jellyfin Frontend built on top of Flutter.
+Exec=Hessflix
+Icon=tv.hessflix.client
+Terminal=false
+Type=Application
+Categories=Entertainment;

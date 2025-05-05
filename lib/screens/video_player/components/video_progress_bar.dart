@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/items/chapters_model.dart';
-import 'package:fladder/models/items/media_segments_model.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/util/duration_extensions.dart';
-import 'package:fladder/util/list_padding.dart';
-import 'package:fladder/util/string_extensions.dart';
-import 'package:fladder/widgets/gapped_container_shape.dart';
-import 'package:fladder/widgets/shared/fladder_slider.dart';
-import 'package:fladder/widgets/shared/trick_play_image.dart';
+import 'package:hessflix/models/items/chapters_model.dart';
+import 'package:hessflix/models/items/media_segments_model.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/util/duration_extensions.dart';
+import 'package:hessflix/util/list_padding.dart';
+import 'package:hessflix/util/string_extensions.dart';
+import 'package:hessflix/widgets/gapped_container_shape.dart';
+import 'package:hessflix/widgets/shared/hessflix_slider.dart';
+import 'package:hessflix/widgets/shared/trick_play_image.dart';
 
 class VideoProgressBar extends ConsumerStatefulWidget {
   final Function(bool value) wasPlayingChanged;
@@ -95,7 +95,7 @@ class _ChapterProgressSliderState extends ConsumerState<VideoProgressBar> {
                   },
                   child: Opacity(
                     opacity: widget.buffering ? 0 : 1.0,
-                    child: FladderSlider(
+                    child: HessflixSlider(
                       min: 0.0,
                       max: widget.duration.inMilliseconds.toDouble(),
                       animation: Duration.zero,

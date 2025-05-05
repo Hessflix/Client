@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/information_model.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/providers/items/information_provider.dart';
-import 'package:fladder/util/clipboard_helper.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/widgets/shared/clickable_text.dart';
+import 'package:hessflix/models/information_model.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/providers/items/information_provider.dart';
+import 'package:hessflix/util/clipboard_helper.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/widgets/shared/clickable_text.dart';
 
 Future<void> showInfoScreen(BuildContext context, ItemBaseModel item) async {
   return showDialog(

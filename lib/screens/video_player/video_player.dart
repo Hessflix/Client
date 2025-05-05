@@ -6,13 +6,13 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/media_playback_model.dart';
-import 'package:fladder/providers/settings/video_player_settings_provider.dart';
-import 'package:fladder/providers/video_player_provider.dart';
-import 'package:fladder/screens/video_player/components/video_player_next_wrapper.dart';
-import 'package:fladder/screens/video_player/video_player_controls.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/themes_data.dart';
+import 'package:hessflix/models/media_playback_model.dart';
+import 'package:hessflix/providers/settings/video_player_settings_provider.dart';
+import 'package:hessflix/providers/video_player_provider.dart';
+import 'package:hessflix/screens/video_player/components/video_player_next_wrapper.dart';
+import 'package:hessflix/screens/video_player/video_player_controls.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/themes_data.dart';
 
 class VideoPlayer extends ConsumerStatefulWidget {
   const VideoPlayer({super.key});

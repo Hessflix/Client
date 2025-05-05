@@ -1,13 +1,13 @@
 import 'package:iconsax_plus/iconsax_plus.dart';
-import 'package:fladder/jellyfin/jellyfin_open_api.swagger.dart';
-import 'package:fladder/models/item_base_model.dart';
-import 'package:fladder/providers/edit_item_provider.dart';
-import 'package:fladder/screens/metadata/edit_screens/edit_fields.dart';
-import 'package:fladder/screens/metadata/edit_screens/edit_image_content.dart';
-import 'package:fladder/screens/shared/fladder_snackbar.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/util/refresh_state.dart';
+import 'package:hessflix/jellyfin/jellyfin_open_api.swagger.dart';
+import 'package:hessflix/models/item_base_model.dart';
+import 'package:hessflix/providers/edit_item_provider.dart';
+import 'package:hessflix/screens/metadata/edit_screens/edit_fields.dart';
+import 'package:hessflix/screens/metadata/edit_screens/edit_image_content.dart';
+import 'package:hessflix/screens/shared/hessflix_snackbar.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/util/refresh_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -135,11 +135,11 @@ class _EditDialogSwitcherState extends ConsumerState<EditDialogSwitcher> with Ti
                             if (response != null && context.mounted) {
                               if (response.isSuccessful) {
                                 widget.itemUpdated(response.body);
-                                fladderSnackbar(context,
+                                hessflixSnackbar(context,
                                     title: context.localized.metaDataSavedFor(
                                         currentItem?.detailedName(context) ?? currentItem?.name ?? ""));
                               } else {
-                                fladderSnackbarResponse(context, response);
+                                hessflixSnackbarResponse(context, response);
                               }
                             }
                             widget.refreshOnClose(true);

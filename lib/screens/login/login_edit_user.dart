@@ -4,10 +4,10 @@ import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import 'package:fladder/models/account_model.dart';
-import 'package:fladder/providers/auth_provider.dart';
-import 'package:fladder/providers/shared_provider.dart';
-import 'package:fladder/util/list_padding.dart';
+import 'package:hessflix/models/account_model.dart';
+import 'package:hessflix/providers/auth_provider.dart';
+import 'package:hessflix/providers/shared_provider.dart';
+import 'package:hessflix/util/list_padding.dart';
 
 class LoginEditUser extends ConsumerWidget {
   final AccountModel user;

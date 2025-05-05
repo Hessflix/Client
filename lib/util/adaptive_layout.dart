@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/settings/home_settings_model.dart';
-import 'package:fladder/providers/settings/home_settings_provider.dart';
-import 'package:fladder/util/debug_banner.dart';
-import 'package:fladder/util/poster_defaults.dart';
+import 'package:hessflix/models/settings/home_settings_model.dart';
+import 'package:hessflix/providers/settings/home_settings_provider.dart';
+import 'package:hessflix/util/debug_banner.dart';
+import 'package:hessflix/util/poster_defaults.dart';
 
 enum InputDevice {
   touch,

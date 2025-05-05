@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:fladder/models/items/episode_model.dart';
-import 'package:fladder/models/syncing/sync_item.dart';
-import 'package:fladder/providers/settings/client_settings_provider.dart';
-import 'package:fladder/providers/sync/sync_provider_helpers.dart';
-import 'package:fladder/providers/sync_provider.dart';
-import 'package:fladder/screens/shared/flat_button.dart';
-import 'package:fladder/screens/syncing/sync_button.dart';
-import 'package:fladder/util/adaptive_layout.dart';
-import 'package:fladder/util/disable_keypad_focus.dart';
-import 'package:fladder/util/fladder_image.dart';
-import 'package:fladder/util/item_base_model/item_base_model_extensions.dart';
-import 'package:fladder/util/localization_helper.dart';
-import 'package:fladder/widgets/shared/clickable_text.dart';
-import 'package:fladder/widgets/shared/enum_selection.dart';
-import 'package:fladder/widgets/shared/horizontal_list.dart';
-import 'package:fladder/widgets/shared/item_actions.dart';
-import 'package:fladder/widgets/shared/modal_bottom_sheet.dart';
-import 'package:fladder/widgets/shared/status_card.dart';
+import 'package:hessflix/models/items/episode_model.dart';
+import 'package:hessflix/models/syncing/sync_item.dart';
+import 'package:hessflix/providers/settings/client_settings_provider.dart';
+import 'package:hessflix/providers/sync/sync_provider_helpers.dart';
+import 'package:hessflix/providers/sync_provider.dart';
+import 'package:hessflix/screens/shared/flat_button.dart';
+import 'package:hessflix/screens/syncing/sync_button.dart';
+import 'package:hessflix/util/adaptive_layout.dart';
+import 'package:hessflix/util/disable_keypad_focus.dart';
+import 'package:hessflix/util/hessflix_image.dart';
+import 'package:hessflix/util/item_base_model/item_base_model_extensions.dart';
+import 'package:hessflix/util/localization_helper.dart';
+import 'package:hessflix/widgets/shared/clickable_text.dart';
+import 'package:hessflix/widgets/shared/enum_selection.dart';
+import 'package:hessflix/widgets/shared/horizontal_list.dart';
+import 'package:hessflix/widgets/shared/item_actions.dart';
+import 'package:hessflix/widgets/shared/modal_bottom_sheet.dart';
+import 'package:hessflix/widgets/shared/status_card.dart';
 
 class EpisodePosters extends ConsumerStatefulWidget {
   final List<EpisodeModel> episodes;
@@ -169,7 +169,7 @@ class EpisodePoster extends ConsumerWidget {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  FladderImage(
+                  HessflixImage(
                     image: !episodeAvailable ? episode.parentImages?.primary : episode.images?.primary,
                     placeHolder: placeHolder,
                     blurOnly: !episodeAvailable
