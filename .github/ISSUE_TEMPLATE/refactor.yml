@@ -1,0 +1,25 @@
+name: ♻️ Refactor
+description: Proposer un nettoyage ou une amélioration interne du code
+labels: [refactor, triage]
+body:
+  - type: textarea
+    attributes:
+      label: Contexte
+      description: Explique pourquoi ce refactor est nécessaire (code dupliqué, dette technique, etc.)
+      placeholder: "La logique de connexion est dupliquée dans plusieurs vues..."
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Proposition
+      description: Explique ce que tu proposes de faire.
+      placeholder: "Extraire la logique de login dans une classe utilitaire partagée..."
+
+  - type: checkboxes
+    attributes:
+      label: Impact
+      options:
+        - label: Ce refactor n’introduit pas de nouvelle fonctionnalité
+        - label: Il améliore la lisibilité ou maintenabilité
+        - label: Il peut avoir un impact sur les performances
