@@ -1,0 +1,16 @@
+name: ❓ Question
+description: Poser une question technique ou de conception
+labels: [question]
+body:
+  - type: textarea
+    attributes:
+      label: Question
+      description: Pose ta question le plus clairement possible.
+      placeholder: "Quelle est la meilleure façon d’intercepter le token OAuth ?"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Contexte
+      description: Donne du contexte si nécessaire (code, captures, etc.)
