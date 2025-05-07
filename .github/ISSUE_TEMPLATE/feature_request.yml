@@ -1,0 +1,28 @@
+name: ✨ Nouvelle fonctionnalité
+description: Proposer une idée ou une amélioration
+labels: [feature, triage]
+body:
+  - type: textarea
+    attributes:
+      label: Description de la fonctionnalité
+      description: Que veux-tu ajouter ou modifier ?
+      placeholder: "J’aimerais pouvoir me connecter via Face ID..."
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Cas d’usage
+      description: Explique à quoi sert cette fonctionnalité ou comment elle t’aiderait.
+      placeholder: "Cela simplifierait la connexion sur iPhone..."
+
+  - type: checkboxes
+    attributes:
+      label: Plateformes concernées
+      options:
+        - label: iOS
+        - label: Android
+        - label: macOS
+        - label: Windows
+        - label: Linux
+        - label: Web
