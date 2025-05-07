@@ -1,0 +1,17 @@
+name: 🎨 Design / UI Feedback
+description: Proposer des améliorations visuelles ou donner un retour UX
+labels: [design, triage]
+body:
+  - type: textarea
+    attributes:
+      label: Contexte ou retour
+      description: Quelle partie de l'interface te pose problème ou peut être améliorée ?
+      placeholder: "Le bouton est trop petit sur les petits écrans..."
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Proposition ou inspiration
+      description: Si tu as une idée, une maquette ou un exemple, ajoute-le ici.
+      placeholder: "On pourrait le transformer en bouton flottant en bas à droite."
