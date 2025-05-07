@@ -1,0 +1,17 @@
+name: 📝 Documentation
+description: Corriger ou ajouter de la documentation
+labels: [documentation, triage]
+body:
+  - type: textarea
+    attributes:
+      label: Page ou fichier concerné
+      description: Indique le fichier, le lien ou la section à corriger/ajouter.
+      placeholder: "README.md > section Installation"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Contenu à modifier ou ajouter
+      description: Que faut-il mettre à jour ?
+      placeholder: "Ajouter l’étape pour installer les dépendances avec Swift Package Manager."
