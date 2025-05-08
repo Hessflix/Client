@@ -1,65 +1,62 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:shelf/shelf.dart';
+import 'package:shelf/shelf_io.dart' as io;
+import 'package:shelf_router/shelf_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class OAuthWebView extends StatefulWidget {
-  final String authorizationUrl;
-  final String redirectUrl;
-
-  const OAuthWebView({
-    super.key,
-    required this.authorizationUrl,
-    required this.redirectUrl,
-  });
+class OAuthLocalServerPage extends StatefulWidget {
+  const OAuthLocalServerPage({super.key});
 
   @override
-  State<OAuthWebView> createState() => _OAuthWebViewState();
+  State<OAuthLocalServerPage> createState() => _OAuthLocalServerPageState();
 }
 
-class _OAuthWebViewState extends State<OAuthWebView> {
-  late final WebViewController _controller;
+class _OAuthLocalServerPageState extends State<OAuthLocalServerPage> {
+  HttpServer? _server;
 
   @override
   void initState() {
     super.initState();
+    _startLocalServer();
+    _openBrowser();
+  }
 
-    _controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setNavigationDelegate(
-        NavigationDelegate(
-          onPageFinished: (url) async {
-            if (url.contains("/web/index.html")) {
-              try {
-                final result = await _controller.runJavaScriptReturningResult('''
-                  try {
-                    JSON.parse(localStorage.getItem("jellyfin_credentials"))?.Servers?.[0]?.AccessToken;
-                  } catch (e) {
-                    null;
-                  }
-                ''');
+  Future<void> _startLocalServer() async {
+    final router = Router()
+      ..get('/callback', (Request req) {
+        final token = req.url.queryParameters['access_token'];
+        if (token != null && token.isNotEmpty) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Navigator.of(context).pop(token);
+          });
+        }
+        return Response.ok('Connexion réussie, vous pouvez fermer cette fenêtre.');
+      });
 
-                final token = result?.toString().replaceAll('"', '').trim();
+    _server = await io.serve(router, 'localhost', 3000);
+    print('✅ Serveur OAuth lancé sur http://localhost:3000/callback');
+  }
 
-                if (context.mounted) {
-                  Navigator.of(context).pop((token != null && token.isNotEmpty) ? token : null);
-                }
-              } catch (e) {
-                if (context.mounted) {
-                  Navigator.of(context).pop(null);
-                }
-              }
-            }
-          },
-        ),
-      )
-      ..loadRequest(Uri.parse(widget.authorizationUrl));
+  Future<void> _openBrowser() async {
+    final redirectUri = Uri.encodeComponent('http://localhost:3000/callback');
+    final authUrl = Uri.parse('https://hessflix.tv/jellyfin/SSO/oid/p/Hessflix?redirect_uri=$redirectUri');
+
+    if (!await launchUrl(authUrl, mode: LaunchMode.externalApplication)) {
+      throw 'Impossible d’ouvrir le navigateur.';
+    }
+  }
+
+  @override
+  void dispose() {
+    _server?.close();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Connexion Hessflix")),
-      body: WebViewWidget(controller: _controller),
+    return const Scaffold(
+      body: Center(child: Text("En attente de la connexion OAuth...")),
     );
   }
 }
