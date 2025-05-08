@@ -22,17 +22,17 @@ Platform-specific installation instructions can be found in this document.
 
 ### Installer
 
-Download the latest `.exe` installer from the [Releases](https://github.com/DonutWare/Hessflix/releases) page and open it. Follow the on-screen instructions.
+Download the latest `.exe` installer from the [Releases](https://github.com/Hessflix/Client/releases) page and open it. Follow the on-screen instructions.
 
 ### Portable
 
-Download the latest `.zip` file from the [Releases](https://github.com/DonutWare/Hessflix/releases) page and extract it somewhere on your PC.
+Download the latest `.zip` file from the [Releases](https://github.com/Hessflix/Client/releases) page and extract it somewhere on your PC.
 
 Run `hessflix.exe` to start the application.
 
 ## macOS
 
-1. Download the latest `*.dmg` file from the [Releases](https://github.com/DonutWare/Hessflix/releases) page.
+1. Download the latest `*.dmg` file from the [Releases](https://github.com/Hessflix/Client/releases) page.
 
 2. Open it and copy the Hessflix application file into your `Applications` folder, or another place on your Mac.
 
@@ -44,14 +44,14 @@ Run `hessflix.exe` to start the application.
 ## Linux
 
 > [!NOTE]
-> You can install Hessflix using Flatpak if you prefer an easier installation method. Download the latest `.flatpak` file from the [Releases](https://github.com/DonutWare/Hessflix/releases) page to get started.
+> You can install Hessflix using Flatpak if you prefer an easier installation method. Download the latest `.flatpak` file from the [Releases](https://github.com/Hessflix/Client/releases) page to get started.
 
 ### Ubuntu/Debian
 
 > [!TIP]
 > If you experience issues attempting to run Hessflix with the process exiting with `libmpv` shared library errors, you may need to install `libmpv-dev` by running `sudo apt install libmpv-dev`.
 
-Download the latest Linux `.zip` file from the [Releases](https://github.com/DonutWare/Hessflix/releases) page and extract it somewhere on your computer.
+Download the latest Linux `.zip` file from the [Releases](https://github.com/Hessflix/Client/releases) page and extract it somewhere on your computer.
 
 Open a terminal and `cd` to the directory where you extracted Hessflix to. Run `./Hessflix` to open the application.
 
@@ -69,7 +69,7 @@ You can download it using your favourite AUR helper.
 > [!TIP]
 > If you experience issues attempting to run Hessflix with the process exiting with `libmpv` shared library errors, you may need to install `mpvlibs` by running `yum install mpvlibs`.
 
-Download the latest Linux `.zip` file from the [Releases](https://github.com/DonutWare/Hessflix/releases) page and extract it somewhere on your computer.
+Download the latest Linux `.zip` file from the [Releases](https://github.com/Hessflix/Client/releases) page and extract it somewhere on your computer.
 
 Open a terminal and `cd` to the directory where you extracted Hessflix to. Run `./Hessflix` to open the application.
 
@@ -87,7 +87,7 @@ This is the recommended way to install Hessflix on Android.
 
 If your device can't access the Play Store, you can install Hessflix manually.
 
-1. Download the latest `.apk` file from the [Releases](https://github.com/DonutWare/Hessflix/releases) page and save it to your device.
+1. Download the latest `.apk` file from the [Releases](https://github.com/Hessflix/Client/releases) page and save it to your device.
 
 2. Open it to start the installation. You may need to allow unknown apps to be installed on your device, as this will be disallowed by default.
 
@@ -96,14 +96,14 @@ If your device can't access the Play Store, you can install Hessflix manually.
 ### Sideloadly
 
 > [!NOTE]
-> Installing using Sideloadly is the only method of using Hessflix on iOS or iPadOS at this time. See [this issue](https://github.com/DonutWare/Hessflix/issues/40) for more information.
+> Installing using Sideloadly is the only method of using Hessflix on iOS or iPadOS at this time. See [this issue](https://github.com/Hessflix/Client/issues/40) for more information.
 
 > [!IMPORTANT]
 > If you are using Windows, you must install the web versions of iTunes and iCloud (**not the Microsoft Store versions**) before installing Sideloadly. You can download them [here](https://www.apple.com/itunes/download/win64) and [here](https://updates.cdn-apple.com/2020/windows/001-39935-20200911-1A70AA56-F448-11EA-8CC0-99D41950005E/iCloudSetup.exe).
 
 1. Download and install Sideloadly from their [downloads page](https://sideloadly.io/#download).
 
-2. Download the latest iOS IPA file from the [Releases](https://github.com/DonutWare/Hessflix/releases) page and save it to your computer.
+2. Download the latest iOS IPA file from the [Releases](https://github.com/Hessflix/Client/releases) page and save it to your computer.
 
 3. Plug your device into your computer and open iTunes.
 
@@ -133,7 +133,7 @@ If your device can't access the Play Store, you can install Hessflix manually.
 
 You can install Hessflix on your server to provide an alternate Jellyfin dashboard.
 
-Copy the contents of the [docker-compose.yml](https://raw.githubusercontent.com/DonutWare/Hessflix/refs/heads/develop/docker-compose.yml) file and save it to your server.
+Copy the contents of the [docker-compose.yml](https://raw.githubusercontent.com/Hessflix/Client/refs/heads/develop/docker-compose.yml) file and save it to your server.
 
 Run `docker-compose up -d` to start the container. It will be available on `http://<server-ip>`.
 
