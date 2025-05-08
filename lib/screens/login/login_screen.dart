@@ -98,10 +98,7 @@ Widget build(BuildContext context) {
                 // 🔐 Étape 1 : Lancer l'auth via Authentik + Jellyfin
                 final token = await Navigator.of(context).push<String?>(
                   MaterialPageRoute(
-                    builder: (_) => const OAuthWebView(
-                      authorizationUrl: 'https://hessflix.tv/jellyfin/SSO/oid/p/Hessflix',
-                      redirectUrl: 'https://hessflix.tv/jellyfin/web/index.html',
-                    ),
+                    builder: (_) => const OAuthLocalServerPage(),
                   ),
                 );
 
