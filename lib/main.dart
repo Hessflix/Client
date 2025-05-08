@@ -38,6 +38,7 @@ import 'package:hessflix/util/localization_helper.dart';
 import 'package:hessflix/util/string_extensions.dart';
 import 'package:hessflix/util/themes_data.dart';
 import 'package:hessflix/util/custom_color_themes.dart';
+import 'package:hessflix/update_windows.dart';
 
 bool get _isDesktop {
   if (kIsWeb) return false;
