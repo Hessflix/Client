@@ -119,13 +119,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               onTap: () => openQuickConnectDialog(context),
             ),
           SettingsListTile(
-            label: Text(context.localized.settingsProfileTitle),
-            subLabel: Text(context.localized.settingsProfileDesc),
-            selected: containsRoute(const SecuritySettingsRoute()),
-            icon: IconsaxPlusLinear.security_user,
-            onTap: () => navigateTo(const SecuritySettingsRoute()),
-          ),
-          SettingsListTile(
             label: Text(context.localized.settingsPlayerTitle),
             subLabel: Text(context.localized.settingsPlayerDesc),
             selected: containsRoute(const PlayerSettingsRoute()),
@@ -154,18 +147,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 const Spacer(),
-                FloatingActionButton(
-                  key: Key(context.localized.switchUser),
-                  tooltip: context.localized.switchUser,
-                  onPressed: () async {
-                    await ref.read(userProvider.notifier).logoutUser();
-                    context.router.replaceAll([const LoginRoute()]);
-                  },
-                  child: const Icon(
-                    IconsaxPlusLinear.arrow_swap_horizontal,
-                  ),
-                ),
-                const SizedBox(width: 16),
                 FloatingActionButton(
                   heroTag: context.localized.logout,
                   key: Key(context.localized.logout),

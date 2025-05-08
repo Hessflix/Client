@@ -37,6 +37,7 @@ import 'package:hessflix/util/hessflix_config.dart';
 import 'package:hessflix/util/localization_helper.dart';
 import 'package:hessflix/util/string_extensions.dart';
 import 'package:hessflix/util/themes_data.dart';
+import 'package:hessflix/util/custom_color_themes.dart';
 
 bool get _isDesktop {
   if (kIsWeb) return false;
@@ -255,7 +256,9 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
   @override
   Widget build(BuildContext context) {
     final themeMode = ref.watch(clientSettingsProvider.select((value) => value.themeMode));
-    final themeColor = ref.watch(clientSettingsProvider.select((value) => value.themeColor));
+    final themeColor = ref.watch(clientSettingsProvider.select(
+      (value) => value.themeColor ?? ColorThemes.hessflix,
+    ));
     final amoledBlack = ref.watch(clientSettingsProvider.select((value) => value.amoledBlack));
     final mouseDrag = ref.watch(clientSettingsProvider.select((value) => value.mouseDragSupport));
     final schemeVariant = ref.watch(clientSettingsProvider.select((value) => value.schemeVariant));
