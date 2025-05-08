@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 enum ColorThemes {
   hessflix(
     name: 'Hessflix',
-    color: kDebugMode ? Colors.purpleAccent : Colors.orange,
+    color: Color(0xFFE50914),
   ),
   deepOrange(
     name: 'Deep Orange',

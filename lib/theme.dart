@@ -38,7 +38,7 @@ class HessflixTheme {
   static Color get lightBackgroundColor => const Color.fromARGB(237, 255, 255, 255);
 
   static ThemeData theme(ColorScheme? colorScheme, DynamicSchemeVariant dynamicSchemeVariant) {
-    final ColorScheme? scheme = generateDynamicColourSchemes(colorScheme, dynamicSchemeVariant);
+    final scheme = colorScheme!;
 
     final textTheme = HessflixFonts.rubikTextTheme(
       const TextTheme(),

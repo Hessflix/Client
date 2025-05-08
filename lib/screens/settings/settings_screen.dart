@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
@@ -120,13 +119,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               onTap: () => openQuickConnectDialog(context),
             ),
           SettingsListTile(
-            label: Text(context.localized.settingsProfileTitle),
-            subLabel: Text(context.localized.settingsProfileDesc),
-            selected: containsRoute(const SecuritySettingsRoute()),
-            icon: IconsaxPlusLinear.security_user,
-            onTap: () => navigateTo(const SecuritySettingsRoute()),
-          ),
-          SettingsListTile(
             label: Text(context.localized.settingsPlayerTitle),
             subLabel: Text(context.localized.settingsPlayerDesc),
             selected: containsRoute(const PlayerSettingsRoute()),
@@ -155,20 +147,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 const Spacer(),
-                FloatingActionButton(
-                  key: Key(context.localized.switchUser),
-                  tooltip: context.localized.switchUser,
-                  onPressed: () async {
-                    await ref.read(authProvider.notifier).logOutUser();
-                    if (!kIsWeb && context.mounted) {
-                      context.router.replaceAll([const LoginRoute()]);
-                    }
-                  },
-                  child: const Icon(
-                    IconsaxPlusLinear.arrow_swap_horizontal,
-                  ),
-                ),
-                const SizedBox(width: 16),
                 FloatingActionButton(
                   heroTag: context.localized.logout,
                   key: Key(context.localized.logout),
