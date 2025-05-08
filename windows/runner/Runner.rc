@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "DonutWare" "\0"
+            VALUE "CompanyName", "Hessflix" "\0"
             VALUE "FileDescription", "hessflix" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "tv.hessflix.client" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 DonutWare. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 Hessflix. All rights reserved." "\0"
             VALUE "OriginalFilename", "hessflix.exe" "\0"
             VALUE "ProductName", "hessflix" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
