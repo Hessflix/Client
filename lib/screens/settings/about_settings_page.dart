@@ -24,13 +24,13 @@ class _Socials {
 
 const socials = [
   _Socials(
-    'Github',
-    'https://github.com/DonutWare/Hessflix',
-    FontAwesomeIcons.githubAlt,
+    'Discord',
+    'https://discord.hessflix.tv/',
+    FontAwesomeIcons.discord,
   ),
   _Socials(
-    'Weblate',
-    'https://hosted.weblate.org/projects/hessflix/',
+    'Espace Client',
+    'https://my.hessflix.tv',
     IconsaxPlusLinear.global,
   ),
 ];
@@ -91,7 +91,7 @@ class AboutSettingsPage extends ConsumerWidget {
                   context: context,
                   applicationIcon: const HessflixIcon(size: 55),
                   applicationVersion: applicationInfo.versionPlatformBuild,
-                  applicationLegalese: "DonutWare",
+                  applicationLegalese: "DonutWare Edited by Hessflix",
                 ),
                 child: Text(context.localized.aboutLicenses),
               )

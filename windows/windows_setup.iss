@@ -2,7 +2,7 @@
 AppId={{D573EDD5-117A-47AD-88AC-62C8EBD11DC7}
 AppName="Hessflix"
 AppVersion={%HESSFLIX_VERSION|latest}
-AppPublisher="DonutWare"
+AppPublisher="Hessflix"
 AppPublisherURL="https://github.com/DonutWare/Hessflix"
 AppSupportURL="https://github.com/DonutWare/Hessflix"
 AppUpdatesURL="https://github.com/DonutWare/Hessflix"
