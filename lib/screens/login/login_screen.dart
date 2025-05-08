@@ -1,6 +1,9 @@
 import 'dart:async';
+import 'dart:io' show Platform;
+import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
@@ -63,21 +66,45 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(() {
-      ref.read(userProvider.notifier).clear();
-      final currentAccounts = ref.read(authProvider.notifier).getSavedAccounts();
-      addingNewUser = currentAccounts.isEmpty;
-      ref.read(lockScreenActiveProvider.notifier).update((state) => true);
-      if (HessflixConfig.baseUrl != null) {
-        serverTextController.text = HessflixConfig.baseUrl!;
-        _parseUrl(HessflixConfig.baseUrl!);
-        retrieveListOfUsers();
+@override
+void initState() {
+  super.initState();
+
+  // 🔁 Écoute le message envoyé par ssocallback.html (pour Flutter Web uniquement)
+  if (kIsWeb) {
+    html.window.onMessage.listen((event) async {
+      final data = event.data;
+      if (data is Map && data['token'] is String) {
+        final token = data['token'] as String;
+
+        ref.read(authProvider.notifier).setSessionToken(token);
+        final user = await ref.read(authProvider.notifier).loginWithCurrentSession(token);
+
+        if (context.mounted && user != null) {
+          context.router.replaceAll([const DashboardRoute()]);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Échec de la connexion à Hessflix.")),
+          );
+        }
       }
     });
   }
+
+  // 💡 Initialisation existante
+  Future.microtask(() {
+    ref.read(userProvider.notifier).clear();
+    final currentAccounts = ref.read(authProvider.notifier).getSavedAccounts();
+    addingNewUser = currentAccounts.isEmpty;
+    ref.read(lockScreenActiveProvider.notifier).update((state) => true);
+    if (HessflixConfig.baseUrl != null) {
+      serverTextController.text = HessflixConfig.baseUrl!;
+      _parseUrl(HessflixConfig.baseUrl!);
+      retrieveListOfUsers();
+    }
+  });
+}
+
 
 @override
 Widget build(BuildContext context) {
@@ -91,47 +118,67 @@ Widget build(BuildContext context) {
           children: [
             const HessflixLogo(),
             const SizedBox(height: 32),
-            FilledButton.icon(
-              icon: const Icon(Icons.login),
-              label: const Text("Se connecter avec Hessflix"),
-              onPressed: () async {
-                // 🔐 Étape 1 : Lancer l'auth via Authentik + Jellyfin
-                final token = await Navigator.of(context).push<String?>(
-                  MaterialPageRoute(
-                    builder: (_) => const OAuthWebView(
-                      authorizationUrl: 'https://hessflix.tv/jellyfin/SSO/oid/p/Hessflix',
-                      redirectUrl: 'https://hessflix.tv/jellyfin/web/index.html',
-                    ),
+            kIsWeb
+                ? FilledButton.icon(
+                    icon: const Icon(Icons.login),
+                    label: const Text("Se connecter avec Hessflix (Web)"),
+                    onPressed: () {
+                      const authUrl = 'https://hessflix.tv/jellyfin/SSO/oid/p/Hessflix';
+                      const redirectUri = 'https://hessflix.tv/ssocallback.html';
+                      final fullUrl = '$authUrl?redirect_uri=$redirectUri';
+
+                      html.window.open(fullUrl, '_blank');
+                    },
+                  )
+                : FilledButton.icon(
+                    icon: const Icon(Icons.login),
+                    label: const Text("Se connecter avec Hessflix"),
+                    onPressed: () async {
+                      if (Platform.isLinux) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text("La connexion SSO n’est pas encore disponible sur cette plateforme."),
+                          ),
+                        );
+                        return;
+                      }
+
+                      final token = await Navigator.of(context).push<String?>(
+                        MaterialPageRoute(
+                          builder: (_) => const OAuthWebView(
+                            authorizationUrl: 'https://hessflix.tv/jellyfin/SSO/oid/p/Hessflix',
+                            redirectUrl: 'https://hessflix.tv/jellyfin/web/index.html',
+                          ),
+                        ),
+                      );
+
+                      if (token != null && token.isNotEmpty) {
+                        ref.read(authProvider.notifier).setSessionToken(token);
+
+                        final user = await ref.read(authProvider.notifier).loginWithCurrentSession(token);
+
+                        if (context.mounted && user != null) {
+                          context.router.replaceAll([const DashboardRoute()]);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Échec de la connexion à Hessflix.")),
+                          );
+                        }
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Session Jellyfin introuvable.")),
+                        );
+                      }
+                    },
                   ),
-                );
-
-                // ✅ Étape 2 : Récupération du token Jellyfin via localStorage
-                if (token != null && token.isNotEmpty) {
-                  ref.read(authProvider.notifier).setSessionToken(token);
-
-                  final user = await ref.read(authProvider.notifier).loginWithCurrentSession(token);
-
-                  if (context.mounted && user != null) {
-                    context.router.replaceAll([const DashboardRoute()]);
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Échec de la connexion à Hessflix.")),
-                    );
-                  }
-                } else {
-                  // ❌ Aucun token trouvé
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Session Jellyfin introuvable.")),
-                  );
-                }
-              },
-            ),
           ],
         ),
       ),
     ),
   );
 }
+
+
 
 
   void _parseUrl(String url) {

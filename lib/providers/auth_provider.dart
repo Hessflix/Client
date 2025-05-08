@@ -1,5 +1,8 @@
+import 'dart:html' as html;
+
 import 'package:chopper/chopper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:hessflix/models/account_model.dart';
 import 'package:hessflix/models/credentials_model.dart';
@@ -138,13 +141,21 @@ Future<AccountModel?> loginWithCurrentSession(String token) async {
 
   
 
-  Future<Response?> logOutUser() async {
-    final currentUser = ref.read(userProvider);
-    state = state.copyWith(tempCredentials: CredentialsModel.createNewCredentials());
-    await ref.read(sharedUtilityProvider).removeAccount(currentUser);
-    clearAllProviders();
-    return null;
+Future<Response?> logOutUser() async {
+  final currentUser = ref.read(userProvider);
+  state = state.copyWith(tempCredentials: CredentialsModel.createNewCredentials());
+  await ref.read(sharedUtilityProvider).removeAccount(currentUser);
+  clearAllProviders();
+
+  if (kIsWeb) {
+    // Déconnecte de la session Authentik (popup SSO) et retourne à la page login Flutter Web
+    html.window.location.href =
+        'https://auth.hessflix.tv/application/o/hessflix/end-session/';
   }
+
+  return null;
+}
+
 
   Future<void> switchUser() async {
     clearAllProviders();

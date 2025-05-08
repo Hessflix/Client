@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
@@ -158,8 +159,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   key: Key(context.localized.switchUser),
                   tooltip: context.localized.switchUser,
                   onPressed: () async {
-                    await ref.read(userProvider.notifier).logoutUser();
-                    context.router.replaceAll([const LoginRoute()]);
+                    await ref.read(authProvider.notifier).logOutUser();
+                    if (!kIsWeb && context.mounted) {
+                      context.router.replaceAll([const LoginRoute()]);
+                    }
                   },
                   child: const Icon(
                     IconsaxPlusLinear.arrow_swap_horizontal,
