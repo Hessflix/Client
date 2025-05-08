@@ -228,6 +228,18 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
 
     ref.read(sharedUtilityProvider).loadSettings();
 
+    @override
+    void initState() {
+      super.initState();
+
+      if (Platform.isWindows) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          checkForWindowsUpdate(context);
+        });
+      }
+    }
+
+
     final clientSettings = ref.read(clientSettingsProvider);
 
     if (_isDesktop) {
