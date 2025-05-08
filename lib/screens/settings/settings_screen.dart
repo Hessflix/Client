@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
