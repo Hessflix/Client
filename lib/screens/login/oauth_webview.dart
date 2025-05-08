@@ -31,7 +31,10 @@ class _OAuthLocalServerPageState extends State<OAuthLocalServerPage> {
             Navigator.of(context).pop(token);
           });
         }
-        return Response.ok('Connexion réussie, vous pouvez fermer cette fenêtre.');
+        return Response.ok(
+          '<html><body><h1>✅ Connexion réussie</h1><p>Vous pouvez fermer cette fenêtre.</p></body></html>',
+          headers: {'Content-Type': 'text/html; charset=utf-8'},
+        );
       });
 
     _server = await io.serve(router, 'localhost', 3000);
