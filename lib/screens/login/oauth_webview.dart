@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart' as io;
-import 'package:shelf_router/shelf_router.dart';
+import 'package:shelf_router/shelf_router.dart' as shelf;
 import 'package:url_launcher/url_launcher.dart';
 
 class OAuthLocalServerPage extends StatefulWidget {
@@ -23,7 +23,7 @@ class _OAuthLocalServerPageState extends State<OAuthLocalServerPage> {
   }
 
   Future<void> _startLocalServer() async {
-    final router = Router()
+    final router = shelf.Router()
       ..get('/callback', (Request req) {
         final token = req.url.queryParameters['access_token'];
         if (token != null && token.isNotEmpty) {
