@@ -91,7 +91,7 @@ class AboutSettingsPage extends ConsumerWidget {
                   context: context,
                   applicationIcon: const HessflixIcon(size: 55),
                   applicationVersion: applicationInfo.versionPlatformBuild,
-                  applicationLegalese: "DonutWare Edited by Hessflix",
+                  applicationLegalese: "DonutWare and edited by Hessflix",
                 ),
                 child: Text(context.localized.aboutLicenses),
               )
