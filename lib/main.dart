@@ -170,7 +170,7 @@ class MainAppWrapper extends ConsumerWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       themeMode: themeMode,
-      routerConfig: autoRouter.config(),
+      routerConfig: appRouter.config(),
     );
   }
 }
