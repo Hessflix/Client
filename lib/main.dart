@@ -251,7 +251,7 @@ void initState() {
 
   if (Platform.isWindows) {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 300));
+      await Future.delayed(const Duration(milliseconds: 10000));
       if (mounted) {
         checkForWindowsUpdate(context);
       }
