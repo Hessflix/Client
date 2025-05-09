@@ -132,6 +132,7 @@ class Main extends ConsumerStatefulWidget with WindowListener {
 class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBindingObserver {
   DateTime dateTime = DateTime.now();
   bool hidden = false;
+  bool _hasCheckedUpdate = false; // ✅ Ajout pour éviter plusieurs appels
   late final autoRouter = AutoRouter(ref: ref);
 
   @override
@@ -245,12 +246,6 @@ void _init() async {
       await windowManager.show();
       await windowManager.focus();
 
-      // ⬇️ Vérification de mise à jour Windows
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (context.mounted) {
-            checkForWindowsUpdate(context);
-          }
-        });
     });
   } else {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
@@ -262,69 +257,81 @@ void _init() async {
   }
 }
 
-  @override
-  Widget build(BuildContext context) {
-    final themeMode = ref.watch(clientSettingsProvider.select((value) => value.themeMode));
-    final themeColor = ref.watch(clientSettingsProvider.select(
-      (value) => value.themeColor ?? ColorThemes.hessflix,
-    ));
-    final amoledBlack = ref.watch(clientSettingsProvider.select((value) => value.amoledBlack));
-    final mouseDrag = ref.watch(clientSettingsProvider.select((value) => value.mouseDragSupport));
-    final schemeVariant = ref.watch(clientSettingsProvider.select((value) => value.schemeVariant));
-    final language = ref.watch(clientSettingsProvider
-        .select((value) => value.selectedLocale ?? WidgetsBinding.instance.platformDispatcher.locale));
-    final scrollBehaviour = const MaterialScrollBehavior();
-    return Shortcuts(
-      shortcuts: <LogicalKeySet, Intent>{
-        LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
-      },
-      child: DynamicColorBuilder(builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
-        final lightTheme = themeColor == null
-            ? HessflixTheme.theme(lightDynamic ?? HessflixTheme.defaultScheme(Brightness.light), schemeVariant)
-            : HessflixTheme.theme(themeColor.schemeLight, schemeVariant);
-        final darkTheme = (themeColor == null
-            ? HessflixTheme.theme(darkDynamic ?? HessflixTheme.defaultScheme(Brightness.dark), schemeVariant)
-            : HessflixTheme.theme(themeColor.schemeDark, schemeVariant));
-        final amoledOverwrite = amoledBlack ? Colors.black : null;
-        return ThemesData(
-          light: lightTheme,
-          dark: darkTheme,
-          child: MaterialApp.router(
-            onGenerateTitle: (context) => ref.watch(currentTitleProvider),
-            theme: lightTheme,
-            scrollBehavior: scrollBehaviour.copyWith(
-              dragDevices: {
-                ...scrollBehaviour.dragDevices,
-                mouseDrag ? PointerDeviceKind.mouse : null,
-              }.nonNulls.toSet(),
-            ),
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            builder: (context, child) => Localizations.override(
-              context: context,
-              locale: AppLocalizations.supportedLocales.firstWhere(
-                (element) => element.languageCode == language.languageCode,
-                orElse: () => const Locale('en', "GB"),
-              ),
-              child: LocalizationContextWrapper(child: ScaffoldMessenger(child: child ?? Container())),
-            ),
-            debugShowCheckedModeBanner: false,
-            darkTheme: darkTheme.copyWith(
-              scaffoldBackgroundColor: amoledOverwrite,
-              cardColor: amoledOverwrite,
-              canvasColor: amoledOverwrite,
-              colorScheme: darkTheme.colorScheme.copyWith(
-                surface: amoledOverwrite,
-                surfaceContainerHighest: amoledOverwrite,
-              ),
-            ),
-            themeMode: themeMode,
-            routerConfig: autoRouter.config(),
+@override
+Widget build(BuildContext context) {
+  final themeMode = ref.watch(clientSettingsProvider.select((value) => value.themeMode));
+  final themeColor = ref.watch(clientSettingsProvider.select(
+    (value) => value.themeColor ?? ColorThemes.hessflix,
+  ));
+  final amoledBlack = ref.watch(clientSettingsProvider.select((value) => value.amoledBlack));
+  final mouseDrag = ref.watch(clientSettingsProvider.select((value) => value.mouseDragSupport));
+  final schemeVariant = ref.watch(clientSettingsProvider.select((value) => value.schemeVariant));
+  final language = ref.watch(clientSettingsProvider
+      .select((value) => value.selectedLocale ?? WidgetsBinding.instance.platformDispatcher.locale));
+  final scrollBehaviour = const MaterialScrollBehavior();
+
+  // ✅ Appel de la mise à jour différé après le montage du MaterialApp
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    if (!_hasCheckedUpdate && Platform.isWindows) {
+      _hasCheckedUpdate = true;
+      checkForWindowsUpdate(context);
+    }
+  });
+
+  return Shortcuts(
+    shortcuts: <LogicalKeySet, Intent>{
+      LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
+    },
+    child: DynamicColorBuilder(builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
+      final lightTheme = themeColor == null
+          ? HessflixTheme.theme(lightDynamic ?? HessflixTheme.defaultScheme(Brightness.light), schemeVariant)
+          : HessflixTheme.theme(themeColor.schemeLight, schemeVariant);
+      final darkTheme = (themeColor == null
+          ? HessflixTheme.theme(darkDynamic ?? HessflixTheme.defaultScheme(Brightness.dark), schemeVariant)
+          : HessflixTheme.theme(themeColor.schemeDark, schemeVariant));
+      final amoledOverwrite = amoledBlack ? Colors.black : null;
+
+      return ThemesData(
+        light: lightTheme,
+        dark: darkTheme,
+        child: MaterialApp.router(
+          onGenerateTitle: (context) => ref.watch(currentTitleProvider),
+          theme: lightTheme,
+          scrollBehavior: scrollBehaviour.copyWith(
+            dragDevices: {
+              ...scrollBehaviour.dragDevices,
+              mouseDrag ? PointerDeviceKind.mouse : null,
+            }.nonNulls.toSet(),
           ),
-        );
-      }),
-    );
-  }
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          builder: (context, child) => Localizations.override(
+            context: context,
+            locale: AppLocalizations.supportedLocales.firstWhere(
+              (element) => element.languageCode == language.languageCode,
+              orElse: () => const Locale('en', "GB"),
+            ),
+            child: LocalizationContextWrapper(
+              child: ScaffoldMessenger(child: child ?? Container()),
+            ),
+          ),
+          debugShowCheckedModeBanner: false,
+          darkTheme: darkTheme.copyWith(
+            scaffoldBackgroundColor: amoledOverwrite,
+            cardColor: amoledOverwrite,
+            canvasColor: amoledOverwrite,
+            colorScheme: darkTheme.colorScheme.copyWith(
+              surface: amoledOverwrite,
+              surfaceContainerHighest: amoledOverwrite,
+            ),
+          ),
+          themeMode: themeMode,
+          routerConfig: autoRouter.config(),
+        ),
+      );
+    }),
+  );
 }
+
 
 final currentTitleProvider = StateProvider<String>((ref) => "Hessflix");
