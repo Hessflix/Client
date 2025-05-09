@@ -116,7 +116,7 @@ void main() async {
           LayoutPoints(start: 600, end: 1919, type: ViewSize.tablet),
           LayoutPoints(start: 1920, end: 3180, type: ViewSize.desktop),
         ],
-        child: const Main(),
+        child: MainAppWrapper(),
       ),
     ),
   );
@@ -127,6 +127,32 @@ class Main extends ConsumerStatefulWidget with WindowListener {
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _MainState();
+}
+
+class MainAppWrapper extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // tout ce que tu avais dans `Main.build`, ici
+    final themeMode = ref.watch(clientSettingsProvider.select((value) => value.themeMode));
+    final themeColor = ref.watch(clientSettingsProvider.select((value) => value.themeColor ?? ColorThemes.hessflix));
+    final amoledBlack = ref.watch(clientSettingsProvider.select((value) => value.amoledBlack));
+    final mouseDrag = ref.watch(clientSettingsProvider.select((value) => value.mouseDragSupport));
+    final schemeVariant = ref.watch(clientSettingsProvider.select((value) => value.schemeVariant));
+    final language = ref.watch(clientSettingsProvider
+        .select((value) => value.selectedLocale ?? WidgetsBinding.instance.platformDispatcher.locale));
+    final scrollBehaviour = const MaterialScrollBehavior();
+
+    return MaterialApp.router(
+      ...
+      builder: (context, child) {
+        // ✅ Lancement update ici
+        Future.microtask(() => checkForWindowsUpdate(context));
+        return LocalizationContextWrapper(
+          child: ScaffoldMessenger(child: child ?? Container()),
+        );
+      },
+    );
+  }
 }
 
 class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBindingObserver {
