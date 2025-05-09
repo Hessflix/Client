@@ -1,0 +1,54 @@
+{
+  "diskImage" : {
+    "autoopen" : true,
+    "background" : {
+      "image" : "backgroundImage",
+      "imageScaleOption" : 100,
+      "layoutObjects" : [
+
+      ],
+      "type" : 0
+    },
+    "iconPreviewVisible" : false,
+    "iconSize" : 79,
+    "itemInfoVisible" : false,
+    "labelPosition" : 0,
+    "licenses" : [
+
+    ],
+    "nameFontSize" : 12,
+    "statusBarVisible" : false,
+    "suggestedDiskImageName" : "Hessflix.dmg",
+    "toolbarVisible" : false,
+    "uid" : "ksqctmeynt",
+    "validationScheme" : 0,
+    "viewLayout" : 0,
+    "volumeIcon" : "volumeIcon",
+    "volumeName" : "Hessflix",
+    "volumeSize" : 0,
+    "volumeSizeOption" : "Automatic",
+    "windowContentHeight" : 450,
+    "windowContents" : [
+      {
+        "filePath" : "\/Applications",
+        "iconSize" : 100,
+        "invisible" : false,
+        "isAnAlias" : true,
+        "location" : "{638, 163}",
+        "relativeFilePath" : "..\/..\/..\/..\/..\/Applications"
+      },
+      {
+        "filePath" : "\/Users\/zipname\/dmg-staging\/Hessflix.app",
+        "iconSize" : 100,
+        "invisible" : false,
+        "isAnAlias" : false,
+        "location" : "{256, 163}",
+        "relativeFilePath" : "..\/..\/..\/dmg-staging\/Hessflix.app"
+      }
+    ],
+    "windowContentWidth" : 900,
+    "windowLeft" : 200,
+    "windowTop" : 120
+  },
+  "version" : 4
+}
