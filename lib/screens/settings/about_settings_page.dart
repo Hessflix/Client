@@ -33,6 +33,11 @@ const socials = [
     'https://my.hessflix.tv',
     IconsaxPlusLinear.global,
   ),
+  _Socials(
+    'Github',
+    'https://github.com/Hessflix/Client',
+    FontAwesomeIcons.githubAlt,
+  ),
 ];
 
 @RoutePage()
