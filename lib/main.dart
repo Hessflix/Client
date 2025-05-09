@@ -169,8 +169,14 @@ class MainAppWrapper extends ConsumerWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      builder: (context, child) {
+        Future.microtask(() => checkForWindowsUpdate(context));
+        return LocalizationContextWrapper(
+          child: ScaffoldMessenger(child: child ?? Container()),
+        );
+      },
       themeMode: themeMode,
-      routerConfig: appRouter.config(),
+      routerConfig: autoRouter.config(),
     );
   }
 }
@@ -181,23 +187,6 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
   bool hidden = false;
   bool _hasCheckedUpdate = false;
   late final autoRouter = AutoRouter(ref: ref);
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    windowManager.addListener(this);
-
-    _init();
-
-    if (Platform.isWindows && !_hasCheckedUpdate) {
-      _hasCheckedUpdate = true;
-      Future.microtask(() {
-        checkForWindowsUpdate(context);
-      });
-    }
-  }
-
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
@@ -281,36 +270,53 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
     super.onWindowMoved();
   }
 
-  void _init() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    ref.read(sharedUtilityProvider).loadSettings();
+@override
+void initState() {
+  super.initState();
+  WidgetsBinding.instance.addObserver(this);
+  windowManager.addListener(this);
 
-    final clientSettings = ref.read(clientSettingsProvider);
-
-    if (_isDesktop) {
-      WindowOptions windowOptions = WindowOptions(
-        size: Size(clientSettings.size.x, clientSettings.size.y),
-        center: true,
-        backgroundColor: Colors.transparent,
-        skipTaskbar: false,
-        titleBarStyle: TitleBarStyle.hidden,
-        title: packageInfo.appName.capitalize(),
-      );
-
-      windowManager.waitUntilReadyToShow(windowOptions, () async {
-        await windowManager.show();
-        await windowManager.focus();
-      });
-    } else {
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
-        systemNavigationBarDividerColor: Colors.transparent,
-      ));
-    }
+  if (Platform.isWindows) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 10000));
+      if (mounted) {
+        checkForWindowsUpdate(context);
+      }
+    });
   }
 
+  _init(); // 🔁 toujours à l'intérieur de initState()
+}
+
+void _init() async {
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  ref.read(sharedUtilityProvider).loadSettings();
+
+  final clientSettings = ref.read(clientSettingsProvider);
+
+  if (_isDesktop) {
+    WindowOptions windowOptions = WindowOptions(
+      size: Size(clientSettings.size.x, clientSettings.size.y),
+      center: true,
+      backgroundColor: Colors.transparent,
+      skipTaskbar: false,
+      titleBarStyle: TitleBarStyle.hidden,
+      title: packageInfo.appName.capitalize(),
+    );
+
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+    });
+  } else {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+    ));
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -324,6 +330,10 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
     final language = ref.watch(clientSettingsProvider
         .select((value) => value.selectedLocale ?? WidgetsBinding.instance.platformDispatcher.locale));
     final scrollBehaviour = const MaterialScrollBehavior();
+    if (!_hasCheckedUpdate && Platform.isWindows) {
+      _hasCheckedUpdate = true;
+      Future.microtask(() => checkForWindowsUpdate(context));
+    }
     return Shortcuts(
       shortcuts: <LogicalKeySet, Intent>{
         LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
