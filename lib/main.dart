@@ -169,12 +169,6 @@ class MainAppWrapper extends ConsumerWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      builder: (context, child) {
-        Future.microtask(() => checkForWindowsUpdate(context));
-        return LocalizationContextWrapper(
-          child: ScaffoldMessenger(child: child ?? Container()),
-        );
-      },
       themeMode: themeMode,
       routerConfig: autoRouter.config(),
     );
@@ -187,6 +181,23 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
   bool hidden = false;
   bool _hasCheckedUpdate = false;
   late final autoRouter = AutoRouter(ref: ref);
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    windowManager.addListener(this);
+
+    _init();
+
+    if (Platform.isWindows && !_hasCheckedUpdate) {
+      _hasCheckedUpdate = true;
+      Future.microtask(() {
+        checkForWindowsUpdate(context);
+      });
+    }
+  }
+
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
@@ -272,31 +283,19 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
 
   void _init() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
     ref.read(sharedUtilityProvider).loadSettings();
-
-    @override
-    void initState() {
-      super.initState();
-
-      if (Platform.isWindows) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          checkForWindowsUpdate(context);
-        });
-      }
-    }
-
 
     final clientSettings = ref.read(clientSettingsProvider);
 
     if (_isDesktop) {
       WindowOptions windowOptions = WindowOptions(
-          size: Size(clientSettings.size.x, clientSettings.size.y),
-          center: true,
-          backgroundColor: Colors.transparent,
-          skipTaskbar: false,
-          titleBarStyle: TitleBarStyle.hidden,
-          title: packageInfo.appName.capitalize());
+        size: Size(clientSettings.size.x, clientSettings.size.y),
+        center: true,
+        backgroundColor: Colors.transparent,
+        skipTaskbar: false,
+        titleBarStyle: TitleBarStyle.hidden,
+        title: packageInfo.appName.capitalize(),
+      );
 
       windowManager.waitUntilReadyToShow(windowOptions, () async {
         await windowManager.show();
@@ -312,6 +311,7 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     final themeMode = ref.watch(clientSettingsProvider.select((value) => value.themeMode));
@@ -324,10 +324,6 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
     final language = ref.watch(clientSettingsProvider
         .select((value) => value.selectedLocale ?? WidgetsBinding.instance.platformDispatcher.locale));
     final scrollBehaviour = const MaterialScrollBehavior();
-    if (!_hasCheckedUpdate && Platform.isWindows) {
-      _hasCheckedUpdate = true;
-      Future.microtask(() => checkForWindowsUpdate(context));
-    }
     return Shortcuts(
       shortcuts: <LogicalKeySet, Intent>{
         LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),

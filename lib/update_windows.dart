@@ -31,7 +31,6 @@ Future<void> checkForWindowsUpdate(BuildContext context) async {
     print("🔗 Fichier exe : $exeUrl");
 
     if (serverVersion > localVersion) {
-      print("🚨 Mise à jour disponible !");
       final confirm = await showDialog<bool>(
         context: context,
         builder: (_) => AlertDialog(
@@ -46,12 +45,11 @@ Future<void> checkForWindowsUpdate(BuildContext context) async {
 
       if (confirm != true) return;
 
-      print("📥 Téléchargement de l’installeur...");
-
+      print("📥 Téléchargement de l’installeur avec progression...");
       final dir = await getTemporaryDirectory();
       final exePath = '${dir.path}/HessflixSetup.exe';
-      final file = File(exePath);
-      await file.writeAsBytes((await http.get(Uri.parse(exeUrl))).bodyBytes);
+
+      await showDownloadProgressDialog(context, exeUrl, exePath);
 
       print("🚀 Lancement de l'installeur...");
       await Shell().run('"$exePath"');
@@ -63,4 +61,53 @@ Future<void> checkForWindowsUpdate(BuildContext context) async {
     print("❌ Erreur durant la vérification de mise à jour : $e");
   }
 }
+
+Future<void> showDownloadProgressDialog(
+    BuildContext context, String url, String savePath) async {
+  final client = http.Client();
+  final request = http.Request('GET', Uri.parse(url));
+  final response = await client.send(request);
+
+  final total = response.contentLength ?? 0;
+  int received = 0;
+
+  final file = File(savePath);
+  final sink = file.openWrite();
+
+  showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (context) {
+      return StatefulBuilder(builder: (context, setState) {
+        final progress = total > 0 ? received / total : 0.0;
+        return AlertDialog(
+          title: const Text("Téléchargement de la mise à jour"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              LinearProgressIndicator(value: progress),
+              const SizedBox(height: 12),
+              Text("${(progress * 100).toStringAsFixed(1)}%"),
+            ],
+          ),
+        );
+      });
+    },
+  );
+
+  await for (final chunk in response.stream) {
+    received += chunk.length;
+    sink.add(chunk);
+
+    // met à jour la boîte de dialogue
+    (context as Element).markNeedsBuild();
+  }
+
+  await sink.flush();
+  await sink.close();
+  client.close();
+
+  Navigator.of(context).pop(); // ferme la boîte de dialogue
+}
+
 
