@@ -132,6 +132,7 @@ class Main extends ConsumerStatefulWidget with WindowListener {
 class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBindingObserver {
   DateTime dateTime = DateTime.now();
   bool hidden = false;
+  bool _hasCheckedUpdate = false;
   late final autoRouter = AutoRouter(ref: ref);
 
   @override
@@ -276,6 +277,10 @@ void _init() async {
     final language = ref.watch(clientSettingsProvider
         .select((value) => value.selectedLocale ?? WidgetsBinding.instance.platformDispatcher.locale));
     final scrollBehaviour = const MaterialScrollBehavior();
+    if (!_hasCheckedUpdate && Platform.isWindows) {
+      _hasCheckedUpdate = true;
+      Future.microtask(() => checkForWindowsUpdate(context));
+    }
     return Shortcuts(
       shortcuts: <LogicalKeySet, Intent>{
         LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
