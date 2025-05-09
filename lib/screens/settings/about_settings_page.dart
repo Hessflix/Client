@@ -36,7 +36,7 @@ const socials = [
   _Socials(
     'Github',
     'https://github.com/Hessflix/Client',
-    IconsaxPlusLinear.githubAlt,
+    FontAwesomeIcons.githubAlt,
   ),
 ];
 
