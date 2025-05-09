@@ -246,7 +246,9 @@ void _init() async {
       await windowManager.focus();
 
       // ⬇️ Vérification de mise à jour Windows
-      await checkForWindowsUpdate(context);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        checkForWindowsUpdate(context);
+      });
     });
   } else {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
