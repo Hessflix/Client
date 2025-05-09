@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
@@ -26,9 +27,11 @@ Future<void> checkForWindowsUpdate(BuildContext context) async {
     final json = jsonDecode(response.body);
     final serverVersion = Version.parse(json['version']);
     final exeUrl = json['windows'];
+    final expectedHash = json['sha256'];
 
     print("🆕 Version distante : $serverVersion");
     print("🔗 Fichier exe : $exeUrl");
+    print("🔐 SHA256 attendu : $expectedHash");
 
     if (serverVersion > localVersion) {
       final confirm = await showDialog<bool>(
@@ -50,6 +53,25 @@ Future<void> checkForWindowsUpdate(BuildContext context) async {
       final exePath = '${dir.path}/HessflixSetup.exe';
 
       await showDownloadProgressDialog(context, exeUrl, exePath);
+
+      final computedHash = await computeSha256(exePath);
+      print("🧮 SHA256 calculé : $computedHash");
+
+      if (computedHash != expectedHash) {
+        print("❌ Hash invalide, suppression du fichier.");
+        await File(exePath).delete();
+        await showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+            title: const Text("Erreur de sécurité"),
+            content: const Text("Le fichier téléchargé est corrompu ou a été modifié."),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(context), child: const Text("Fermer")),
+            ],
+          ),
+        );
+        return;
+      }
 
       print("🚀 Lancement de l'installeur...");
       await Shell().run('"$exePath"');
@@ -74,24 +96,29 @@ Future<void> showDownloadProgressDialog(
   final file = File(savePath);
   final sink = file.openWrite();
 
+  double progress = 0.0;
+  late void Function(void Function()) updateState;
+
   showDialog(
     barrierDismissible: false,
     context: context,
     builder: (context) {
-      return StatefulBuilder(builder: (context, setState) {
-        final progress = total > 0 ? received / total : 0.0;
-        return AlertDialog(
-          title: const Text("Téléchargement de la mise à jour"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              LinearProgressIndicator(value: progress),
-              const SizedBox(height: 12),
-              Text("${(progress * 100).toStringAsFixed(1)}%"),
-            ],
-          ),
-        );
-      });
+      return StatefulBuilder(
+        builder: (context, setState) {
+          updateState = setState;
+          return AlertDialog(
+            title: const Text("Téléchargement de la mise à jour"),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                LinearProgressIndicator(value: progress),
+                const SizedBox(height: 12),
+                Text("${(progress * 100).toStringAsFixed(1)}%"),
+              ],
+            ),
+          );
+        },
+      );
     },
   );
 
@@ -99,15 +126,20 @@ Future<void> showDownloadProgressDialog(
     received += chunk.length;
     sink.add(chunk);
 
-    // met à jour la boîte de dialogue
-    (context as Element).markNeedsBuild();
+    progress = total > 0 ? received / total : 0.0;
+    updateState(() {});
   }
 
   await sink.flush();
   await sink.close();
   client.close();
 
-  Navigator.of(context).pop(); // ferme la boîte de dialogue
+  Navigator.of(context).pop();
 }
 
-
+Future<String> computeSha256(String path) async {
+  final file = File(path);
+  final bytes = await file.readAsBytes();
+  final digest = sha256.convert(bytes);
+  return digest.toString();
+}

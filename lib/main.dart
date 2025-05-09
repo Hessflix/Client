@@ -223,35 +223,39 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
     super.onWindowMoved();
   }
 
-  void _init() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+void _init() async {
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    ref.read(sharedUtilityProvider).loadSettings();
+  ref.read(sharedUtilityProvider).loadSettings();
 
-    final clientSettings = ref.read(clientSettingsProvider);
+  final clientSettings = ref.read(clientSettingsProvider);
 
-    if (_isDesktop) {
-      WindowOptions windowOptions = WindowOptions(
-          size: Size(clientSettings.size.x, clientSettings.size.y),
-          center: true,
-          backgroundColor: Colors.transparent,
-          skipTaskbar: false,
-          titleBarStyle: TitleBarStyle.hidden,
-          title: packageInfo.appName.capitalize());
+  if (_isDesktop) {
+    WindowOptions windowOptions = WindowOptions(
+      size: Size(clientSettings.size.x, clientSettings.size.y),
+      center: true,
+      backgroundColor: Colors.transparent,
+      skipTaskbar: false,
+      titleBarStyle: TitleBarStyle.hidden,
+      title: packageInfo.appName.capitalize(),
+    );
 
-      windowManager.waitUntilReadyToShow(windowOptions, () async {
-        await windowManager.show();
-        await windowManager.focus();
-      });
-    } else {
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
-        systemNavigationBarDividerColor: Colors.transparent,
-      ));
-    }
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+
+      // ⬇️ Vérification de mise à jour Windows
+      await checkForWindowsUpdate(context);
+    });
+  } else {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+    ));
   }
+}
 
   @override
   Widget build(BuildContext context) {
