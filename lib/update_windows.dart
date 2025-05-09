@@ -12,20 +12,26 @@ Future<void> checkForWindowsUpdate(BuildContext context) async {
   const versionUrl = 'https://cdn.hessflix.tv/version.json';
 
   try {
-    // 🔍 Récupère la version actuelle de l'app
+    print("🔧 Démarrage de la vérification de mise à jour...");
+
     final packageInfo = await PackageInfo.fromPlatform();
     final localVersion = Version.parse(packageInfo.version);
+    print("📦 Version locale : $localVersion");
 
-    // 🌐 Récupère les infos distantes
     final response = await http.get(Uri.parse(versionUrl));
+    print("🌐 Requête version.json status: ${response.statusCode}");
+
     if (response.statusCode != 200) return;
 
     final json = jsonDecode(response.body);
     final serverVersion = Version.parse(json['version']);
     final exeUrl = json['windows'];
 
-    // 🔁 Compare les versions
+    print("🆕 Version distante : $serverVersion");
+    print("🔗 Fichier exe : $exeUrl");
+
     if (serverVersion > localVersion) {
+      print("🚨 Mise à jour disponible !");
       final confirm = await showDialog<bool>(
         context: context,
         builder: (_) => AlertDialog(
@@ -40,17 +46,21 @@ Future<void> checkForWindowsUpdate(BuildContext context) async {
 
       if (confirm != true) return;
 
-      // 📥 Télécharge l'installeur
+      print("📥 Téléchargement de l’installeur...");
+
       final dir = await getTemporaryDirectory();
       final exePath = '${dir.path}/HessflixSetup.exe';
       final file = File(exePath);
       await file.writeAsBytes((await http.get(Uri.parse(exeUrl))).bodyBytes);
 
-      // 🚀 Lance l'installeur et quitte l'app
+      print("🚀 Lancement de l'installeur...");
       await Shell().run('"$exePath"');
       exit(0);
+    } else {
+      print("✅ Aucune mise à jour nécessaire");
     }
   } catch (e) {
-    print("❌ Échec de la mise à jour : $e");
+    print("❌ Erreur durant la vérification de mise à jour : $e");
   }
 }
+
