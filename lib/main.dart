@@ -132,7 +132,6 @@ class Main extends ConsumerStatefulWidget with WindowListener {
 class MainAppWrapper extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // tout ce que tu avais dans `Main.build`, ici
     final themeMode = ref.watch(clientSettingsProvider.select((value) => value.themeMode));
     final themeColor = ref.watch(clientSettingsProvider.select((value) => value.themeColor ?? ColorThemes.hessflix));
     final amoledBlack = ref.watch(clientSettingsProvider.select((value) => value.amoledBlack));
@@ -142,18 +141,46 @@ class MainAppWrapper extends ConsumerWidget {
         .select((value) => value.selectedLocale ?? WidgetsBinding.instance.platformDispatcher.locale));
     final scrollBehaviour = const MaterialScrollBehavior();
 
+    final lightTheme = themeColor == null
+        ? HessflixTheme.theme(HessflixTheme.defaultScheme(Brightness.light), schemeVariant)
+        : HessflixTheme.theme(themeColor.schemeLight, schemeVariant);
+    final darkTheme = themeColor == null
+        ? HessflixTheme.theme(HessflixTheme.defaultScheme(Brightness.dark), schemeVariant)
+        : HessflixTheme.theme(themeColor.schemeDark, schemeVariant);
+    final amoledOverwrite = amoledBlack ? Colors.black : null;
+
     return MaterialApp.router(
-      ...
+      onGenerateTitle: (context) => ref.watch(currentTitleProvider),
+      theme: lightTheme,
+      darkTheme: darkTheme.copyWith(
+        scaffoldBackgroundColor: amoledOverwrite,
+        cardColor: amoledOverwrite,
+        canvasColor: amoledOverwrite,
+        colorScheme: darkTheme.colorScheme.copyWith(
+          surface: amoledOverwrite,
+          surfaceContainerHighest: amoledOverwrite,
+        ),
+      ),
+      scrollBehavior: scrollBehaviour.copyWith(
+        dragDevices: {
+          ...scrollBehaviour.dragDevices,
+          mouseDrag ? PointerDeviceKind.mouse : null,
+        }.nonNulls.toSet(),
+      ),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       builder: (context, child) {
-        // ✅ Lancement update ici
         Future.microtask(() => checkForWindowsUpdate(context));
         return LocalizationContextWrapper(
           child: ScaffoldMessenger(child: child ?? Container()),
         );
       },
+      themeMode: themeMode,
+      routerConfig: autoRouter.config(),
     );
   }
 }
+
 
 class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBindingObserver {
   DateTime dateTime = DateTime.now();
