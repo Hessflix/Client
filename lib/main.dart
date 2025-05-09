@@ -155,6 +155,7 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
         break;
     }
   }
+}
 
   void enableTimeOut() async {
     final timeOut = ref.read(clientSettingsProvider).timeOut;
