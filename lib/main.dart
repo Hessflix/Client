@@ -38,7 +38,6 @@ import 'package:hessflix/util/localization_helper.dart';
 import 'package:hessflix/util/string_extensions.dart';
 import 'package:hessflix/util/themes_data.dart';
 import 'package:hessflix/util/custom_color_themes.dart';
-import 'package:hessflix/update_windows.dart';
 
 bool get _isDesktop {
   if (kIsWeb) return false;
@@ -116,7 +115,7 @@ void main() async {
           LayoutPoints(start: 600, end: 1919, type: ViewSize.tablet),
           LayoutPoints(start: 1920, end: 3180, type: ViewSize.desktop),
         ],
-        child: MainAppWrapper(),
+        child: const Main(),
       ),
     ),
   );
@@ -129,63 +128,9 @@ class Main extends ConsumerStatefulWidget with WindowListener {
   ConsumerState<ConsumerStatefulWidget> createState() => _MainState();
 }
 
-class MainAppWrapper extends ConsumerWidget {
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(clientSettingsProvider.select((value) => value.themeMode));
-    final themeColor = ref.watch(clientSettingsProvider.select((value) => value.themeColor ?? ColorThemes.hessflix));
-    final amoledBlack = ref.watch(clientSettingsProvider.select((value) => value.amoledBlack));
-    final mouseDrag = ref.watch(clientSettingsProvider.select((value) => value.mouseDragSupport));
-    final schemeVariant = ref.watch(clientSettingsProvider.select((value) => value.schemeVariant));
-    final language = ref.watch(clientSettingsProvider
-        .select((value) => value.selectedLocale ?? WidgetsBinding.instance.platformDispatcher.locale));
-    final scrollBehaviour = const MaterialScrollBehavior();
-
-    final lightTheme = themeColor == null
-        ? HessflixTheme.theme(HessflixTheme.defaultScheme(Brightness.light), schemeVariant)
-        : HessflixTheme.theme(themeColor.schemeLight, schemeVariant);
-    final darkTheme = themeColor == null
-        ? HessflixTheme.theme(HessflixTheme.defaultScheme(Brightness.dark), schemeVariant)
-        : HessflixTheme.theme(themeColor.schemeDark, schemeVariant);
-    final amoledOverwrite = amoledBlack ? Colors.black : null;
-
-    return MaterialApp.router(
-      onGenerateTitle: (context) => ref.watch(currentTitleProvider),
-      theme: lightTheme,
-      darkTheme: darkTheme.copyWith(
-        scaffoldBackgroundColor: amoledOverwrite,
-        cardColor: amoledOverwrite,
-        canvasColor: amoledOverwrite,
-        colorScheme: darkTheme.colorScheme.copyWith(
-          surface: amoledOverwrite,
-          surfaceContainerHighest: amoledOverwrite,
-        ),
-      ),
-      scrollBehavior: scrollBehaviour.copyWith(
-        dragDevices: {
-          ...scrollBehaviour.dragDevices,
-          mouseDrag ? PointerDeviceKind.mouse : null,
-        }.nonNulls.toSet(),
-      ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      builder: (context, child) {
-        Future.microtask(() => checkForWindowsUpdate(context));
-        return LocalizationContextWrapper(
-          child: ScaffoldMessenger(child: child ?? Container()),
-        );
-      },
-      themeMode: themeMode,
-      routerConfig: autoRouter.config(),
-    );
-  }
-}
-
-
 class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBindingObserver {
   DateTime dateTime = DateTime.now();
   bool hidden = false;
-  bool _hasCheckedUpdate = false;
   late final autoRouter = AutoRouter(ref: ref);
 
   @override
@@ -228,7 +173,15 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
       }
     }
   }
-  
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    windowManager.addListener(this);
+    _init();
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -270,53 +223,35 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
     super.onWindowMoved();
   }
 
-@override
-void initState() {
-  super.initState();
-  WidgetsBinding.instance.addObserver(this);
-  windowManager.addListener(this);
+  void _init() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-  if (Platform.isWindows) {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 10000));
-      if (mounted) {
-        checkForWindowsUpdate(context);
-      }
-    });
+    ref.read(sharedUtilityProvider).loadSettings();
+
+    final clientSettings = ref.read(clientSettingsProvider);
+
+    if (_isDesktop) {
+      WindowOptions windowOptions = WindowOptions(
+          size: Size(clientSettings.size.x, clientSettings.size.y),
+          center: true,
+          backgroundColor: Colors.transparent,
+          skipTaskbar: false,
+          titleBarStyle: TitleBarStyle.hidden,
+          title: packageInfo.appName.capitalize());
+
+      windowManager.waitUntilReadyToShow(windowOptions, () async {
+        await windowManager.show();
+        await windowManager.focus();
+      });
+    } else {
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
+      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarDividerColor: Colors.transparent,
+      ));
+    }
   }
-
-  _init(); // 🔁 toujours à l'intérieur de initState()
-}
-
-void _init() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  ref.read(sharedUtilityProvider).loadSettings();
-
-  final clientSettings = ref.read(clientSettingsProvider);
-
-  if (_isDesktop) {
-    WindowOptions windowOptions = WindowOptions(
-      size: Size(clientSettings.size.x, clientSettings.size.y),
-      center: true,
-      backgroundColor: Colors.transparent,
-      skipTaskbar: false,
-      titleBarStyle: TitleBarStyle.hidden,
-      title: packageInfo.appName.capitalize(),
-    );
-
-    windowManager.waitUntilReadyToShow(windowOptions, () async {
-      await windowManager.show();
-      await windowManager.focus();
-    });
-  } else {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      systemNavigationBarColor: Colors.transparent,
-      systemNavigationBarDividerColor: Colors.transparent,
-    ));
-  }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -330,10 +265,6 @@ void _init() async {
     final language = ref.watch(clientSettingsProvider
         .select((value) => value.selectedLocale ?? WidgetsBinding.instance.platformDispatcher.locale));
     final scrollBehaviour = const MaterialScrollBehavior();
-    if (!_hasCheckedUpdate && Platform.isWindows) {
-      _hasCheckedUpdate = true;
-      Future.microtask(() => checkForWindowsUpdate(context));
-    }
     return Shortcuts(
       shortcuts: <LogicalKeySet, Intent>{
         LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
