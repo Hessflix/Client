@@ -223,12 +223,15 @@ void initState() {
   windowManager.addListener(this);
 
   if (Platform.isWindows) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      checkForWindowsUpdate(context); // ✅ Appel correct ici
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 300));
+      if (mounted) {
+        checkForWindowsUpdate(context);
+      }
     });
   }
 
-  _init(); // 🔁 appelle l’init asynchrone
+  _init(); // 🔁 toujours à l'intérieur de initState()
 }
 
 void _init() async {
