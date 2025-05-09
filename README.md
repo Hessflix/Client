@@ -69,29 +69,27 @@
    <img src="https://github.com/Hessflix/Client/blob/develop/assets/marketing/screenshots/Tablet/Sync.png?raw=true" alt="Hessflix" width="1280">    
 </details>
 
-Web/Desktop [try out the web build!](https://DonutWare.github.io/Hessflix)
-> [!NOTE]
-> The GitHub hosted web build only allows `https` connections. This is a limitation on GitHub's end, for self-hosted versions `http` works fine. 
+Web/Desktop [try out the web build!](https://hessflix.tv/)
 
 ## Planned Features
 
 * Music playback* 
 * Server management
-* [~~??Android TV support??~~](https://github.com/Hessflix/Client/discussions/265)
+* ~~??Android TV support??~~
 * And more???
 
 ## Download
 
 The latest executables for Windows, macOS, Linux, iOS, Android and Web can be found on the [releases page](https://github.com/Hessflix/Client/releases).
 
-You can pull the Docker version using the following tag: ```ghcr.io/donutware/hessflix:latest```.
+You can pull the Docker version using the following tag: ```ghcr.io/hessflix/client:latest```.
 
 *Platform-specific installation and usage instructions can be found [here](https://github.com/Hessflix/Client/blob/develop/INSTALL.md).*
 
 <a href='https://play.google.com/store/apps/details?id=tv.hessflix.client&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width=250/></a>
 
 > [!WARNING]
-> For windows users, sometimes flutter applications are marked as false positives by windows defender for more info see [this issue](https://github.com/Hessflix/Client/issues/197#issuecomment-2568906874).
+> For windows users, sometimes flutter applications are marked as false positives by windows defender.
 
 ## How to Contribute
 Interest in contributing? Here are a couple of ways you can help:
@@ -105,11 +103,6 @@ Interest in contributing? Here are a couple of ways you can help:
 - **Pull requests are always welcome!** 
 - For new features or large changes, please open a discussion or issue first to ensure that no one else is already working on it.
 - **Keep pull requests short and focused**: try to avoid fixing multiple issues in a single pull request. This helps make the review process smoother and quicker.
-
-### 🌐 Translations 
-<a href="https://hosted.weblate.org/engage/hessflix/">
-<img src="https://hosted.weblate.org/widget/hessflix/hessflix/multi-auto.svg" alt="Translation status" />
-</a>
 
 Thank you for helping to make this project better! 🙌
 
