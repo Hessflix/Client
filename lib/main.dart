@@ -174,15 +174,7 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
       }
     }
   }
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    windowManager.addListener(this);
-    _init();
-  }
-
+  
   @override
   void dispose() {
     super.dispose();
