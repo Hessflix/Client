@@ -224,47 +224,50 @@ class _MainState extends ConsumerState<Main> with WindowListener, WidgetsBinding
     super.onWindowMoved();
   }
 
-  void _init() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+@override
+void initState() {
+  super.initState();
+  WidgetsBinding.instance.addObserver(this);
+  windowManager.addListener(this);
 
-    ref.read(sharedUtilityProvider).loadSettings();
-
-    @override
-    void initState() {
-      super.initState();
-
-      if (Platform.isWindows) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          checkForWindowsUpdate(context);
-        });
-      }
-    }
-
-
-    final clientSettings = ref.read(clientSettingsProvider);
-
-    if (_isDesktop) {
-      WindowOptions windowOptions = WindowOptions(
-          size: Size(clientSettings.size.x, clientSettings.size.y),
-          center: true,
-          backgroundColor: Colors.transparent,
-          skipTaskbar: false,
-          titleBarStyle: TitleBarStyle.hidden,
-          title: packageInfo.appName.capitalize());
-
-      windowManager.waitUntilReadyToShow(windowOptions, () async {
-        await windowManager.show();
-        await windowManager.focus();
-      });
-    } else {
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
-        systemNavigationBarDividerColor: Colors.transparent,
-      ));
-    }
+  if (Platform.isWindows) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      checkForWindowsUpdate(context); // ✅ Appel correct ici
+    });
   }
+
+  _init(); // 🔁 appelle l’init asynchrone
+}
+
+void _init() async {
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  ref.read(sharedUtilityProvider).loadSettings();
+
+  final clientSettings = ref.read(clientSettingsProvider);
+
+  if (_isDesktop) {
+    WindowOptions windowOptions = WindowOptions(
+      size: Size(clientSettings.size.x, clientSettings.size.y),
+      center: true,
+      backgroundColor: Colors.transparent,
+      skipTaskbar: false,
+      titleBarStyle: TitleBarStyle.hidden,
+      title: packageInfo.appName.capitalize(),
+    );
+
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+    });
+  } else {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+    ));
+  }
+}
 
   @override
   Widget build(BuildContext context) {
