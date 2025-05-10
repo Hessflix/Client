@@ -53,7 +53,6 @@ static void my_application_activate(GApplication *application)
 	else
 	{
 		gtk_window_set_title(window, "Hessflix");
-		gtk_window_set_wmclass(window, "Hessflix", "Hessflix");
 	}
 
 	gtk_window_set_default_size(window, 1280, 720);
