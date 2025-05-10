@@ -36,7 +36,7 @@ class AuthNotifier extends StateNotifier<LoginScreenModel> {
   state = state.copyWith(
     tempCredentials: state.tempCredentials.copyWith(
       token: token,
-      server: 'https://hessflix.tv/jellyfin', // 🔧 indispensable
+      server: 'https://backend.hessflix.tv/jellyfin', // 🔧 indispensable
     ),
   );
 }
