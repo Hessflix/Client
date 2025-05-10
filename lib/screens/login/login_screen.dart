@@ -123,8 +123,8 @@ Widget build(BuildContext context) {
                     icon: const Icon(Icons.login),
                     label: const Text("Se connecter avec Hessflix (Web)"),
                     onPressed: () {
-                      const authUrl = 'https://hessflix.tv/jellyfin/SSO/oid/p/Hessflix';
-                      const redirectUri = 'https://hessflix.tv/ssocallback.html';
+                      const authUrl = 'https://backend.hessflix.tv/jellyfin/SSO/oid/p/Hessflix';
+                      const redirectUri = 'https://backend.hessflix.tv/ssocallback.html';
                       final fullUrl = '$authUrl?redirect_uri=$redirectUri';
 
                       html.window.open(fullUrl, '_blank');
@@ -146,8 +146,8 @@ Widget build(BuildContext context) {
                       final token = await Navigator.of(context).push<String?>(
                         MaterialPageRoute(
                           builder: (_) => const OAuthWebView(
-                            authorizationUrl: 'https://hessflix.tv/jellyfin/SSO/oid/p/Hessflix',
-                            redirectUrl: 'https://hessflix.tv/jellyfin/web/index.html',
+                            authorizationUrl: 'https://backend.hessflix.tv/jellyfin/SSO/oid/p/Hessflix',
+                            redirectUrl: 'https://backend.hessflix.tv/jellyfin/web/index.html',
                           ),
                         ),
                       );
