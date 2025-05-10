@@ -43,7 +43,7 @@ class _OAuthLocalServerPageState extends State<OAuthLocalServerPage> {
 
   Future<void> _openBrowser() async {
     final redirectUri = Uri.encodeComponent('http://localhost:3000/callback');
-    final authUrl = Uri.parse('https://hessflix.tv/jellyfin/SSO/oid/p/Hessflix?redirect_uri=$redirectUri');
+    final authUrl = Uri.parse('https://backend.hessflix.tv/jellyfin/SSO/oid/p/Hessflix?redirect_uri=$redirectUri');
 
     if (!await launchUrl(authUrl, mode: LaunchMode.externalApplication)) {
       throw 'Impossible d’ouvrir le navigateur.';
