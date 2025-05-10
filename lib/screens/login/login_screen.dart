@@ -99,8 +99,8 @@ Widget build(BuildContext context) {
                 final token = await Navigator.of(context).push<String?>(
                   MaterialPageRoute(
                     builder: (_) => const OAuthWebView(
-                      authorizationUrl: 'https://hessflix.tv/jellyfin/SSO/oid/p/Hessflix',
-                      redirectUrl: 'https://hessflix.tv/jellyfin/web/index.html',
+                      authorizationUrl: 'https://backend.hessflix.tv/jellyfin/SSO/oid/p/Hessflix',
+                      redirectUrl: 'https://backend.hessflix.tv/jellyfin/web/index.html',
                     ),
                   ),
                 );
