@@ -38,12 +38,12 @@
         "relativeFilePath" : "..\/..\/..\/..\/..\/Applications"
       },
       {
-        "filePath" : "\/Users\/zipname\/dmg-staging\/Hessflix.app",
+        "filePath" : "\/Users\/zipname\/Documents\/GitHub\/Client\/build\/macos\/Build\/Products\/Release\/Hessflix.app",
         "iconSize" : 100,
         "invisible" : false,
         "isAnAlias" : false,
         "location" : "{256, 163}",
-        "relativeFilePath" : "..\/..\/..\/dmg-staging\/Hessflix.app"
+        "relativeFilePath" : "build\/macos\/Build\/Products\/Release\/Hessflix.app"
       }
     ],
     "windowContentWidth" : 900,

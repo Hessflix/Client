@@ -173,3 +173,11 @@ flutter:
           style: normal
         - asset: assets/fonts/opensans/OpenSans-Italic.ttf
           style: italic
+
+icons_launcher:
+  image_path: "icons/production/hessflix_store_icon.png"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
